@@ -4,7 +4,7 @@ use 5.6.1;
 use strict;
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/04/06 };
-our $VERSION = do { my @r = (q$Revision: 1.63 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.64 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -42,7 +42,7 @@ L<UMMF::UML::MetaModel|UMMF::UML::MetaModel>
 
 =head1 VERSION
 
-$Revision: 1.63 $
+$Revision: 1.64 $
 
 =head1 METHODS
 
@@ -59,6 +59,7 @@ use UMMF::UML::MetaMetaModel::Util qw( :all );
 use Carp qw(confess);
 
 use Template;
+use Template::Stash;
 
 use File::Basename;
 
@@ -209,6 +210,33 @@ sub template_config
 }
 
 
+$Template::Stash::SCALAR_OPS->{unquoted} ||= sub {
+  no warnings;
+
+  my ($x) = @_;
+
+  $x =~ s/["']//sg;
+
+  $x;
+};
+$Template::Stash::SCALAR_OPS->{asInteger} ||= sub {
+  no warnings;
+
+  my ($x) = @_;
+
+  $x =~ s/["']//sg;
+  $x =~ /^[+-]?[0-9]+$/ ? $x : '-1';
+};
+$Template::Stash::SCALAR_OPS->{uc} ||= sub {
+  no warnings;
+  uc(shift);
+};
+$Template::Stash::SCALAR_OPS->{lc} ||= sub {
+  no warnings;
+  lc(shift);
+};
+
+
 =head2 template
 
 Returns a cached Template object.
@@ -221,6 +249,7 @@ sub template
   my $t = $self->{'template'} ||= 
   Template->new($self->template_config) || die Template->error(), "\n";
   
+
   $t;
 }
 
@@ -337,7 +366,9 @@ sub __id
    # Fully qualified in Namespace:
 
    # As is.
+   'name_q_raw' => $name_q,
    'name_q'  => $self->identifier_name_filter($obj, $name_q),
+
    # Non alphanumeric characters translated to '_'.
    'name_q_' => $self->identifier_name_filter($obj, $name_q_),
 
@@ -500,21 +531,6 @@ sub template_vars
     $v->{'base_package_dir'} = $self->package_dir_name($ob);
   }
 
-  {
-    my @factory_map;
-    $v->{'factory_map'} = \@factory_map;
-
-    for my $cls ( Namespace_classifier($model) ) {
-      my $cls_name = $cls->name;
-      my $cls_name_q = ModelElement_name_qualified($cls);
-      my $pkg_name = $self->package_name($cls);
-      push(@factory_map,
-	   $cls_name => $pkg_name,
-	   $cls_name_q => $pkg_name,
-	   );
-    }
-  }
-
   if ( 0 ) {
     # local $UMMF::UML::MetaMetaModel::Util::namespace_trace = 1;
     my (@ac) = Namespace_ownedElement_match($model, 'isaAssociationClass', 1);
@@ -566,6 +582,19 @@ sub template_vars
 	  'visibility',
 	  ),
     };
+
+    # Trap java::lang::boolean crap.
+    if ( 0 ) {
+    if ( $x->{name_q} =~ /java/ && $x->{name_q} =~ /lang/ && $x->{name_q} =~ /boolean/ ) {
+      print STDERR 
+	"ARGGH: java.lang crap:\n", 
+	Data::Dumper->new([$x], [qw($x)])
+	    ->Indent(2)
+	    ->Sortkeys(1)
+	    ->Dump;
+      # exit 1;
+    }
+    }
     
     #$x->{'primitive_type'} ||= $x->{'package'};
     #$x->{'construct_type'} ||= $x->{'primitive_type'};
@@ -580,6 +609,25 @@ sub template_vars
  
   @cls_v = sort { $a->{'name_q'} cmp $b->{'name_q'} } @cls_v;
 
+  # Initialize the factory map.
+  {
+    my @factory_map;
+    $v->{'factory_map'} = \@factory_map;
+
+    for my $x ( @cls_v ) {
+      if ( $x->{'generate'} ) {
+	my $cls_name   = $x->{'name'};
+	my $cls_name_q = $x->{'name_q_raw'};
+	my $pkg_name   = $x->{'package'};
+
+	push(@factory_map,
+	     $cls_name   => $pkg_name,
+	     $cls_name_q => $pkg_name,
+	    );
+      }
+    }
+  }
+
   # Find all AssociationEnds
   for my $cls ( @cls_all ) {
 
@@ -587,6 +635,7 @@ sub template_vars
     # where this classifier participates.
     my @x = $cls->association;
     push(@x, map(AssociationEnd_opposite($_), @x));
+
     for my $end ( @x ) {
       next if $obj_v{$end};
       
@@ -607,7 +656,9 @@ sub template_vars
 	'isNavigable' => $end->isNavigable ne 'false',
 	'instance' => $instance,
 	
-	'type' => $self->package_name($type, undef, $cls),
+	# 'type' => $self->package_name($type, undef, $cls),
+	'type' => $self->package_name($type, undef, undef),
+	'type_obj' => $type,
 	'type_info' => $obj_v{$type},
 	'type_impl' => $self->config_value($end, 'type.impl'),
 
@@ -635,12 +686,6 @@ sub template_vars
       # Cant nav if it doesn't have a name.
       $x->{'isNavigable'} = 0 unless $x->{'name'};
       
-      $x->{'type_impl'} ||= $x->{'type'};
-      $x->{'type_primitive'} ||= 
-      $obj_v{$type}{'primitive_type'} || $x->{'type_impl'};
-
-      $x->{'storage_type'} ||= 
-      $obj_v{$type}{'storage_type'};
 
       if ( 0 && $x->{'phantom'} ) {
 	my $assoc = AssociationEnd_association($end);
@@ -708,7 +753,7 @@ sub template_vars
       }
 
       # Add links from end to the assoc.
-      my $end_v = $obj_v{$end};
+      my $end_v = $obj_v{$end} || die();
       $end_v->{'assoc'} = $x;
     }
 
@@ -727,7 +772,8 @@ sub template_vars
     $cls_v->{'operation'} = \@op;
     
     for my $op ( $self->operation($cls) ) {
-      
+      next if $obj_v{$op};
+
       print STDERR "Operation $cls->{name} :: $op->{name}\t:\n" if $self->{'verbose'} > 1;
       unless ( $self->template_enabled($op) ) {
 	# print STDERR "IGNORED!\n";
@@ -735,8 +781,10 @@ sub template_vars
       }
 	       
       my $return_param = Operation_return($op);
-      my $return_type = $return_param->type;
-      my $return_type_name = $return_type ? $self->package_name($return_type, undef, $cls) : 'void';
+      # Make the Operation's type the "return" params type.
+      my $type = $return_param->type || confess("Class " . $cls->name . ", Method " . $op->name . ", return Parameter " . $return_param->name . " has no type");
+      my $type_v = $obj_v{$type} || confess("Class " . $cls->name . ", Method " . $op->name . ", return Parameter " . $return_param->name . " cannot be mapped");
+      my $type_name = $type ? $self->package_name($type, undef, $cls) : 'void';
       
       my @param;
 
@@ -744,9 +792,9 @@ sub template_vars
       my $op_v = {
 	$self->__id($op),
 	
-	'type' => $return_type_name,
-	'type_info' => $obj_v{$return_type},
-	'type_impl' => $self->config_value($return_param, 'type.impl', $return_type_name),
+	'type' => $type_name,
+	'type_info' => $type_v,
+	'type_impl' => $self->config_value($return_param, 'type.impl'),
 	
 	'instance' => $op->ownerScope ne 'classifier',
 	
@@ -758,7 +806,25 @@ sub template_vars
 	    'isQuery',
 	    ),
       };
+
+      # IS THIS CORRECT? -- 2004/09/29
+      $op_v->{'type_impl'} ||= 
+	$obj_v{$type}{'primitive_type'} || 
+	$op_v->{'type'};
       
+      # Trap java::lang::boolean crap.
+      if ( 1 ) {
+	if ( $op_v->{type_impl} =~ /java.*lang.*boolean/i ) {
+	  print STDERR 
+	    "ARGGH: java.lang crap:\n", 
+	      Data::Dumper->new([$op_v], [qw($op_v)])
+		  ->Indent(1)
+		  ->Sortkeys(1)
+		  ->Dump;
+	  exit 1;
+	}
+      }
+
       # print STDERR "  visibility = '$op_v->{visibility}'\n";
       # print STDERR "  ownerScope = '$op_v->{ownerScope}'\n";
 
@@ -778,13 +844,19 @@ sub template_vars
 
 	  'type' => $type_name,
 	  'type_info' => $obj_v{$type},
-	  'type_impl' => $self->config_value($param, 'type.impl', $type_name),
+	  'type_impl' => $self->config_value($param, 'type.impl'),
 	  
 	  'defaultValue_defined' => defined $defaultValue,
 	  'defaultValue' => $defaultValue,
 	  'kind' => $param->kind,
 	};
 
+	# IS THIS CORRECT? -- 2004/09/29
+	$param_v->{'type_impl'} ||= 
+	$obj_v{$type}{'primitive_type'} || 
+	$param_v->{'type'};
+
+	# OLD CODE.
 	$param_v->{'type_impl'} ||= $param_v->{'type'};
 	$param_v->{'type_primitive'} ||= 
 	  $obj_v{$type}{'primitive_type'} || $param_v->{'type_impl'};
@@ -1056,7 +1128,7 @@ sub template_vars
 				)
 			    ), "\n";
 	}
-	print STERR
+
 	push(@attr, $attr_v);
       }
 
@@ -1066,6 +1138,53 @@ sub template_vars
     # Classifer participant <--> association AssociationEnd
     {
       my @assocEnd = map($obj_v{$_}, $cls->association);
+
+      # Remap end.type in relation to the cls.
+      my %end_map;
+      for my $cls_end ( @assocEnd ) {
+        $cls_end = $end_map{$cls_end} ||= { %$cls_end };
+        for my $x ( @{$cls_end->{'opposite'}} ) {
+	  $x = $end_map{$x} ||= { %$x };
+
+	  my $type = $x->{'type_obj'};
+
+	  # Get the type name in the context of the class.
+	  my $new_type = $self->package_name($type, undef, $cls);
+	  if ( 0 && $new_type ne $x->{'type'} ) {
+	    print STDERR "Export: Class $cls_v->{name_q}: AssociationEnd $x->{name}: type: $x->{type} => $new_type\n";
+	  }
+	  $x->{'type'} = $new_type;
+
+	  # IS THIS CORRECT? -- 2004/09/29
+	  if ( 1 ) {
+	    $x->{'type_impl'} ||= 
+	      $obj_v{$type}{'primitive_type'} || 
+	      $x->{'type'};
+	  } else {
+	    $x->{'type_impl'} ||= $x->{'type'};
+	  }
+	  $x->{'type_primitive'} ||= 
+	    $obj_v{$type}{'primitive_type'} || $x->{'type_impl'};
+	  
+	  $x->{'storage_type'} ||= 
+	    $obj_v{$type}{'storage_type'};
+
+	  # Trap java::lang::boolean crap.
+	  if ( 0 ) {
+	    if ( $x->{type_impl} !~ /[^a-z0-9_]/i ) {
+	      print STDERR 
+		"ARGGH: java.lang crap:\n", 
+		  Data::Dumper->new([$x], [qw($x)])
+		      ->Indent(1)
+			->Sortkeys(1)
+			  ->Dump;
+	      exit 1;
+	    }
+	  }
+	  
+        }
+      }
+
       @assocEnd = sort { ($a->{'opposite'}[0]{'name'} || $a->{'name'}) 
 			 cmp 
 			 ($b->{'opposite'}[0]{'name'} || $b->{'name'})
@@ -1076,7 +1195,9 @@ sub template_vars
 
     if ( 0 && grep($cls_v->{'name'} eq $_, 'Namespace', 'ModelElement') ) {
       use Data::Dumper;
-      print STDERR Data::Dumper->new([ $cls_v ], [ $cls_v->{name} ])->Maxdepth(5)->Dump();
+      print STDERR Data::Dumper->new([ $cls_v ], [ $cls_v->{name} ])
+	->Maxdepth(5)
+	  ->Dump();
       $DB::single = 1;
     }
 

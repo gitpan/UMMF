@@ -3,8 +3,8 @@ package UMMF::UML::Export::Java;
 use 5.6.1;
 use strict;
 
-our $AUTHOR = q{ kstephens@sourceforge.net 2003/05/03 };
-our $VERSION = do { my @r = (q$Revision: 1.13 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/05/03 };
+our $VERSION = do { my @r = (q$Revision: 1.14 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -45,7 +45,7 @@ L<UMMF::UML::MetaModel|UMMF::UML::MetaModel>
 
 =head1 VERSION
 
-$Revision: 1.13 $
+$Revision: 1.14 $
 
 =head1 METHODS
 
@@ -72,6 +72,11 @@ sub package_name
 {
   my ($self, $cls, $sep, $cls_scope) = @_;
   
+  #
+  # In Java, a Class that references its own type,
+  # cannot use a fully-qualified name, it must
+  # use its short name.
+  #
   if ( $cls_scope eq $cls ) {
     $cls = [ $cls->name ];
   }
@@ -97,6 +102,13 @@ sub identifier_name_filter
 		    'return',
 		    'else',
 		    'assert',
+		    #'byte',
+		    #'char',
+		    #'short',
+		    #'int',
+		    #'long',
+		    #'float',
+		    #'double',
 		    );
 
   $name = "_ummf_$name" if $prefix_it;
@@ -123,7 +135,7 @@ sub model_filters
 #######################################################################
 
 
-### Keep these comments at end of file: kstephens@sourceforge.net 2003/04/06 ###
+### Keep these comments at end of file: kstephens@users.sourceforge.net 2003/04/06 ###
 ### Local Variables: ###
 ### mode:perl ###
 ### perl-indent-level:2 ###

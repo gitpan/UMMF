@@ -41,9 +41,9 @@ L<UMMF::UML::MetaModel::Foundation::Core::Class|UMMF::UML::MetaModel::Foundation
 
 =head1 SUPERCLASSES
 
-L<UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement|UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement>
-
 L<UMMF::UML::MetaModel::Foundation::Core::Namespace|UMMF::UML::MetaModel::Foundation::Core::Namespace>
+
+L<UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement|UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement>
 
 
 
@@ -142,7 +142,7 @@ use UMMF::UML::MetaModel::__ObjectBase qw(:__ummf_array);
 #
 
 use base qw(
-  UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement  UMMF::UML::MetaModel::Foundation::Core::Namespace
+  UMMF::UML::MetaModel::Foundation::Core::Namespace  UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement
 
 
 
@@ -300,7 +300,7 @@ sub __tangram_schema
                                                                                }
       ,
                          },
-       'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement',  'UMMF::UML::MetaModel::Foundation::Core::Namespace',  ],
+       'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::Namespace',  'UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement',  ],
        'sql' => {
 
        },
@@ -403,17 +403,17 @@ sub __initialize
 
   unless ( ! $__initialize_use ) {
     $__initialize_use = 1;
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::Element');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::ModelElement');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
   }
 
   $self->UMMF::UML::MetaModel::Model_Management::Package::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
 
   $self;
 }
@@ -432,10 +432,10 @@ sub __create
 
   # $DB::single = 1;
   $self->UMMF::UML::MetaModel::Model_Management::Package::___create(@args);
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
 
   $self;
 }

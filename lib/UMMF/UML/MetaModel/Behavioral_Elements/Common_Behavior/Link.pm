@@ -83,7 +83,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<particpatingLink> E<lt>---E<gt>  C<collaborationInstanceSet_Link> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet C<0..*>
+=head2 C<0..*> : C<particpatingLink> E<lt>---E<gt>  C<collaborationInstanceSet_particpatingLink> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet C<0..*>
 
 
 
@@ -170,7 +170,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..1> : C<communicationsLink> E<lt>---E<gt>  C<stimulus_Link> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus C<0..*>
+=head2 C<0..1> : C<communicationsLink> E<lt>---E<gt>  C<stimulus_communicationsLink> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus C<0..*>
 
 
 
@@ -367,14 +367,14 @@ sub __tangram_schema
 
                                                                                                                    }
       ,
-                  	 	       'collaborationInstanceSet_Link'
+                  	 	       'collaborationInstanceSet_particpatingLink'
        => {
 	 'type_impl' => 'set',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet',
 
                            'table' => 'Behavioral_Elements__CollaborationInstanceSet_ParticpatingLink', 
 
-                                                      'item' => 'collaborationInstanceSet_Link', 
+                                                      'item' => 'collaborationInstanceSet_particpatingLink', 
 
                   'coll' => 'particpatingLink',
 
@@ -406,12 +406,12 @@ sub __tangram_schema
 
                                                                                                                    }
       ,
-                  	 	       'stimulus_Link'
+                  	 	       'stimulus_communicationsLink'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus',
 
-                           'table' => 'Behavioral_Elements__Common_Behavior__Link__stimulus_Link', 
+                           'table' => 'Behavioral_Elements__Common_Behavior__Link__stimulus_communicationsLink', 
 
                                                                'coll' => 'communicationsLink',
 
@@ -492,11 +492,11 @@ sub ___initialize
   # AssociationEnd 
   #  particpatingLink 0..*
   #  <--> 
-  #  collaborationInstanceSet_Link 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet.
-    if ( defined $self->{'collaborationInstanceSet_Link'} ) {
-    my $x = $self->{'collaborationInstanceSet_Link'};
-        $self->{'collaborationInstanceSet_Link'} = Set::Object->new();
-        $self->set_collaborationInstanceSet_Link(@$x);
+  #  collaborationInstanceSet_particpatingLink 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet.
+    if ( defined $self->{'collaborationInstanceSet_particpatingLink'} ) {
+    my $x = $self->{'collaborationInstanceSet_particpatingLink'};
+        $self->{'collaborationInstanceSet_particpatingLink'} = Set::Object->new();
+        $self->set_collaborationInstanceSet_particpatingLink(@$x);
   }
   
   # AssociationEnd 
@@ -522,11 +522,11 @@ sub ___initialize
   # AssociationEnd 
   #  communicationsLink 0..1
   #  <--> 
-  #  stimulus_Link 0..* UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus.
-    if ( defined $self->{'stimulus_Link'} ) {
-    my $x = $self->{'stimulus_Link'};
-        $self->{'stimulus_Link'} = Set::Object->new();
-        $self->set_stimulus_Link(@$x);
+  #  stimulus_communicationsLink 0..* UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus.
+    if ( defined $self->{'stimulus_communicationsLink'} ) {
+    my $x = $self->{'stimulus_communicationsLink'};
+        $self->{'stimulus_communicationsLink'} = Set::Object->new();
+        $self->set_stimulus_communicationsLink(@$x);
   }
   
 
@@ -775,72 +775,72 @@ sub count_association ($)
 =cut
 
 #################################################################
-# AssociationEnd particpatingLink <---> collaborationInstanceSet_Link
+# AssociationEnd particpatingLink <---> collaborationInstanceSet_particpatingLink
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<collaborationInstanceSet_Link>
+=head2 C<collaborationInstanceSet_particpatingLink>
 
-  my @val = $obj->collaborationInstanceSet_Link;
-  my $ary_val = $obj->collaborationInstanceSet_Link;
+  my @val = $obj->collaborationInstanceSet_particpatingLink;
+  my $ary_val = $obj->collaborationInstanceSet_particpatingLink;
 
-Returns the AssociationEnd C<collaborationInstanceSet_Link> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
+Returns the AssociationEnd C<collaborationInstanceSet_particpatingLink> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub collaborationInstanceSet_Link ($)
+sub collaborationInstanceSet_particpatingLink ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'collaborationInstanceSet_Link'};
+    my $x = $self->{'collaborationInstanceSet_particpatingLink'};
 
-  # confess("Container for collaborationInstanceSet_Link $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for collaborationInstanceSet_particpatingLink $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_collaborationInstanceSet_Link>
+=head2 C<set_collaborationInstanceSet_particpatingLink>
 
-  $obj->set_collaborationInstanceSet_Link(@val);
+  $obj->set_collaborationInstanceSet_particpatingLink(@val);
 
-Sets the AssociationEnd C<collaborationInstanceSet_Link> value.
+Sets the AssociationEnd C<collaborationInstanceSet_particpatingLink> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub set_collaborationInstanceSet_Link ($@)
+sub set_collaborationInstanceSet_particpatingLink ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_collaborationInstanceSet_Link;
-  $self->add_collaborationInstanceSet_Link(@val);
+  $self->clear_collaborationInstanceSet_particpatingLink;
+  $self->add_collaborationInstanceSet_particpatingLink(@val);
 }
 
 
-=head2 C<add_collaborationInstanceSet_Link>
+=head2 C<add_collaborationInstanceSet_particpatingLink>
 
-  $obj->add_collaborationInstanceSet_Link(@val);
+  $obj->add_collaborationInstanceSet_particpatingLink(@val);
 
-Adds AssociationEnd C<collaborationInstanceSet_Link> values.
+Adds AssociationEnd C<collaborationInstanceSet_particpatingLink> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub add_collaborationInstanceSet_Link ($@)
+sub add_collaborationInstanceSet_particpatingLink ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_Link'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_particpatingLink'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.collaborationInstanceSet_Link");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.collaborationInstanceSet_particpatingLink");
 
     # Recursion lock
         $x->insert($val);
@@ -857,20 +857,20 @@ sub add_collaborationInstanceSet_Link ($@)
 }
 
 
-=head2 C<remove_collaborationInstanceSet_Link>
+=head2 C<remove_collaborationInstanceSet_particpatingLink>
 
-  $obj->remove_collaborationInstanceSet_Link(@val);
+  $obj->remove_collaborationInstanceSet_particpatingLink(@val);
 
-Removes the AssociationEnd C<collaborationInstanceSet_Link> values C<@val>.
+Removes the AssociationEnd C<collaborationInstanceSet_particpatingLink> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub remove_collaborationInstanceSet_Link ($@)
+sub remove_collaborationInstanceSet_particpatingLink ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_Link'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_particpatingLink'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -878,7 +878,7 @@ sub remove_collaborationInstanceSet_Link ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.collaborationInstanceSet_Link");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.collaborationInstanceSet_particpatingLink");
 
     # Recursion lock
         $x->remove($old);
@@ -899,23 +899,23 @@ sub remove_collaborationInstanceSet_Link ($@)
 }
 
 
-=head2 C<clear_collaborationInstanceSet_Link>
+=head2 C<clear_collaborationInstanceSet_particpatingLink>
 
-  $obj->clear_collaborationInstanceSet_Link;
+  $obj->clear_collaborationInstanceSet_particpatingLink;
 
-Clears the AssociationEnd C<collaborationInstanceSet_Link> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
+Clears the AssociationEnd C<collaborationInstanceSet_particpatingLink> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub clear_collaborationInstanceSet_Link ($) 
+sub clear_collaborationInstanceSet_particpatingLink ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_Link'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_particpatingLink'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'collaborationInstanceSet_Link'} = Set::Object->new(); # Recursion lock
+    $self->{'collaborationInstanceSet_particpatingLink'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -932,18 +932,18 @@ sub clear_collaborationInstanceSet_Link ($)
 }
 
 
-=head2 C<count_collaborationInstanceSet_Link>
+=head2 C<count_collaborationInstanceSet_particpatingLink>
 
-  $obj->count_collaborationInstanceSet_Link;
+  $obj->count_collaborationInstanceSet_particpatingLink;
 
-Returns the number of elements associated with C<collaborationInstanceSet_Link>.
+Returns the number of elements associated with C<collaborationInstanceSet_particpatingLink>.
 
 =cut
-sub count_collaborationInstanceSet_Link ($)
+sub count_collaborationInstanceSet_particpatingLink ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'collaborationInstanceSet_Link'};
+  my $x = $self->{'collaborationInstanceSet_particpatingLink'};
 
     defined $x ? $x->size : 0;
   }
@@ -1427,72 +1427,72 @@ sub count_owner ($)
 =cut
 
 #################################################################
-# AssociationEnd communicationsLink <---> stimulus_Link
+# AssociationEnd communicationsLink <---> stimulus_communicationsLink
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<stimulus_Link>
+=head2 C<stimulus_communicationsLink>
 
-  my @val = $obj->stimulus_Link;
-  my $ary_val = $obj->stimulus_Link;
+  my @val = $obj->stimulus_communicationsLink;
+  my $ary_val = $obj->stimulus_communicationsLink;
 
-Returns the AssociationEnd C<stimulus_Link> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
+Returns the AssociationEnd C<stimulus_communicationsLink> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub stimulus_Link ($)
+sub stimulus_communicationsLink ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'stimulus_Link'};
+    my $x = $self->{'stimulus_communicationsLink'};
 
-  # confess("Container for stimulus_Link $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for stimulus_communicationsLink $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_stimulus_Link>
+=head2 C<set_stimulus_communicationsLink>
 
-  $obj->set_stimulus_Link(@val);
+  $obj->set_stimulus_communicationsLink(@val);
 
-Sets the AssociationEnd C<stimulus_Link> value.
+Sets the AssociationEnd C<stimulus_communicationsLink> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
 Returns C<$obj>.
 
 =cut
-sub set_stimulus_Link ($@)
+sub set_stimulus_communicationsLink ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_stimulus_Link;
-  $self->add_stimulus_Link(@val);
+  $self->clear_stimulus_communicationsLink;
+  $self->add_stimulus_communicationsLink(@val);
 }
 
 
-=head2 C<add_stimulus_Link>
+=head2 C<add_stimulus_communicationsLink>
 
-  $obj->add_stimulus_Link(@val);
+  $obj->add_stimulus_communicationsLink(@val);
 
-Adds AssociationEnd C<stimulus_Link> values.
+Adds AssociationEnd C<stimulus_communicationsLink> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
 Returns C<$obj>.
 
 =cut
-sub add_stimulus_Link ($@)
+sub add_stimulus_communicationsLink ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'stimulus_Link'} ||= Set::Object->new();
+    my $x = $self->{'stimulus_communicationsLink'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.stimulus_Link");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.stimulus_communicationsLink");
 
     # Recursion lock
         $x->insert($val);
@@ -1509,20 +1509,20 @@ sub add_stimulus_Link ($@)
 }
 
 
-=head2 C<remove_stimulus_Link>
+=head2 C<remove_stimulus_communicationsLink>
 
-  $obj->remove_stimulus_Link(@val);
+  $obj->remove_stimulus_communicationsLink(@val);
 
-Removes the AssociationEnd C<stimulus_Link> values C<@val>.
+Removes the AssociationEnd C<stimulus_communicationsLink> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
 Returns C<$obj>.
 
 =cut
-sub remove_stimulus_Link ($@)
+sub remove_stimulus_communicationsLink ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'stimulus_Link'} ||= Set::Object->new();
+    my $x = $self->{'stimulus_communicationsLink'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -1530,7 +1530,7 @@ sub remove_stimulus_Link ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.stimulus_Link");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.stimulus_communicationsLink");
 
     # Recursion lock
         $x->remove($old);
@@ -1551,23 +1551,23 @@ sub remove_stimulus_Link ($@)
 }
 
 
-=head2 C<clear_stimulus_Link>
+=head2 C<clear_stimulus_communicationsLink>
 
-  $obj->clear_stimulus_Link;
+  $obj->clear_stimulus_communicationsLink;
 
-Clears the AssociationEnd C<stimulus_Link> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
+Clears the AssociationEnd C<stimulus_communicationsLink> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Stimulus>.
 Returns C<$obj>.
 
 =cut
-sub clear_stimulus_Link ($) 
+sub clear_stimulus_communicationsLink ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'stimulus_Link'} ||= Set::Object->new();
+    my $x = $self->{'stimulus_communicationsLink'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'stimulus_Link'} = Set::Object->new(); # Recursion lock
+    $self->{'stimulus_communicationsLink'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -1584,18 +1584,18 @@ sub clear_stimulus_Link ($)
 }
 
 
-=head2 C<count_stimulus_Link>
+=head2 C<count_stimulus_communicationsLink>
 
-  $obj->count_stimulus_Link;
+  $obj->count_stimulus_communicationsLink;
 
-Returns the number of elements associated with C<stimulus_Link>.
+Returns the number of elements associated with C<stimulus_communicationsLink>.
 
 =cut
-sub count_stimulus_Link ($)
+sub count_stimulus_communicationsLink ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'stimulus_Link'};
+  my $x = $self->{'stimulus_communicationsLink'};
 
     defined $x ? $x->size : 0;
   }

@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2004/03/29 };
-our $VERSION = do { my @r = (q$Revision: 1.18 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.19 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -14,18 +14,18 @@ UMMF::UML::Export::Perl::Tangram::Storage - Tangram Storage bridge for UMMF gene
 
 =head1 DESCRIPTION
 
-This package provides tools for managing Tangram Schemas.
+This package provides tools for using Tangram Storage objects transparently with UMMF-generated Perl code.
 
 =head1 USAGE
 
-use UMMF::UMF::Export::Perl::Tangram::Storage;
+  use UMMF::UML::Export::Perl::Tangram::Storage;
 
-$cls->get('name' => 'foo');
-$cls->get_or_new('name' => 'foo');
-$cls->get_or_error('name' => 'foo');
-$obj->__storage_insert();
-$obj->__storage_erase();
-$obj->__storage_update();
+  $cls->get('name' => 'foo');
+  $cls->get_or_new('name' => 'foo');
+  $cls->get_or_error('name' => 'foo');
+  $obj->__storage_insert();
+  $obj->__storage_erase();
+  $obj->__storage_update();
 
 =head1 EXPORT
 
@@ -47,7 +47,7 @@ L<UMMF::UML::Export::Perl::Tangram|UMMF::UML::Export::Perl::Tangram>
 
 =head1 VERSION
 
-$Revision: 1.18 $
+$Revision: 1.19 $
 
 =head1 METHODS
 
@@ -125,11 +125,11 @@ sub initialize
 
 =head2 flush_get_cache
 
-  $storage->flush_get_cache(@cls);
+    $storage->flush_get_cache(@cls);
 
 Flushes the get cache for all classes in C<@cls>.
 
-  $storage->flush_get_cache();
+    $storage->flush_get_cache();
 
 Flushes the entire get cache.
 
@@ -152,7 +152,7 @@ sub flush_get_cache
 
 =head2 flush_cache
 
-  $storage->flush_cache();
+    $storage->flush_cache();
 
 Flushes the entire get cache and disassembles any objects in the storage's
 object cache that may have circular references.
@@ -204,7 +204,7 @@ sub flush_cache
 
 =head2 connect_opts
 
-  my ($dsn, $user, $pass) = $storage->connect_opts();
+    my ($dsn, $user, $pass) = $storage->connect_opts();
 
 Returns a list of parameters suitable for DBI->connect($dsn, $user, $pass).
 
@@ -254,7 +254,7 @@ sub connect_opts
 
 =head2 set_dbh
 
-  $storage->set_dbh($dbh);
+    $storage->set_dbh($dbh);
 
 Sets a cached DBD connection, using C<connect_opts()>.
 
@@ -283,7 +283,7 @@ sub set_dbh
 
 =head2 dbh
 
-  my $dbh = $storage->dbh();
+    my $dbh = $storage->dbh();
 
 Returns a cached DBD connection, using C<connect_opts()>.
 
@@ -494,7 +494,7 @@ sub storage
 
 =head2 insert
 
-  $self->insert(@objs);
+    $self->insert(@objs);
 
 Inserts all objects in C<@obj> into the storage.
 Caching is flushed for all objects of the class of the objects inserted..
@@ -515,7 +515,7 @@ sub insert
 
 =head2 update
 
-  $self->update(@objs);
+    $self->update(@objs);
 
 Updates all objects in C<@obj> into the storage.
 Caching is flushed for all objects of the class of the objects inserted..
@@ -536,7 +536,7 @@ sub update
 
 =head2 update_or_insert
 
-  $self->update_or_insert(@objs);
+    $self->update_or_insert(@objs);
 
 Updates all objects in C<@obj> into the storage.
 Any objects which are not already inserted into the storage are 
@@ -565,7 +565,7 @@ sub update_or_insert
 
 =head2 erase
 
-  $self->erase(@objs);
+    $self->erase(@objs);
 
 Erases all objects in C<@obj> from the storage.
 Caching is flushed for all objects of the class of the objects erased.
@@ -586,7 +586,7 @@ sub erase
 
 =head2 load
 
-  my @objs = $self->load(@ids);
+    my @objs = $self->load(@ids);
 
 Loads all objects from storage via unique object ids.
 
@@ -604,8 +604,8 @@ sub load
 
 =head2 id
 
-  my $id = $self->id($obj);
-  my @ids = $self->id(@objs);
+    my $id = $self->id($obj);
+    my @ids = $self->id(@objs);
 
 Returns the unique id for the object in storage.
 
@@ -620,7 +620,7 @@ sub id
 
 =head2 class
 
-  my $cls_expr = $self->class($cls);
+    my $cls_expr = $self->class($cls);
 
 Returns a new class expression that represents all objects in the storage that
 are of the class C<$cls>.
@@ -637,7 +637,7 @@ sub class
 
 =head2 select
 
-  my @objs = $self->select($cls_expr, $filter, @opts);
+    my @objs = $self->select($cls_expr, $filter, @opts);
 
 Returns all objects of C<$cls_expr> that match C<$filter>.
 
@@ -655,7 +655,7 @@ sub select
 
 =head2 cursor
 
-  my $cursor = $self->cursor($cls_expr, $filter, @opts);
+    my $cursor = $self->cursor($cls_expr, $filter, @opts);
 
 Returns an iterator of all objects of C<$cls_expr> that match C<$filter>.
 
@@ -673,7 +673,7 @@ sub cursor
 
 =head2 count
 
-  my $count = $self->count($filter, @opts);
+    my $count = $self->count($filter, @opts);
 
 Returns the count of all objects that match C<$filter>.
 
@@ -691,8 +691,8 @@ sub count
 
 =head2 sum
 
-  my $sum = $storage->sum($expr, $filter);
-  my @sums = $storage->sum([$expr1, $expr2], $filter);
+    my $sum = $storage->sum($expr, $filter);
+    my @sums = $storage->sum([$expr1, $expr2], $filter);
 
 Returns the sum of all C<$expr> values of all objects that match C<$filter>.
 
@@ -713,7 +713,7 @@ sub sum
 
 =head2 disconnect
 
-  $storage->disconnect();
+    $storage->disconnect();
 
 Flushes the get cache.  Disconnects the underlying storage and any database connections.
 
@@ -763,8 +763,8 @@ sub DESTROY
 
 =head2 get_all
 
-  my $objs = $self->get_all($cls, \%keys);
-  my @objs = $self->get_all($cls, \%keys);
+    my $objs = $self->get_all($cls, \%keys);
+    my @objs = $self->get_all($cls, \%keys);
 
 
 Returns all matching object of class C<$cls> that match C<%keys> exactly.
@@ -780,7 +780,7 @@ sub get_all
 
 =head2 get
 
-  my $objs = $self->get_all($cls, \%keys);
+    my $objs = $self->get_all($cls, \%keys);
 
 Returns one matching object of class C<$cls> that match C<%keys> exactly.
 If more than one object matches, an error is thrown via C<die()>.
@@ -805,7 +805,7 @@ sub get
 
 =head2 get_force
 
-  my $objs = $self->get_foce($cls, \%keys);
+    my $objs = $self->get_foce($cls, \%keys);
 
 Returns one matching object of class C<$cls> that match C<%keys> exactly.
 If more than one object matches, an error is thrown via C<die()>.
@@ -829,7 +829,7 @@ sub get_force
 
 =head2 get_or_error
 
-  my $objs = $self->get_foce($cls, \%keys);
+    my $objs = $self->get_foce($cls, \%keys);
 
 Returns one matching object of class C<$cls> that match C<%keys> exactly.
 If no object is found, an error is thrown via C<die()>.
@@ -854,7 +854,7 @@ sub get_or_error
 
 =head2 get_or_new
 
-  my $objs = $self->get_or_new($cls, \%keys, \%inits);
+    my $objs = $self->get_or_new($cls, \%keys, \%inits);
 
 Returns one matching object of class C<$cls> that match C<%keys> exactly.
 If no object is found, a new object is created with the C<%keys> and C<%inits> and is inserted in the storage.
@@ -1064,7 +1064,7 @@ our $storage_opts_callback;
 
 =head2 __storage_opts
 
-  my $hash = $cls->__storage_opts;
+    my $hash = $cls->__storage_opts;
 
 Returns the hash of storage options used when a new Storage objects
 is created by C<__storage>.
@@ -1083,13 +1083,13 @@ sub __storage_opts
 
 =head2 __storage_set_opts_callback
 
-  sub conn_opt_callback
-  {
-    my ($opts, $storage_conn_id) = @_;
-    $opts->{'db'} = 'blahblah';
-    ...;
-  }
-  $cls->__storage_set_opts_callback(\&func);
+    sub conn_opt_callback
+    {
+      my ($opts, $storage_conn_id) = @_;
+      $opts->{'db'} = 'blahblah';
+      ...;
+    }
+    $cls->__storage_set_opts_callback(\&func);
 
 Sets the function to use when calling
 
@@ -1104,7 +1104,7 @@ sub __storage_set_opts_callback
 
 =head2 __storage_set_conn_id
 
-  $cls->__storage_set_conn_id('some_connection_name');
+    $cls->__storage_set_conn_id('some_connection_name');
 
 Sets the current connection id to use for the remainder of the process.
 Returns the previous connection id.
@@ -1124,7 +1124,7 @@ sub __storage_set_conn_id
 
 =head2 __storage
 
-  my $storage = $cls_or_obj->__storage();
+    my $storage = $cls_or_obj->__storage();
 
 Returns the current C<Perl::Tangram::Storage> object for C<$cls_or_obj> for the current connection id.
 If a storage object has not been created for the current connection id, a new one is created using the initial options from C<__storage_opts()>.
@@ -1139,7 +1139,7 @@ sub __storage
 
 =head2 __storage_disconnect
 
-  my $storage = $cls_or_obj->__storage_disconnect();
+    my $storage = $cls_or_obj->__storage_disconnect();
 
 Disconnects the $cls_or_obj from its current Storage object.
 All object caches are flushed and the Storage object is dropped.
@@ -1162,7 +1162,7 @@ sub __storage_disconnect
 
 =head2 __storage_flush_cache
 
-  $cls_or_obj->__storage_flush_cache();
+    $cls_or_obj->__storage_flush_cache();
 
 Flushes object caches in the current Storage object, if any.
 This is ideally done at the end of an interactive session.
@@ -1178,11 +1178,11 @@ sub __storage_flush_cache
 
 =head2 __storage_update
 
-  $obj->__storage_update();
+    $obj->__storage_update();
 
 Shorthand for:
 
-  $obj->__storage->update($obj);
+    $obj->__storage->update($obj);
 
 =cut
 sub __storage_update
@@ -1195,11 +1195,11 @@ sub __storage_update
 
 =head2 __storage_update_or_insert
 
-  $obj->__storage_update_or_insert();
+    $obj->__storage_update_or_insert();
 
 Shorthand for:
 
-  $obj->__storage->update_or_insert($obj);
+    $obj->__storage->update_or_insert($obj);
 
 =cut
 sub __storage_update_or_insert
@@ -1212,11 +1212,11 @@ sub __storage_update_or_insert
 
 =head2 __storage_erase
 
-  $obj->__storage_erase;
+    $obj->__storage_erase;
 
 Shorthand for:
 
-  $obj->__storage->erase($obj);
+    $obj->__storage->erase($obj);
 
 =cut
 sub __storage_erase
@@ -1229,11 +1229,11 @@ sub __storage_erase
 
 =head2 __storage_insert
 
-  $obj->__storage_insert();
+    $obj->__storage_insert();
 
 Shorthand for:
 
-  $obj->__storage->insert($obj);
+    $obj->__storage->insert($obj);
 
 =cut
 sub __storage_insert
@@ -1246,11 +1246,11 @@ sub __storage_insert
 
 =head2 get_all
 
-  my @objs = $cls->get_all(%key);
+    my @objs = $cls->get_all(%key);
 
 Shorthand for:
 
-  $cls->__storage->get_all($cls, \%key);
+    $cls->__storage->get_all($cls, \%key);
 
 =cut
 sub get_all
@@ -1263,11 +1263,11 @@ sub get_all
 
 =head2 get
 
-  my $obj = $cls->get_al(%key);
+    my $obj = $cls->get_al(%key);
 
 Shorthand for:
 
-  my $obj = $cls->__storage->get($cls, \%key);
+    my $obj = $cls->__storage->get($cls, \%key);
 
 =cut
 sub get
@@ -1280,11 +1280,11 @@ sub get
 
 =head2 get_or_error
 
-  my $obj = $cls->get_or_error(%key);
+    my $obj = $cls->get_or_error(%key);
 
 Shorthand for:
 
-  my $obj = $cls->__storage->get_or_error($cls, \%key);
+    my $obj = $cls->__storage->get_or_error($cls, \%key);
 
 =cut
 sub get_or_error
@@ -1297,11 +1297,11 @@ sub get_or_error
 
 =head2 get_or_new
 
-  my $obj = $cls->get_or_new(%key);
+    my $obj = $cls->get_or_new(%key);
 
 Shorthand for:
 
-  my $obj = $cls->__storage->get_or_new($cls, \%key);
+    my $obj = $cls->__storage->get_or_new($cls, \%key);
 
 =cut
 sub get_or_new
@@ -1314,11 +1314,11 @@ sub get_or_new
 
 =head2 get_or_init
 
-  my $obj = $cls->get_or_new(\%key, \%init);
+    my $obj = $cls->get_or_new(\%key, \%init);
 
 Shorthand for:
 
-  my $obj = $cls->__storage->get_or_init($cls, \%key, \%init);
+    my $obj = $cls->__storage->get_or_init($cls, \%key, \%init);
 
 =cut
 sub get_or_init
@@ -1331,11 +1331,11 @@ sub get_or_init
 
 =head2 get_force
 
-  my $obj = $cls->get_force(%key);
+    my $obj = $cls->get_force(%key);
 
 Shorthand for:
 
-  my $obj = $cls->__storage->get_force($cls, \%key);
+    my $obj = $cls->__storage->get_force($cls, \%key);
 
 =cut
 sub get_force

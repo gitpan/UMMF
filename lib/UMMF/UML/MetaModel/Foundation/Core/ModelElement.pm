@@ -189,7 +189,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::Element|UMMF::UML::MetaModel::Foundati
 =back
 
 
-=head2 C<0..*> : C<constrainingElement> E<lt>---E<gt>  C<collaborationInstanceSet_ModelElement> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet C<0..*>
+=head2 C<0..*> : C<constrainingElement> E<lt>---E<gt>  C<collaborationInstanceSet_constrainingElement> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet C<0..*>
 
 
 
@@ -218,7 +218,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::Element|UMMF::UML::MetaModel::Foundati
 =back
 
 
-=head2 C<0..*> : C<constrainingElement> E<lt>---E<gt>  C<collaboration_ModelElement> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
+=head2 C<0..*> : C<constrainingElement> E<lt>---E<gt>  C<collaboration_constrainingElement> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
 
 
 
@@ -450,7 +450,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::Element|UMMF::UML::MetaModel::Foundati
 =back
 
 
-=head2 C<0..*> : C<contents> E<lt>---E<gt>  C<partition_ModelElement> : UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition C<0..*>
+=head2 C<0..*> : C<contents> E<lt>---E<gt>  C<partition_contents> : UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition C<0..*>
 
 
 
@@ -798,7 +798,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::Element|UMMF::UML::MetaModel::Foundati
 =back
 
 
-=head2 C<0..1> : C<defaultElement> E<lt>---E<gt>  C<templateParameter_ModelElement> : UMMF::UML::MetaModel::Foundation::Core::TemplateParameter C<0..*>
+=head2 C<0..1> : C<defaultElement> E<lt>---E<gt>  C<templateParameter_defaultElement> : UMMF::UML::MetaModel::Foundation::Core::TemplateParameter C<0..*>
 
 
 
@@ -1060,27 +1060,27 @@ sub __tangram_schema
 
                                                                                }
       ,
-                  	 	       'collaborationInstanceSet_ModelElement'
+                  	 	       'collaborationInstanceSet_constrainingElement'
        => {
 	 'type_impl' => 'set',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet',
 
                            'table' => 'CollaborationInstanceSet_ConstrainingElement', 
 
-                                                      'item' => 'collaborationInstanceSet_ModelElement', 
+                                                      'item' => 'collaborationInstanceSet_constrainingElement', 
 
                   'coll' => 'constrainingElement',
 
                                                                                }
       ,
-                  	 	       'collaboration_ModelElement'
+                  	 	       'collaboration_constrainingElement'
        => {
 	 'type_impl' => 'set',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration',
 
                            'table' => 'Collaboration_ConstrainingElement', 
 
-                                                      'item' => 'collaboration_ModelElement', 
+                                                      'item' => 'collaboration_constrainingElement', 
 
                   'coll' => 'constrainingElement',
 
@@ -1171,14 +1171,14 @@ sub __tangram_schema
 
                                                                                }
       ,
-                  	 	       'partition_ModelElement'
+                  	 	       'partition_contents'
        => {
 	 'type_impl' => 'set',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition',
 
                            'table' => 'Partition_Contents', 
 
-                                                      'item' => 'partition_ModelElement', 
+                                                      'item' => 'partition_contents', 
 
                   'coll' => 'contents',
 
@@ -1325,12 +1325,12 @@ sub __tangram_schema
 
                                            }
       ,
-                  	 	       'templateParameter_ModelElement'
+                  	 	       'templateParameter_defaultElement'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Foundation::Core::TemplateParameter',
 
-                           'table' => 'Foundation__Core__ModelElement__templateParameter_ModelElement', 
+                           'table' => 'Foundation__Core__ModelElement__templateParameter_defaultElement', 
 
                                                                'coll' => 'defaultElement',
 
@@ -1458,21 +1458,21 @@ sub ___initialize
   # AssociationEnd 
   #  constrainingElement 0..*
   #  <--> 
-  #  collaborationInstanceSet_ModelElement 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet.
-    if ( defined $self->{'collaborationInstanceSet_ModelElement'} ) {
-    my $x = $self->{'collaborationInstanceSet_ModelElement'};
-        $self->{'collaborationInstanceSet_ModelElement'} = Set::Object->new();
-        $self->set_collaborationInstanceSet_ModelElement(@$x);
+  #  collaborationInstanceSet_constrainingElement 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet.
+    if ( defined $self->{'collaborationInstanceSet_constrainingElement'} ) {
+    my $x = $self->{'collaborationInstanceSet_constrainingElement'};
+        $self->{'collaborationInstanceSet_constrainingElement'} = Set::Object->new();
+        $self->set_collaborationInstanceSet_constrainingElement(@$x);
   }
   
   # AssociationEnd 
   #  constrainingElement 0..*
   #  <--> 
-  #  collaboration_ModelElement 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
-    if ( defined $self->{'collaboration_ModelElement'} ) {
-    my $x = $self->{'collaboration_ModelElement'};
-        $self->{'collaboration_ModelElement'} = Set::Object->new();
-        $self->set_collaboration_ModelElement(@$x);
+  #  collaboration_constrainingElement 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
+    if ( defined $self->{'collaboration_constrainingElement'} ) {
+    my $x = $self->{'collaboration_constrainingElement'};
+        $self->{'collaboration_constrainingElement'} = Set::Object->new();
+        $self->set_collaboration_constrainingElement(@$x);
   }
   
   # AssociationEnd 
@@ -1548,11 +1548,11 @@ sub ___initialize
   # AssociationEnd 
   #  contents 0..*
   #  <--> 
-  #  partition_ModelElement 0..* UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition.
-    if ( defined $self->{'partition_ModelElement'} ) {
-    my $x = $self->{'partition_ModelElement'};
-        $self->{'partition_ModelElement'} = Set::Object->new();
-        $self->set_partition_ModelElement(@$x);
+  #  partition_contents 0..* UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition.
+    if ( defined $self->{'partition_contents'} ) {
+    my $x = $self->{'partition_contents'};
+        $self->{'partition_contents'} = Set::Object->new();
+        $self->set_partition_contents(@$x);
   }
   
   # AssociationEnd 
@@ -1668,11 +1668,11 @@ sub ___initialize
   # AssociationEnd 
   #  defaultElement 0..1
   #  <--> 
-  #  templateParameter_ModelElement 0..* UMMF::UML::MetaModel::Foundation::Core::TemplateParameter.
-    if ( defined $self->{'templateParameter_ModelElement'} ) {
-    my $x = $self->{'templateParameter_ModelElement'};
-        $self->{'templateParameter_ModelElement'} = Set::Object->new();
-        $self->set_templateParameter_ModelElement(@$x);
+  #  templateParameter_defaultElement 0..* UMMF::UML::MetaModel::Foundation::Core::TemplateParameter.
+    if ( defined $self->{'templateParameter_defaultElement'} ) {
+    my $x = $self->{'templateParameter_defaultElement'};
+        $self->{'templateParameter_defaultElement'} = Set::Object->new();
+        $self->set_templateParameter_defaultElement(@$x);
   }
   
   # AssociationEnd 
@@ -2366,72 +2366,72 @@ sub count_clientDependency ($)
 =cut
 
 #################################################################
-# AssociationEnd constrainingElement <---> collaborationInstanceSet_ModelElement
+# AssociationEnd constrainingElement <---> collaborationInstanceSet_constrainingElement
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<collaborationInstanceSet_ModelElement>
+=head2 C<collaborationInstanceSet_constrainingElement>
 
-  my @val = $obj->collaborationInstanceSet_ModelElement;
-  my $ary_val = $obj->collaborationInstanceSet_ModelElement;
+  my @val = $obj->collaborationInstanceSet_constrainingElement;
+  my $ary_val = $obj->collaborationInstanceSet_constrainingElement;
 
-Returns the AssociationEnd C<collaborationInstanceSet_ModelElement> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
+Returns the AssociationEnd C<collaborationInstanceSet_constrainingElement> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub collaborationInstanceSet_ModelElement ($)
+sub collaborationInstanceSet_constrainingElement ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'collaborationInstanceSet_ModelElement'};
+    my $x = $self->{'collaborationInstanceSet_constrainingElement'};
 
-  # confess("Container for collaborationInstanceSet_ModelElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for collaborationInstanceSet_constrainingElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_collaborationInstanceSet_ModelElement>
+=head2 C<set_collaborationInstanceSet_constrainingElement>
 
-  $obj->set_collaborationInstanceSet_ModelElement(@val);
+  $obj->set_collaborationInstanceSet_constrainingElement(@val);
 
-Sets the AssociationEnd C<collaborationInstanceSet_ModelElement> value.
+Sets the AssociationEnd C<collaborationInstanceSet_constrainingElement> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub set_collaborationInstanceSet_ModelElement ($@)
+sub set_collaborationInstanceSet_constrainingElement ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_collaborationInstanceSet_ModelElement;
-  $self->add_collaborationInstanceSet_ModelElement(@val);
+  $self->clear_collaborationInstanceSet_constrainingElement;
+  $self->add_collaborationInstanceSet_constrainingElement(@val);
 }
 
 
-=head2 C<add_collaborationInstanceSet_ModelElement>
+=head2 C<add_collaborationInstanceSet_constrainingElement>
 
-  $obj->add_collaborationInstanceSet_ModelElement(@val);
+  $obj->add_collaborationInstanceSet_constrainingElement(@val);
 
-Adds AssociationEnd C<collaborationInstanceSet_ModelElement> values.
+Adds AssociationEnd C<collaborationInstanceSet_constrainingElement> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub add_collaborationInstanceSet_ModelElement ($@)
+sub add_collaborationInstanceSet_constrainingElement ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_constrainingElement'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaborationInstanceSet_ModelElement");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaborationInstanceSet_constrainingElement");
 
     # Recursion lock
         $x->insert($val);
@@ -2448,20 +2448,20 @@ sub add_collaborationInstanceSet_ModelElement ($@)
 }
 
 
-=head2 C<remove_collaborationInstanceSet_ModelElement>
+=head2 C<remove_collaborationInstanceSet_constrainingElement>
 
-  $obj->remove_collaborationInstanceSet_ModelElement(@val);
+  $obj->remove_collaborationInstanceSet_constrainingElement(@val);
 
-Removes the AssociationEnd C<collaborationInstanceSet_ModelElement> values C<@val>.
+Removes the AssociationEnd C<collaborationInstanceSet_constrainingElement> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub remove_collaborationInstanceSet_ModelElement ($@)
+sub remove_collaborationInstanceSet_constrainingElement ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_constrainingElement'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -2469,7 +2469,7 @@ sub remove_collaborationInstanceSet_ModelElement ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaborationInstanceSet_ModelElement");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaborationInstanceSet_constrainingElement");
 
     # Recursion lock
         $x->remove($old);
@@ -2490,23 +2490,23 @@ sub remove_collaborationInstanceSet_ModelElement ($@)
 }
 
 
-=head2 C<clear_collaborationInstanceSet_ModelElement>
+=head2 C<clear_collaborationInstanceSet_constrainingElement>
 
-  $obj->clear_collaborationInstanceSet_ModelElement;
+  $obj->clear_collaborationInstanceSet_constrainingElement;
 
-Clears the AssociationEnd C<collaborationInstanceSet_ModelElement> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
+Clears the AssociationEnd C<collaborationInstanceSet_constrainingElement> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub clear_collaborationInstanceSet_ModelElement ($) 
+sub clear_collaborationInstanceSet_constrainingElement ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_constrainingElement'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'collaborationInstanceSet_ModelElement'} = Set::Object->new(); # Recursion lock
+    $self->{'collaborationInstanceSet_constrainingElement'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -2523,18 +2523,18 @@ sub clear_collaborationInstanceSet_ModelElement ($)
 }
 
 
-=head2 C<count_collaborationInstanceSet_ModelElement>
+=head2 C<count_collaborationInstanceSet_constrainingElement>
 
-  $obj->count_collaborationInstanceSet_ModelElement;
+  $obj->count_collaborationInstanceSet_constrainingElement;
 
-Returns the number of elements associated with C<collaborationInstanceSet_ModelElement>.
+Returns the number of elements associated with C<collaborationInstanceSet_constrainingElement>.
 
 =cut
-sub count_collaborationInstanceSet_ModelElement ($)
+sub count_collaborationInstanceSet_constrainingElement ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'collaborationInstanceSet_ModelElement'};
+  my $x = $self->{'collaborationInstanceSet_constrainingElement'};
 
     defined $x ? $x->size : 0;
   }
@@ -2547,72 +2547,72 @@ sub count_collaborationInstanceSet_ModelElement ($)
 =cut
 
 #################################################################
-# AssociationEnd constrainingElement <---> collaboration_ModelElement
+# AssociationEnd constrainingElement <---> collaboration_constrainingElement
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<collaboration_ModelElement>
+=head2 C<collaboration_constrainingElement>
 
-  my @val = $obj->collaboration_ModelElement;
-  my $ary_val = $obj->collaboration_ModelElement;
+  my @val = $obj->collaboration_constrainingElement;
+  my $ary_val = $obj->collaboration_constrainingElement;
 
-Returns the AssociationEnd C<collaboration_ModelElement> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
+Returns the AssociationEnd C<collaboration_constrainingElement> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub collaboration_ModelElement ($)
+sub collaboration_constrainingElement ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'collaboration_ModelElement'};
+    my $x = $self->{'collaboration_constrainingElement'};
 
-  # confess("Container for collaboration_ModelElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for collaboration_constrainingElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_collaboration_ModelElement>
+=head2 C<set_collaboration_constrainingElement>
 
-  $obj->set_collaboration_ModelElement(@val);
+  $obj->set_collaboration_constrainingElement(@val);
 
-Sets the AssociationEnd C<collaboration_ModelElement> value.
+Sets the AssociationEnd C<collaboration_constrainingElement> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub set_collaboration_ModelElement ($@)
+sub set_collaboration_constrainingElement ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_collaboration_ModelElement;
-  $self->add_collaboration_ModelElement(@val);
+  $self->clear_collaboration_constrainingElement;
+  $self->add_collaboration_constrainingElement(@val);
 }
 
 
-=head2 C<add_collaboration_ModelElement>
+=head2 C<add_collaboration_constrainingElement>
 
-  $obj->add_collaboration_ModelElement(@val);
+  $obj->add_collaboration_constrainingElement(@val);
 
-Adds AssociationEnd C<collaboration_ModelElement> values.
+Adds AssociationEnd C<collaboration_constrainingElement> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub add_collaboration_ModelElement ($@)
+sub add_collaboration_constrainingElement ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaboration_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_constrainingElement'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaboration_ModelElement");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaboration_constrainingElement");
 
     # Recursion lock
         $x->insert($val);
@@ -2629,20 +2629,20 @@ sub add_collaboration_ModelElement ($@)
 }
 
 
-=head2 C<remove_collaboration_ModelElement>
+=head2 C<remove_collaboration_constrainingElement>
 
-  $obj->remove_collaboration_ModelElement(@val);
+  $obj->remove_collaboration_constrainingElement(@val);
 
-Removes the AssociationEnd C<collaboration_ModelElement> values C<@val>.
+Removes the AssociationEnd C<collaboration_constrainingElement> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub remove_collaboration_ModelElement ($@)
+sub remove_collaboration_constrainingElement ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaboration_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_constrainingElement'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -2650,7 +2650,7 @@ sub remove_collaboration_ModelElement ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaboration_ModelElement");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.collaboration_constrainingElement");
 
     # Recursion lock
         $x->remove($old);
@@ -2671,23 +2671,23 @@ sub remove_collaboration_ModelElement ($@)
 }
 
 
-=head2 C<clear_collaboration_ModelElement>
+=head2 C<clear_collaboration_constrainingElement>
 
-  $obj->clear_collaboration_ModelElement;
+  $obj->clear_collaboration_constrainingElement;
 
-Clears the AssociationEnd C<collaboration_ModelElement> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
+Clears the AssociationEnd C<collaboration_constrainingElement> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub clear_collaboration_ModelElement ($) 
+sub clear_collaboration_constrainingElement ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'collaboration_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_constrainingElement'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'collaboration_ModelElement'} = Set::Object->new(); # Recursion lock
+    $self->{'collaboration_constrainingElement'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -2704,18 +2704,18 @@ sub clear_collaboration_ModelElement ($)
 }
 
 
-=head2 C<count_collaboration_ModelElement>
+=head2 C<count_collaboration_constrainingElement>
 
-  $obj->count_collaboration_ModelElement;
+  $obj->count_collaboration_constrainingElement;
 
-Returns the number of elements associated with C<collaboration_ModelElement>.
+Returns the number of elements associated with C<collaboration_constrainingElement>.
 
 =cut
-sub count_collaboration_ModelElement ($)
+sub count_collaboration_constrainingElement ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'collaboration_ModelElement'};
+  my $x = $self->{'collaboration_constrainingElement'};
 
     defined $x ? $x->size : 0;
   }
@@ -3979,72 +3979,72 @@ sub count_package_AC ($)
 =cut
 
 #################################################################
-# AssociationEnd contents <---> partition_ModelElement
+# AssociationEnd contents <---> partition_contents
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<partition_ModelElement>
+=head2 C<partition_contents>
 
-  my @val = $obj->partition_ModelElement;
-  my $ary_val = $obj->partition_ModelElement;
+  my @val = $obj->partition_contents;
+  my $ary_val = $obj->partition_contents;
 
-Returns the AssociationEnd C<partition_ModelElement> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
+Returns the AssociationEnd C<partition_contents> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub partition_ModelElement ($)
+sub partition_contents ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'partition_ModelElement'};
+    my $x = $self->{'partition_contents'};
 
-  # confess("Container for partition_ModelElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for partition_contents $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_partition_ModelElement>
+=head2 C<set_partition_contents>
 
-  $obj->set_partition_ModelElement(@val);
+  $obj->set_partition_contents(@val);
 
-Sets the AssociationEnd C<partition_ModelElement> value.
+Sets the AssociationEnd C<partition_contents> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
 Returns C<$obj>.
 
 =cut
-sub set_partition_ModelElement ($@)
+sub set_partition_contents ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_partition_ModelElement;
-  $self->add_partition_ModelElement(@val);
+  $self->clear_partition_contents;
+  $self->add_partition_contents(@val);
 }
 
 
-=head2 C<add_partition_ModelElement>
+=head2 C<add_partition_contents>
 
-  $obj->add_partition_ModelElement(@val);
+  $obj->add_partition_contents(@val);
 
-Adds AssociationEnd C<partition_ModelElement> values.
+Adds AssociationEnd C<partition_contents> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
 Returns C<$obj>.
 
 =cut
-sub add_partition_ModelElement ($@)
+sub add_partition_contents ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'partition_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'partition_contents'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.partition_ModelElement");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.partition_contents");
 
     # Recursion lock
         $x->insert($val);
@@ -4061,20 +4061,20 @@ sub add_partition_ModelElement ($@)
 }
 
 
-=head2 C<remove_partition_ModelElement>
+=head2 C<remove_partition_contents>
 
-  $obj->remove_partition_ModelElement(@val);
+  $obj->remove_partition_contents(@val);
 
-Removes the AssociationEnd C<partition_ModelElement> values C<@val>.
+Removes the AssociationEnd C<partition_contents> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
 Returns C<$obj>.
 
 =cut
-sub remove_partition_ModelElement ($@)
+sub remove_partition_contents ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'partition_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'partition_contents'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -4082,7 +4082,7 @@ sub remove_partition_ModelElement ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.partition_ModelElement");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.partition_contents");
 
     # Recursion lock
         $x->remove($old);
@@ -4103,23 +4103,23 @@ sub remove_partition_ModelElement ($@)
 }
 
 
-=head2 C<clear_partition_ModelElement>
+=head2 C<clear_partition_contents>
 
-  $obj->clear_partition_ModelElement;
+  $obj->clear_partition_contents;
 
-Clears the AssociationEnd C<partition_ModelElement> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
+Clears the AssociationEnd C<partition_contents> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition|UMMF::UML::MetaModel::Behavioral_Elements::Activity_Graphs::Partition>.
 Returns C<$obj>.
 
 =cut
-sub clear_partition_ModelElement ($) 
+sub clear_partition_contents ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'partition_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'partition_contents'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'partition_ModelElement'} = Set::Object->new(); # Recursion lock
+    $self->{'partition_contents'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -4136,18 +4136,18 @@ sub clear_partition_ModelElement ($)
 }
 
 
-=head2 C<count_partition_ModelElement>
+=head2 C<count_partition_contents>
 
-  $obj->count_partition_ModelElement;
+  $obj->count_partition_contents;
 
-Returns the number of elements associated with C<partition_ModelElement>.
+Returns the number of elements associated with C<partition_contents>.
 
 =cut
-sub count_partition_ModelElement ($)
+sub count_partition_contents ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'partition_ModelElement'};
+  my $x = $self->{'partition_contents'};
 
     defined $x ? $x->size : 0;
   }
@@ -6377,72 +6377,72 @@ sub count_templateParameter_AC ($)
 =cut
 
 #################################################################
-# AssociationEnd defaultElement <---> templateParameter_ModelElement
+# AssociationEnd defaultElement <---> templateParameter_defaultElement
 # type = UMMF::UML::MetaModel::Foundation::Core::TemplateParameter
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<templateParameter_ModelElement>
+=head2 C<templateParameter_defaultElement>
 
-  my @val = $obj->templateParameter_ModelElement;
-  my $ary_val = $obj->templateParameter_ModelElement;
+  my @val = $obj->templateParameter_defaultElement;
+  my $ary_val = $obj->templateParameter_defaultElement;
 
-Returns the AssociationEnd C<templateParameter_ModelElement> values of type L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
+Returns the AssociationEnd C<templateParameter_defaultElement> values of type L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub templateParameter_ModelElement ($)
+sub templateParameter_defaultElement ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'templateParameter_ModelElement'};
+    my $x = $self->{'templateParameter_defaultElement'};
 
-  # confess("Container for templateParameter_ModelElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for templateParameter_defaultElement $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_templateParameter_ModelElement>
+=head2 C<set_templateParameter_defaultElement>
 
-  $obj->set_templateParameter_ModelElement(@val);
+  $obj->set_templateParameter_defaultElement(@val);
 
-Sets the AssociationEnd C<templateParameter_ModelElement> value.
+Sets the AssociationEnd C<templateParameter_defaultElement> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
 Returns C<$obj>.
 
 =cut
-sub set_templateParameter_ModelElement ($@)
+sub set_templateParameter_defaultElement ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_templateParameter_ModelElement;
-  $self->add_templateParameter_ModelElement(@val);
+  $self->clear_templateParameter_defaultElement;
+  $self->add_templateParameter_defaultElement(@val);
 }
 
 
-=head2 C<add_templateParameter_ModelElement>
+=head2 C<add_templateParameter_defaultElement>
 
-  $obj->add_templateParameter_ModelElement(@val);
+  $obj->add_templateParameter_defaultElement(@val);
 
-Adds AssociationEnd C<templateParameter_ModelElement> values.
+Adds AssociationEnd C<templateParameter_defaultElement> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
 Returns C<$obj>.
 
 =cut
-sub add_templateParameter_ModelElement ($@)
+sub add_templateParameter_defaultElement ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'templateParameter_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'templateParameter_defaultElement'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Foundation::Core::TemplateParameter')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.templateParameter_ModelElement");
+        $self->__use('UMMF::UML::MetaModel::Foundation::Core::TemplateParameter')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.templateParameter_defaultElement");
 
     # Recursion lock
         $x->insert($val);
@@ -6459,20 +6459,20 @@ sub add_templateParameter_ModelElement ($@)
 }
 
 
-=head2 C<remove_templateParameter_ModelElement>
+=head2 C<remove_templateParameter_defaultElement>
 
-  $obj->remove_templateParameter_ModelElement(@val);
+  $obj->remove_templateParameter_defaultElement(@val);
 
-Removes the AssociationEnd C<templateParameter_ModelElement> values C<@val>.
+Removes the AssociationEnd C<templateParameter_defaultElement> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
 Returns C<$obj>.
 
 =cut
-sub remove_templateParameter_ModelElement ($@)
+sub remove_templateParameter_defaultElement ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'templateParameter_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'templateParameter_defaultElement'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -6480,7 +6480,7 @@ sub remove_templateParameter_ModelElement ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::TemplateParameter')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.templateParameter_ModelElement");
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::TemplateParameter')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::ModelElement.templateParameter_defaultElement");
 
     # Recursion lock
         $x->remove($old);
@@ -6501,23 +6501,23 @@ sub remove_templateParameter_ModelElement ($@)
 }
 
 
-=head2 C<clear_templateParameter_ModelElement>
+=head2 C<clear_templateParameter_defaultElement>
 
-  $obj->clear_templateParameter_ModelElement;
+  $obj->clear_templateParameter_defaultElement;
 
-Clears the AssociationEnd C<templateParameter_ModelElement> links to L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
+Clears the AssociationEnd C<templateParameter_defaultElement> links to L<UMMF::UML::MetaModel::Foundation::Core::TemplateParameter|UMMF::UML::MetaModel::Foundation::Core::TemplateParameter>.
 Returns C<$obj>.
 
 =cut
-sub clear_templateParameter_ModelElement ($) 
+sub clear_templateParameter_defaultElement ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'templateParameter_ModelElement'} ||= Set::Object->new();
+    my $x = $self->{'templateParameter_defaultElement'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'templateParameter_ModelElement'} = Set::Object->new(); # Recursion lock
+    $self->{'templateParameter_defaultElement'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -6534,18 +6534,18 @@ sub clear_templateParameter_ModelElement ($)
 }
 
 
-=head2 C<count_templateParameter_ModelElement>
+=head2 C<count_templateParameter_defaultElement>
 
-  $obj->count_templateParameter_ModelElement;
+  $obj->count_templateParameter_defaultElement;
 
-Returns the number of elements associated with C<templateParameter_ModelElement>.
+Returns the number of elements associated with C<templateParameter_defaultElement>.
 
 =cut
-sub count_templateParameter_ModelElement ($)
+sub count_templateParameter_defaultElement ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'templateParameter_ModelElement'};
+  my $x = $self->{'templateParameter_defaultElement'};
 
     defined $x ? $x->size : 0;
   }

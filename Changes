@@ -1,6 +1,10 @@
 
+0.26 - 2005/01/01 kstephens@users.sourceforge.net
+  - Fixes for java code generation.
+  - Now generates compilable UML-1.5 implementation in java.
+
 0.25 - 2004/07/31 kstephens@users.sourceforge.net
-  - Use underscored names in Perl template.
+  - Use underscored names in Perl and Java template.
   - Search resource paths for templates.
   - Builds CPAN modules (see cpan/)
 
@@ -31,4 +35,4 @@
     - Added storage configuration callbacks.
     - Added $cls->get_or_init(\%key, \%init) useful for deploy method callbacks.    - Added $cls->get_force(%keys).
 
-$Id: Changes,v 1.5 2004/08/01 21:19:09 kstephens Exp $
+$Id: Changes,v 1.6 2005/01/01 10:13:47 kstephens Exp $

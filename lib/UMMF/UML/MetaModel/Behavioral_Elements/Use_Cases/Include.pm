@@ -54,7 +54,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..*> : C<include_UseCase> E<lt>---E<gt>  C<addition> : UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase C<1>
+=head2 C<0..*> : C<include_addition> E<lt>---E<gt>  C<addition> : UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase C<1>
 
 
 
@@ -352,7 +352,7 @@ sub ___initialize
   # Associations
 
   # AssociationEnd 
-  #  include_UseCase 0..*
+  #  include_addition 0..*
   #  <--> 
   #  addition 1 UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase.
     if ( defined $self->{'addition'} ) {
@@ -447,7 +447,7 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd include_UseCase <---> addition
+# AssociationEnd include_addition <---> addition
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase
 # multiplicity = 1
 # ordering = 
@@ -493,8 +493,8 @@ sub set_addition ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_include_UseCase($self) if $old;
-    $val->add_include_UseCase($self)    if $val;
+    $old->remove_include_addition($self) if $old;
+    $val->add_include_addition($self)    if $val;
 
     }
 		  
@@ -531,8 +531,8 @@ sub add_addition ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_include_UseCase($self) if $old;
-    $val->add_include_UseCase($self)    if $val;
+    $old->remove_include_addition($self) if $old;
+    $val->add_include_addition($self)    if $val;
 
   
   }
@@ -561,8 +561,8 @@ sub remove_addition ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_include_UseCase($self) if $old;
-    $val->add_include_UseCase($self)    if $val;
+    $old->remove_include_addition($self) if $old;
+    $val->add_include_addition($self)    if $val;
 
   
   }
@@ -587,8 +587,8 @@ sub clear_addition ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_include_UseCase($self) if $old;
-    $val->add_include_UseCase($self)    if $val;
+    $old->remove_include_addition($self) if $old;
+    $val->add_include_addition($self)    if $val;
 
     }
 

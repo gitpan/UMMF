@@ -264,7 +264,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<1> : C<end> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData C<0..*>
+=head2 C<1> : C<end> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::ReadLinkObjectEndAction C<0..1>
 
 
 
@@ -272,9 +272,9 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData>
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::ReadLinkObjectEndAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::ReadLinkObjectEndAction>
 
-=item multiplicity = C<0..*>
+=item multiplicity = C<0..1>
 
 =item changeability = C<changeable>
 
@@ -293,7 +293,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<1> : C<end> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::ReadLinkObjectEndAction C<0..1>
+=head2 C<1> : C<end> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData C<0..*>
 
 
 
@@ -301,9 +301,9 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::ReadLinkObjectEndAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::ReadLinkObjectEndAction>
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData>
 
-=item multiplicity = C<0..1>
+=item multiplicity = C<0..*>
 
 =item changeability = C<changeable>
 

@@ -60,7 +60,6 @@ lib/UMMF/UML/MetaMetaModel/Object.pm
 lib/UMMF/UML/MetaMetaModel/Util.pm
 lib/UMMF/UML/MetaModel.pm
 lib/UMMF/UML/MetaModel.pm.Model.Storable
-lib/UMMF/UML/MetaModel.spec
 lib/UMMF/UML/MetaModel/Behavioral_Elements/Actions/Action_Foundation/Action.pm
 lib/UMMF/UML/MetaModel/Behavioral_Elements/Actions/Action_Foundation/ControlFlow.pm
 lib/UMMF/UML/MetaModel/Behavioral_Elements/Actions/Action_Foundation/DataFlow.pm

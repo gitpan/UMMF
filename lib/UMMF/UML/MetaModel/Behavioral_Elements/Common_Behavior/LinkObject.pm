@@ -41,9 +41,9 @@ L<UMMF::UML::MetaModel::Foundation::Core::Class|UMMF::UML::MetaModel::Foundation
 
 =head1 SUPERCLASSES
 
-L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object>
-
 L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link>
+
+L<UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object|UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object>
 
 
 
@@ -85,7 +85,7 @@ use UMMF::UML::MetaModel::__ObjectBase qw(:__ummf_array);
 #
 
 use base qw(
-  UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object  UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link
+  UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link  UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object
 
 
 
@@ -217,7 +217,7 @@ sub __tangram_schema
 	 
 	 # Associations
 	        },
-       'bases' => [  'UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object',  'UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link',  ],
+       'bases' => [  'UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link',  'UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object',  ],
        'sql' => {
 
        },
@@ -300,19 +300,19 @@ sub __initialize
 
   unless ( ! $__initialize_use ) {
     $__initialize_use = 1;
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance');
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object');
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::Element');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::ModelElement');
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link');
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance');
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object');
   }
 
   $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::LinkObject::___initialize;
-  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance::___initialize;
-  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object::___initialize;
+  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___initialize;
-  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link::___initialize;
+  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance::___initialize;
+  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object::___initialize;
 
   $self;
 }
@@ -331,11 +331,11 @@ sub __create
 
   # $DB::single = 1;
   $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::LinkObject::___create(@args);
-  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance::___create();
-  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object::___create();
+  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___create();
-  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link::___create();
+  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance::___create();
+  $self->UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Object::___create();
 
   $self;
 }

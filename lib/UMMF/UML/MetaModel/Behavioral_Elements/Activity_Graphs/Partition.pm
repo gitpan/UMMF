@@ -83,7 +83,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<partition_ModelElement> E<lt>---E<gt>  C<contents> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..*>
+=head2 C<0..*> : C<partition_contents> E<lt>---E<gt>  C<contents> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..*>
 
 
 
@@ -289,7 +289,7 @@ sub __tangram_schema
 
                                                       'item' => 'contents', 
 
-                  'coll' => 'partition_ModelElement',
+                  'coll' => 'partition_contents',
 
                                                                                }
       ,
@@ -366,7 +366,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  partition_ModelElement 0..*
+  #  partition_contents 0..*
   #  <--> 
   #  contents 0..* UMMF::UML::MetaModel::Foundation::Core::ModelElement.
     if ( defined $self->{'contents'} ) {
@@ -621,7 +621,7 @@ sub count_activityGraph ($)
 =cut
 
 #################################################################
-# AssociationEnd partition_ModelElement <---> contents
+# AssociationEnd partition_contents <---> contents
 # type = UMMF::UML::MetaModel::Foundation::Core::ModelElement
 # multiplicity = 0..*
 # ordering = 
@@ -694,8 +694,8 @@ sub add_contents ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_partition_ModelElement($self) if $old;
-    $val->add_partition_ModelElement($self)    if $val;
+    $old->remove_partition_contents($self) if $old;
+    $val->add_partition_contents($self)    if $val;
 
     }
   
@@ -734,8 +734,8 @@ sub remove_contents ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_partition_ModelElement($self) if $old;
-    $val->add_partition_ModelElement($self)    if $val;
+    $old->remove_partition_contents($self) if $old;
+    $val->add_partition_contents($self)    if $val;
 
   ;
 
@@ -767,8 +767,8 @@ sub clear_contents ($)
     # Remove associations with other ends.
 
         
-    $old->remove_partition_ModelElement($self) if $old;
-    $val->add_partition_ModelElement($self)    if $val;
+    $old->remove_partition_contents($self) if $old;
+    $val->add_partition_contents($self)    if $val;
 
   ;
 

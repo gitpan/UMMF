@@ -112,7 +112,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..1> : C<state_Procedure> E<lt>---E<gt>  C<doActivity> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure C<0..1>
+=head2 C<0..1> : C<state_doActivity> E<lt>---E<gt>  C<doActivity> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure C<0..1>
 
 
 
@@ -141,7 +141,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..1> : C<state_Procedure> E<lt>---E<gt>  C<entry> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure C<0..1>
+=head2 C<0..1> : C<state_entry> E<lt>---E<gt>  C<entry> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure C<0..1>
 
 
 
@@ -170,7 +170,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..1> : C<state_Procedure> E<lt>---E<gt>  C<exit> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure C<0..1>
+=head2 C<0..1> : C<state_exit> E<lt>---E<gt>  C<exit> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure C<0..1>
 
 
 
@@ -588,7 +588,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  state_Procedure 0..1
+  #  state_doActivity 0..1
   #  <--> 
   #  doActivity 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.
     if ( defined $self->{'doActivity'} ) {
@@ -598,7 +598,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  state_Procedure 0..1
+  #  state_entry 0..1
   #  <--> 
   #  entry 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.
     if ( defined $self->{'entry'} ) {
@@ -608,7 +608,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  state_Procedure 0..1
+  #  state_exit 0..1
   #  <--> 
   #  exit 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.
     if ( defined $self->{'exit'} ) {
@@ -1075,7 +1075,7 @@ sub count_deferrableEvent ($)
 =cut
 
 #################################################################
-# AssociationEnd state_Procedure <---> doActivity
+# AssociationEnd state_doActivity <---> doActivity
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure
 # multiplicity = 0..1
 # ordering = 
@@ -1121,8 +1121,8 @@ sub set_doActivity ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_doActivity($self) if $old;
+    $val->add_state_doActivity($self)    if $val;
 
     }
 		  
@@ -1159,8 +1159,8 @@ sub add_doActivity ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_doActivity($self) if $old;
+    $val->add_state_doActivity($self)    if $val;
 
   
   }
@@ -1189,8 +1189,8 @@ sub remove_doActivity ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_doActivity($self) if $old;
+    $val->add_state_doActivity($self)    if $val;
 
   
   }
@@ -1215,8 +1215,8 @@ sub clear_doActivity ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_doActivity($self) if $old;
+    $val->add_state_doActivity($self)    if $val;
 
     }
 
@@ -1248,7 +1248,7 @@ sub count_doActivity ($)
 =cut
 
 #################################################################
-# AssociationEnd state_Procedure <---> entry
+# AssociationEnd state_entry <---> entry
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure
 # multiplicity = 0..1
 # ordering = 
@@ -1294,8 +1294,8 @@ sub set_entry ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_entry($self) if $old;
+    $val->add_state_entry($self)    if $val;
 
     }
 		  
@@ -1332,8 +1332,8 @@ sub add_entry ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_entry($self) if $old;
+    $val->add_state_entry($self)    if $val;
 
   
   }
@@ -1362,8 +1362,8 @@ sub remove_entry ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_entry($self) if $old;
+    $val->add_state_entry($self)    if $val;
 
   
   }
@@ -1388,8 +1388,8 @@ sub clear_entry ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_entry($self) if $old;
+    $val->add_state_entry($self)    if $val;
 
     }
 
@@ -1421,7 +1421,7 @@ sub count_entry ($)
 =cut
 
 #################################################################
-# AssociationEnd state_Procedure <---> exit
+# AssociationEnd state_exit <---> exit
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure
 # multiplicity = 0..1
 # ordering = 
@@ -1467,8 +1467,8 @@ sub set_exit ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_exit($self) if $old;
+    $val->add_state_exit($self)    if $val;
 
     }
 		  
@@ -1505,8 +1505,8 @@ sub add_exit ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_exit($self) if $old;
+    $val->add_state_exit($self)    if $val;
 
   
   }
@@ -1535,8 +1535,8 @@ sub remove_exit ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_exit($self) if $old;
+    $val->add_state_exit($self)    if $val;
 
   
   }
@@ -1561,8 +1561,8 @@ sub clear_exit ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_state_Procedure($self) if $old;
-    $val->add_state_Procedure($self)    if $val;
+    $old->remove_state_exit($self) if $old;
+    $val->add_state_exit($self)    if $val;
 
     }
 

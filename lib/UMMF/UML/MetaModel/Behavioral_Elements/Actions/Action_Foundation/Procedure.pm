@@ -131,7 +131,7 @@ L<UMMF::UML::MetaModel::__ObjectBase|UMMF::UML::MetaModel::__ObjectBase>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..1> : C<procedure_Action> E<lt>---E<gt>  C<action> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action C<1>
+=head2 C<0..1> : C<procedure_action> E<lt>---E<gt>  C<action> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action C<1>
 
 
 
@@ -557,7 +557,7 @@ sub ___initialize
   # Associations
 
   # AssociationEnd 
-  #  procedure_Action 0..1
+  #  procedure_action 0..1
   #  <--> 
   #  action 1 UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action.
     if ( defined $self->{'action'} ) {
@@ -902,7 +902,7 @@ sub count_isList ($)
 =cut
 
 #################################################################
-# AssociationEnd procedure_Action <---> action
+# AssociationEnd procedure_action <---> action
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action
 # multiplicity = 1
 # ordering = 
@@ -948,8 +948,8 @@ sub set_action ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_procedure_Action($self) if $old;
-    $val->add_procedure_Action($self)    if $val;
+    $old->remove_procedure_action($self) if $old;
+    $val->add_procedure_action($self)    if $val;
 
     }
 		  
@@ -986,8 +986,8 @@ sub add_action ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_procedure_Action($self) if $old;
-    $val->add_procedure_Action($self)    if $val;
+    $old->remove_procedure_action($self) if $old;
+    $val->add_procedure_action($self)    if $val;
 
   
   }
@@ -1016,8 +1016,8 @@ sub remove_action ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_procedure_Action($self) if $old;
-    $val->add_procedure_Action($self)    if $val;
+    $old->remove_procedure_action($self) if $old;
+    $val->add_procedure_action($self)    if $val;
 
   
   }
@@ -1042,8 +1042,8 @@ sub clear_action ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_procedure_Action($self) if $old;
-    $val->add_procedure_Action($self)    if $val;
+    $old->remove_procedure_action($self) if $old;
+    $val->add_procedure_action($self)    if $val;
 
     }
 

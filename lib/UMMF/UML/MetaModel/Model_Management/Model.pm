@@ -298,18 +298,18 @@ sub __initialize
 
   unless ( ! $__initialize_use ) {
     $__initialize_use = 1;
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::Element');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::ModelElement');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
     $self->__use('UMMF::UML::MetaModel::Model_Management::Package');
   }
 
   $self->UMMF::UML::MetaModel::Model_Management::Model::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
   $self->UMMF::UML::MetaModel::Model_Management::Package::___initialize;
 
   $self;
@@ -329,10 +329,10 @@ sub __create
 
   # $DB::single = 1;
   $self->UMMF::UML::MetaModel::Model_Management::Model::___create(@args);
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
   $self->UMMF::UML::MetaModel::Model_Management::Package::___create();
 
   $self;

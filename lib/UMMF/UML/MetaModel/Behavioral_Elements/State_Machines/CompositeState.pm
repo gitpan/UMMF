@@ -54,7 +54,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..1> : C<container> E<lt>---E<gt>  C<subvertex> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex C<0..*>
+=head2 C<0..1> : C<container_compositeState> E<lt>---E<gt>  C<subvertex> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex C<0..*>
 
 
 
@@ -249,7 +249,7 @@ sub __tangram_schema
 
                            'table' => 'Behavioral_Elements__State_Machines__CompositeState__subvertex', 
 
-                                                               'coll' => 'container',
+                                                               'coll' => 'container_compositeState',
 
                                              'aggreg' => '1', 
 
@@ -318,7 +318,7 @@ sub ___initialize
   # Associations
 
   # AssociationEnd 
-  #  container 0..1
+  #  container_compositeState 0..1
   #  <--> 
   #  subvertex 0..* UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex.
     if ( defined $self->{'subvertex'} ) {
@@ -406,7 +406,7 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd container <---> subvertex
+# AssociationEnd container_compositeState <---> subvertex
 # type = UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex
 # multiplicity = 0..*
 # ordering = 
@@ -479,8 +479,8 @@ sub add_subvertex ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_container($self) if $old;
-    $val->add_container($self)    if $val;
+    $old->remove_container_compositeState($self) if $old;
+    $val->add_container_compositeState($self)    if $val;
 
     }
   
@@ -519,8 +519,8 @@ sub remove_subvertex ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_container($self) if $old;
-    $val->add_container($self)    if $val;
+    $old->remove_container_compositeState($self) if $old;
+    $val->add_container_compositeState($self)    if $val;
 
   ;
 
@@ -552,8 +552,8 @@ sub clear_subvertex ($)
     # Remove associations with other ends.
 
         
-    $old->remove_container($self) if $old;
-    $val->add_container($self)    if $val;
+    $old->remove_container_compositeState($self) if $old;
+    $val->add_container_compositeState($self)    if $val;
 
   ;
 

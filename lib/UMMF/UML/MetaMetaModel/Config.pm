@@ -6,7 +6,7 @@ use warnings;
 
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/10/10 };
-our $VERSION = do { my @r = (q$Revision: 1.4 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.5 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -42,7 +42,7 @@ L<UMMF::UML::MetaModel::Configurable|UMMF::UML::MetaModel::Configurable>
 
 =head1 VERSION
 
-$Revision: 1.4 $
+$Revision: 1.5 $
 
 =head1 METHODS
 
@@ -162,7 +162,8 @@ sub config_enabled
 {
   my ($self, $model_element, $key, $default) = @_;
 
-  my $value = $self->config_value_inherited_true($model_element, $key, $default);
+  my $value = $self->{'config_enabled_force'} ||
+    $self->config_value_inherited_true($model_element, $key, $default);
 
   if ( 0 ) {
     no warnings;

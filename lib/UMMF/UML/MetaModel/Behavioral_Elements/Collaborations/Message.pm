@@ -170,7 +170,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<message_ClassifierRole> E<lt>---E<gt>  C<receiver> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole C<1>
+=head2 C<0..*> : C<message_receiver> E<lt>---E<gt>  C<receiver> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole C<1>
 
 
 
@@ -199,7 +199,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<message_ClassifierRole> E<lt>---E<gt>  C<sender> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole C<1>
+=head2 C<0..*> : C<message_sender> E<lt>---E<gt>  C<sender> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole C<1>
 
 
 
@@ -596,7 +596,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  message_ClassifierRole 0..*
+  #  message_receiver 0..*
   #  <--> 
   #  receiver 1 UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.
     if ( defined $self->{'receiver'} ) {
@@ -606,7 +606,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  message_ClassifierRole 0..*
+  #  message_sender 0..*
   #  <--> 
   #  sender 1 UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.
     if ( defined $self->{'sender'} ) {
@@ -1409,7 +1409,7 @@ sub count_predecessor ($)
 =cut
 
 #################################################################
-# AssociationEnd message_ClassifierRole <---> receiver
+# AssociationEnd message_receiver <---> receiver
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole
 # multiplicity = 1
 # ordering = 
@@ -1455,8 +1455,8 @@ sub set_receiver ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_receiver($self) if $old;
+    $val->add_message_receiver($self)    if $val;
 
     }
 		  
@@ -1493,8 +1493,8 @@ sub add_receiver ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_receiver($self) if $old;
+    $val->add_message_receiver($self)    if $val;
 
   
   }
@@ -1523,8 +1523,8 @@ sub remove_receiver ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_receiver($self) if $old;
+    $val->add_message_receiver($self)    if $val;
 
   
   }
@@ -1549,8 +1549,8 @@ sub clear_receiver ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_receiver($self) if $old;
+    $val->add_message_receiver($self)    if $val;
 
     }
 
@@ -1582,7 +1582,7 @@ sub count_receiver ($)
 =cut
 
 #################################################################
-# AssociationEnd message_ClassifierRole <---> sender
+# AssociationEnd message_sender <---> sender
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole
 # multiplicity = 1
 # ordering = 
@@ -1628,8 +1628,8 @@ sub set_sender ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_sender($self) if $old;
+    $val->add_message_sender($self)    if $val;
 
     }
 		  
@@ -1666,8 +1666,8 @@ sub add_sender ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_sender($self) if $old;
+    $val->add_message_sender($self)    if $val;
 
   
   }
@@ -1696,8 +1696,8 @@ sub remove_sender ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_sender($self) if $old;
+    $val->add_message_sender($self)    if $val;
 
   
   }
@@ -1722,8 +1722,8 @@ sub clear_sender ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_message_ClassifierRole($self) if $old;
-    $val->add_message_ClassifierRole($self)    if $val;
+    $old->remove_message_sender($self) if $old;
+    $val->add_message_sender($self)    if $val;
 
     }
 

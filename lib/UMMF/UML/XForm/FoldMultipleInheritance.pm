@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/05/04 };
-our $VERSION = do { my @r = (q$Revision: 1.6 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.7 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -40,7 +40,7 @@ L<UMMF::UML::MetaMetaModel|UMMF::UML::MetaMetaModel>
 
 =head1 VERSION
 
-$Revision: 1.6 $
+$Revision: 1.7 $
 
 =head1 METHODS
 
@@ -76,7 +76,11 @@ sub apply_Model
 {
   my ($self, $model) = @_;
 
-  my $x1 = UMMF::UML::XForm::ClassInterface->new('verbose' => $self->{'verbose'});
+  my $x1 = UMMF::UML::XForm::ClassInterface
+    ->new(
+	  'verbose'              => $self->{'verbose'},
+	  'config_enabled_force' => 1,
+	 );
 
   # Do Class => Interface production.
   $model = $x1->apply_Model($model);

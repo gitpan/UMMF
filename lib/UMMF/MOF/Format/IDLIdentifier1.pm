@@ -6,7 +6,7 @@ use strict;
 
 
 our $AUTHOR = q{ ks.perl@kurtstephens.com 2003/05/25 };
-our $VERSION = do { my @r = (q$Revision: 1.1 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.2 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ UMMF::MOF::Format::IDLIdentifier1 - A transformer for MOF 1.4 IDL Identifier For
 
   use UMMF::MOF::Format::IDLIdentifier1;
 
-  my $x = UMMF::MOF::Format::IDLIndentifier1->new;
+  my $x = UMMF::MOF::Format::IDLIdentifier1->new;
   $x->transform('DSTC pty ltd') eq 'DSTCPtyLtd';
 
 =head1 DESCRIPTION
@@ -37,7 +37,7 @@ L<UMMF|UMMF>
 
 =head1 VERSION
 
-$Revision: 1.1 $
+$Revision: 1.2 $
 
 =head1 METHODS
 

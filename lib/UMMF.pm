@@ -6,8 +6,8 @@ use warnings;
 
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/09/10 };
-#our $REVISION = { my @r = (q$Revision: 1.14 $ =~ /\d+/g); sprintf '%d.' . '%03d' x $#r, @r };
-our $VERSION = '0.25';
+#our $REVISION = { my @r = (q$Revision: 1.15 $ =~ /\d+/g); sprintf '%d.' . '%03d' x $#r, @r };
+our $VERSION = '0.26';
 
 =head1 NAME
 
@@ -16,6 +16,10 @@ UMMF - UML Meta-Model Framework.  UML to code generation via XMI.  Implements UM
 =head1 SYNOPSIS
 
   bin/ummf -e Perl someumlmodel.xmi
+
+=head1 VERSION
+
+0.26
 
 =head1 DESCRIPTION
 
@@ -329,13 +333,9 @@ Kurt Stephens, kstephens@users.sourceforge.net 2003/09/10
 
 L<http://ummf.sourceforge.net>
 
-=head1 VERSION
-
-0.25
-
 =head1 REVISION
 
-$Revision: 1.14 $
+$Revision: 1.15 $
 
 =head1 METHODS
 

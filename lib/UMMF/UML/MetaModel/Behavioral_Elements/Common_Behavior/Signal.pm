@@ -170,7 +170,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<1> : C<signal> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::SendSignalAction C<0..*>
+=head2 C<1> : C<signal> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::BroadcastSignalAction C<0..*>
 
 
 
@@ -178,7 +178,7 @@ I<NO ATTRIBUTES>
 
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::SendSignalAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::SendSignalAction>
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::BroadcastSignalAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::BroadcastSignalAction>
 
 =item multiplicity = C<0..*>
 
@@ -199,7 +199,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<1> : C<signal> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::BroadcastSignalAction C<0..*>
+=head2 C<1> : C<signal> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::SendSignalAction C<0..*>
 
 
 
@@ -207,7 +207,7 @@ I<NO ATTRIBUTES>
 
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::BroadcastSignalAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::BroadcastSignalAction>
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::SendSignalAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Messaging_Actions::SendSignalAction>
 
 =item multiplicity = C<0..*>
 

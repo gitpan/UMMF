@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 our $AUTHOR = q{ kstephens@sourceforge.net 2003/05/04 };
-our $VERSION = do { my @r = (q$Revision: 1.12 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.13 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -39,7 +39,7 @@ L<UMMF::UML::MetaMetaModel|UMMF::UML::MetaMetaModel>
 
 =head1 VERSION
 
-$Revision: 1.12 $
+$Revision: 1.13 $
 
 =head1 METHODS
 
@@ -63,6 +63,7 @@ sub initialize
   $self->SUPER::initialize;
 
   $self->{'generate_names'} ||= 1;
+  # $self->{'verbose'} = 1;
 
   $self;
 }
@@ -75,7 +76,7 @@ sub apply_Model
 {
   my ($self, $model) = @_;
 
-  print STDERR "* Pass 1:\n" if $self->{'verbose'} > 0;
+  print STDERR "* Pass 1: Find all Associations\n" if $self->{'verbose'} > 0;
   # Find all Associations
   my %assoc;
   for my $cls ( Namespace_classifier($model) ) {
@@ -89,7 +90,7 @@ sub apply_Model
 
   my %name_given; # Maps objects to names given.
   if ( $self->{'generate_names'} ) {
-    print STDERR "* Pass 2:\n" if $self->{'verbose'} > 0;
+    print STDERR "* Pass 2: make objects to names given\n" if $self->{'verbose'} > 0;
     # Generate names for all Associations and AssociationEnds
     for my $assoc ( @assoc ) {
       my @gave_names;
@@ -133,7 +134,7 @@ sub apply_Model
 	print STDERR 
 	  "******************************************************************\n",
 	    "Gave names to: ", join(', ', reverse @gave_names), "\n  ", Association_asString($assoc), "\n"
-	      if $self->{'verbose'} >= 1;
+	      if $self->{'verbose'} >= 2;
       }
     }
   }
@@ -259,7 +260,7 @@ sub rename_end
 
   my $name = $end->name;
   my ($other_end) = AssociationEnd_opposite($end);
-  $name = $name . '_' . $other_end->participant->name;;
+  $name = $name . '_' . ($other_end->name || $other_end->participant->name);
   
   my $assoc = AssociationEnd_association($end);
   my $i = index_array($end, $assoc->connection);

@@ -108,35 +108,6 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<1> : C<body> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::Clause C<0..1>
-
-
-
-=over 4
-
-=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
-
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::Clause|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::Clause>
-
-=item multiplicity = C<0..1>
-
-=item changeability = C<changeable>
-
-=item targetScope = C<instance>
-
-=item ordering = C<>
-
-=item isNavigable = C<0>
-
-=item aggregation = C<composite>
-
-=item visibility = C<private>
-
-=item container_type = C<Set::Object>
-
-=back
-
-
 =head2 C<1> : C<body> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Jump_Actions::HandlerAction C<0..*>
 
 
@@ -166,7 +137,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<1> : C<clause> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::LoopAction C<0..1>
+=head2 C<1> : C<body> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::Clause C<0..1>
 
 
 
@@ -174,7 +145,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::LoopAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::LoopAction>
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::Clause|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::Clause>
 
 =item multiplicity = C<0..1>
 
@@ -204,6 +175,35 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
 =item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::ConditionalAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::ConditionalAction>
+
+=item multiplicity = C<0..1>
+
+=item changeability = C<changeable>
+
+=item targetScope = C<instance>
+
+=item ordering = C<>
+
+=item isNavigable = C<0>
+
+=item aggregation = C<composite>
+
+=item visibility = C<private>
+
+=item container_type = C<Set::Object>
+
+=back
+
+
+=head2 C<1> : C<clause> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::LoopAction C<0..1>
+
+
+
+=over 4
+
+=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
+
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::LoopAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Composite_Actions::LoopAction>
 
 =item multiplicity = C<0..1>
 
@@ -398,7 +398,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<1> : C<action> E<lt>---E<gt>  C<procedure_Action> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure C<0..1>
+=head2 C<1> : C<action> E<lt>---E<gt>  C<procedure_action> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure C<0..1>
 
 
 
@@ -696,14 +696,14 @@ sub __tangram_schema
 
                                            }
       ,
-                  	 	       'procedure_Action'
+                  	 	       'procedure_action'
        => {
 	 'type_impl' => 'ref',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure',
 
                   'null' => '1', 
 
-                                    'col' => 'procedure_Action', 
+                                    'col' => 'procedure_action', 
 
                                                                                                                    }
       ,
@@ -840,11 +840,11 @@ sub ___initialize
   # AssociationEnd 
   #  action 1
   #  <--> 
-  #  procedure_Action 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure.
-    if ( defined $self->{'procedure_Action'} ) {
-    my $x = $self->{'procedure_Action'};
-    $self->{'procedure_Action'} = undef;
-    $self->set_procedure_Action($x);
+  #  procedure_action 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure.
+    if ( defined $self->{'procedure_action'} ) {
+    my $x = $self->{'procedure_action'};
+    $self->{'procedure_action'} = undef;
+    $self->set_procedure_action($x);
   }
   
 
@@ -2315,48 +2315,48 @@ sub count_outputPin ($)
 =cut
 
 #################################################################
-# AssociationEnd action <---> procedure_Action
+# AssociationEnd action <---> procedure_action
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure
 # multiplicity = 0..1
 # ordering = 
 
-=head2 C<procedure_Action>
+=head2 C<procedure_action>
 
-  my $val = $obj->procedure_Action;
+  my $val = $obj->procedure_action;
 
-Returns the AssociationEnd C<procedure_Action> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure>.
+Returns the AssociationEnd C<procedure_action> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure>.
 
 =cut
-sub procedure_Action ($)
+sub procedure_action ($)
 {
   my ($self) = @_;
 		  
-  $self->{'procedure_Action'};
+  $self->{'procedure_action'};
 }
 
 
-=head2 C<set_procedure_Action>
+=head2 C<set_procedure_action>
 
-  $obj->set_procedure_Action($val);
+  $obj->set_procedure_action($val);
 
-Sets the AssociationEnd C<procedure_Action> value.
+Sets the AssociationEnd C<procedure_action> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure>.
 Returns C<$obj>.
 
 =cut
-sub set_procedure_Action ($$)
+sub set_procedure_action ($$)
 {
   my ($self, $val) = @_;
 		  
   no warnings; # Use of uninitialized value in string ne at ...
 		  
   my $old;
-  if ( ($old = $self->{'procedure_Action'}) ne $val ) { # Recursion lock
+  if ( ($old = $self->{'procedure_action'}) ne $val ) { # Recursion lock
 
-    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action.procedure_Action") }
+    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action.procedure_action") }
 
     # Recursion lock
-        $self->{'procedure_Action'} = $val
+        $self->{'procedure_action'} = $val
     ;
 
     # Remove and add associations with other ends.
@@ -2370,31 +2370,31 @@ sub set_procedure_Action ($$)
 }
 
 
-=head2 C<add_procedure_Action>
+=head2 C<add_procedure_action>
 
-  $obj->add_procedure_Action($val);
+  $obj->add_procedure_action($val);
 
-Adds the AssociationEnd C<procedure_Action> value.
+Adds the AssociationEnd C<procedure_action> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure>.
 Throws exception if a value already exists.
 Returns C<$obj>.
 
 =cut
-sub add_procedure_Action ($$)
+sub add_procedure_action ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'procedure_Action'}) ne $val ) { # Recursion lock
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action.procedure_Action");
+  if ( ($old = $self->{'procedure_action'}) ne $val ) { # Recursion lock
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action.procedure_action");
       
-    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action::procedure_Action: too many")
-    # if defined $self->{'procedure_Action'};
+    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Action::procedure_action: too many")
+    # if defined $self->{'procedure_action'};
 
     # Recursion lock
-        $self->{'procedure_Action'} = $val
+        $self->{'procedure_action'} = $val
     ;
 
     # Remove and add associations with other ends.
@@ -2409,23 +2409,23 @@ sub add_procedure_Action ($$)
 }
 
 
-=head2 C<remove_procedure_Action>
+=head2 C<remove_procedure_action>
 
-  $obj->remove_procedure_Action($val);
+  $obj->remove_procedure_action($val);
 
-Removes the AssociationEnd C<procedure_Action> value C<$val>.
+Removes the AssociationEnd C<procedure_action> value C<$val>.
 Returns C<$obj>.
 
 =cut
-sub remove_procedure_Action ($$)
+sub remove_procedure_action ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'procedure_Action'}) eq $val ) { # Recursion lock
-    $val = $self->{'procedure_Action'} = undef;         # Recursion lock
+  if ( ($old = $self->{'procedure_action'}) eq $val ) { # Recursion lock
+    $val = $self->{'procedure_action'} = undef;         # Recursion lock
 
     # Remove and add associations with other ends.
         
@@ -2437,21 +2437,21 @@ sub remove_procedure_Action ($$)
 }
 
 
-=head2 C<clear_procedure_Action>
+=head2 C<clear_procedure_action>
 
-  $obj->clear_procedure_Action;
+  $obj->clear_procedure_action;
 
-Clears the AssociationEnd C<procedure_Action> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure>.
+Clears the AssociationEnd C<procedure_action> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure>.
 Returns C<$obj>.
 
 =cut
-sub clear_procedure_Action ($@)
+sub clear_procedure_action ($@)
 {
   my ($self) = @_;
 
   my $old;
-  if ( defined ($old = $self->{'procedure_Action'}) ) { # Recursion lock
-    my $val = $self->{'procedure_Action'} = undef;      # Recursion lock
+  if ( defined ($old = $self->{'procedure_action'}) ) { # Recursion lock
+    my $val = $self->{'procedure_action'} = undef;      # Recursion lock
 
     # Remove and add associations with other ends.
         
@@ -2464,18 +2464,18 @@ sub clear_procedure_Action ($@)
 }
 
 
-=head2 C<count_procedure_Action>
+=head2 C<count_procedure_action>
 
-  $obj->count_procedure_Action;
+  $obj->count_procedure_action;
 
-Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure> associated with C<procedure_Action>.
+Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Procedure> associated with C<procedure_action>.
 
 =cut
-sub count_procedure_Action ($)
+sub count_procedure_action ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'procedure_Action'};
+  my $x = $self->{'procedure_action'};
 
   defined $x ? 1 : 0;
 }

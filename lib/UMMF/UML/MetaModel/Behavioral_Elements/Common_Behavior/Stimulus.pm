@@ -54,7 +54,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..*> : C<stimulus_Instance> E<lt>---E<gt>  C<argument> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<0..*>
+=head2 C<0..*> : C<stimulus_argument> E<lt>---E<gt>  C<argument> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<0..*>
 
 
 
@@ -83,7 +83,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<stimulus_Link> E<lt>---E<gt>  C<communicationsLink> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link C<0..1>
+=head2 C<0..*> : C<stimulus_communicationsLink> E<lt>---E<gt>  C<communicationsLink> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link C<0..1>
 
 
 
@@ -199,7 +199,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<stimulus_Instance> E<lt>---E<gt>  C<receiver> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<1>
+=head2 C<0..*> : C<stimulus_receiver> E<lt>---E<gt>  C<receiver> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<1>
 
 
 
@@ -228,7 +228,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<stimulus_Instance> E<lt>---E<gt>  C<sender> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<1>
+=head2 C<0..*> : C<stimulus_sender> E<lt>---E<gt>  C<sender> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<1>
 
 
 
@@ -425,7 +425,7 @@ sub __tangram_schema
 
                                                       'item' => 'argument', 
 
-                  'coll' => 'stimulus_Instance',
+                  'coll' => 'stimulus_argument',
 
                   'slot' => 'argument_i', 
 
@@ -558,7 +558,7 @@ sub ___initialize
   # Associations
 
   # AssociationEnd 
-  #  stimulus_Instance 0..*
+  #  stimulus_argument 0..*
   #  <--> 
   #  argument 0..* UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance.
     if ( defined $self->{'argument'} ) {
@@ -568,7 +568,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  stimulus_Link 0..*
+  #  stimulus_communicationsLink 0..*
   #  <--> 
   #  communicationsLink 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.
     if ( defined $self->{'communicationsLink'} ) {
@@ -608,7 +608,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  stimulus_Instance 0..*
+  #  stimulus_receiver 0..*
   #  <--> 
   #  receiver 1 UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance.
     if ( defined $self->{'receiver'} ) {
@@ -618,7 +618,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  stimulus_Instance 0..*
+  #  stimulus_sender 0..*
   #  <--> 
   #  sender 1 UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance.
     if ( defined $self->{'sender'} ) {
@@ -700,7 +700,7 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd stimulus_Instance <---> argument
+# AssociationEnd stimulus_argument <---> argument
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance
 # multiplicity = 0..*
 # ordering = ordered
@@ -815,8 +815,8 @@ sub set_index_argument ($$$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_argument($self) if $old;
+    $val->add_stimulus_argument($self)    if $val;
 
   
     ;
@@ -852,8 +852,8 @@ sub add_argument ($@)
         
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_argument($self) if $old;
+    $val->add_stimulus_argument($self)    if $val;
 
     }
   
@@ -889,8 +889,8 @@ sub add_index_argument ($$@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_argument($self) if $old;
+    $val->add_stimulus_argument($self)    if $val;
 
     }
   
@@ -930,8 +930,8 @@ sub remove_argument ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_argument($self) if $old;
+    $val->add_stimulus_argument($self)    if $val;
 
   ;
 
@@ -963,8 +963,8 @@ sub clear_argument ($)
     # Remove associations with other ends.
 
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_argument($self) if $old;
+    $val->add_stimulus_argument($self)    if $val;
 
   ;
 
@@ -998,7 +998,7 @@ sub count_argument ($)
 =cut
 
 #################################################################
-# AssociationEnd stimulus_Link <---> communicationsLink
+# AssociationEnd stimulus_communicationsLink <---> communicationsLink
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link
 # multiplicity = 0..1
 # ordering = 
@@ -1044,8 +1044,8 @@ sub set_communicationsLink ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Link($self) if $old;
-    $val->add_stimulus_Link($self)    if $val;
+    $old->remove_stimulus_communicationsLink($self) if $old;
+    $val->add_stimulus_communicationsLink($self)    if $val;
 
     }
 		  
@@ -1082,8 +1082,8 @@ sub add_communicationsLink ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Link($self) if $old;
-    $val->add_stimulus_Link($self)    if $val;
+    $old->remove_stimulus_communicationsLink($self) if $old;
+    $val->add_stimulus_communicationsLink($self)    if $val;
 
   
   }
@@ -1112,8 +1112,8 @@ sub remove_communicationsLink ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Link($self) if $old;
-    $val->add_stimulus_Link($self)    if $val;
+    $old->remove_stimulus_communicationsLink($self) if $old;
+    $val->add_stimulus_communicationsLink($self)    if $val;
 
   
   }
@@ -1138,8 +1138,8 @@ sub clear_communicationsLink ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Link($self) if $old;
-    $val->add_stimulus_Link($self)    if $val;
+    $old->remove_stimulus_communicationsLink($self) if $old;
+    $val->add_stimulus_communicationsLink($self)    if $val;
 
     }
 
@@ -1706,7 +1706,7 @@ sub count_playedRole ($)
 =cut
 
 #################################################################
-# AssociationEnd stimulus_Instance <---> receiver
+# AssociationEnd stimulus_receiver <---> receiver
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance
 # multiplicity = 1
 # ordering = 
@@ -1752,8 +1752,8 @@ sub set_receiver ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_receiver($self) if $old;
+    $val->add_stimulus_receiver($self)    if $val;
 
     }
 		  
@@ -1790,8 +1790,8 @@ sub add_receiver ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_receiver($self) if $old;
+    $val->add_stimulus_receiver($self)    if $val;
 
   
   }
@@ -1820,8 +1820,8 @@ sub remove_receiver ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_receiver($self) if $old;
+    $val->add_stimulus_receiver($self)    if $val;
 
   
   }
@@ -1846,8 +1846,8 @@ sub clear_receiver ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_receiver($self) if $old;
+    $val->add_stimulus_receiver($self)    if $val;
 
     }
 
@@ -1879,7 +1879,7 @@ sub count_receiver ($)
 =cut
 
 #################################################################
-# AssociationEnd stimulus_Instance <---> sender
+# AssociationEnd stimulus_sender <---> sender
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance
 # multiplicity = 1
 # ordering = 
@@ -1925,8 +1925,8 @@ sub set_sender ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_sender($self) if $old;
+    $val->add_stimulus_sender($self)    if $val;
 
     }
 		  
@@ -1963,8 +1963,8 @@ sub add_sender ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_sender($self) if $old;
+    $val->add_stimulus_sender($self)    if $val;
 
   
   }
@@ -1993,8 +1993,8 @@ sub remove_sender ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_sender($self) if $old;
+    $val->add_stimulus_sender($self)    if $val;
 
   
   }
@@ -2019,8 +2019,8 @@ sub clear_sender ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_stimulus_Instance($self) if $old;
-    $val->add_stimulus_Instance($self)    if $val;
+    $old->remove_stimulus_sender($self) if $old;
+    $val->add_stimulus_sender($self)    if $val;
 
     }
 

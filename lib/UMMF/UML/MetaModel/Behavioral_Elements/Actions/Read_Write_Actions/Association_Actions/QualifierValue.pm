@@ -54,35 +54,6 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..*> : C<qualifier> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData C<1>
-
-
-
-=over 4
-
-=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
-
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData>
-
-=item multiplicity = C<1>
-
-=item changeability = C<changeable>
-
-=item targetScope = C<instance>
-
-=item ordering = C<>
-
-=item isNavigable = C<0>
-
-=item aggregation = C<composite>
-
-=item visibility = C<private>
-
-=item container_type = C<Set::Object>
-
-=back
-
-
 =head2 C<0..*> : C<> ----E<gt>  C<qualifier> : UMMF::UML::MetaModel::Foundation::Core::Attribute C<1>
 
 
@@ -106,6 +77,35 @@ I<NO ATTRIBUTES>
 =item aggregation = C<none>
 
 =item visibility = C<public>
+
+=item container_type = C<Set::Object>
+
+=back
+
+
+=head2 C<0..*> : C<qualifier> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData C<1>
+
+
+
+=over 4
+
+=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
+
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Read_Write_Actions::Association_Actions::LinkEndData>
+
+=item multiplicity = C<1>
+
+=item changeability = C<changeable>
+
+=item targetScope = C<instance>
+
+=item ordering = C<>
+
+=item isNavigable = C<0>
+
+=item aggregation = C<composite>
+
+=item visibility = C<private>
 
 =item container_type = C<Set::Object>
 
@@ -271,7 +271,7 @@ sub __tangram_schema
 	 # Attributes
 	 
 	 # Associations
-	 	 	                     	 	       'qualifier'
+	 	 	       'qualifier'
        => {
 	 'type_impl' => 'ref',
          'class' => 'UMMF::UML::MetaModel::Foundation::Core::Attribute',
@@ -280,7 +280,7 @@ sub __tangram_schema
 
                                                                                                                    }
       ,
-                         },
+                  	 	                            },
        'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::Element',  ],
        'sql' => {
 

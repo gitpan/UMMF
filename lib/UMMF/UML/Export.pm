@@ -6,7 +6,7 @@ use warnings;
 
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/04/15 };
-our $VERSION = do { my @r = (q$Revision: 1.20 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.21 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -38,7 +38,7 @@ L<UMMF::UML::MetaModel|UMMF::UML::MetaModel>
 
 =head1 VERSION
 
-$Revision: 1.20 $
+$Revision: 1.21 $
 
 =head1 METHODS
 
@@ -333,6 +333,8 @@ sub package_name
 {
   my ($self, $cls, $sep, $cls_scope) = @_;
   
+  shift @_; # eat $self from @_.
+
   $sep ||= $self->package_sep;
 
   my @x;

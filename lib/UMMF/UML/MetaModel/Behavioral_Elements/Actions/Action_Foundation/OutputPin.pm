@@ -286,6 +286,35 @@ I<NO ATTRIBUTES>
 =back
 
 
+=head2 C<1..*> : C<subinput> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction C<0..1>
+
+
+
+=over 4
+
+=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
+
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction>
+
+=item multiplicity = C<0..1>
+
+=item changeability = C<changeable>
+
+=item targetScope = C<instance>
+
+=item ordering = C<>
+
+=item isNavigable = C<0>
+
+=item aggregation = C<composite>
+
+=item visibility = C<private>
+
+=item container_type = C<Set::Object>
+
+=back
+
+
 =head2 C<1..*> : C<subinput> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Filter::FilterAction C<0..1>
 
 
@@ -344,7 +373,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<1..*> : C<subinput> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction C<0..1>
+=head2 C<0..*> : C<suboutput> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction C<0..1>
 
 
 
@@ -364,7 +393,7 @@ I<NO ATTRIBUTES>
 
 =item isNavigable = C<0>
 
-=item aggregation = C<composite>
+=item aggregation = C<none>
 
 =item visibility = C<private>
 
@@ -411,35 +440,6 @@ I<NO ATTRIBUTES>
 =item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
 
 =item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Iterate::IterateAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Iterate::IterateAction>
-
-=item multiplicity = C<0..1>
-
-=item changeability = C<changeable>
-
-=item targetScope = C<instance>
-
-=item ordering = C<>
-
-=item isNavigable = C<0>
-
-=item aggregation = C<none>
-
-=item visibility = C<private>
-
-=item container_type = C<Set::Object>
-
-=back
-
-
-=head2 C<0..*> : C<suboutput> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction C<0..1>
-
-
-
-=over 4
-
-=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
-
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Collection_Actions::Map::MapAction>
 
 =item multiplicity = C<0..1>
 

@@ -230,7 +230,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..1> : C<representedClassifier> E<lt>---E<gt>  C<collaboration_Classifier> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
+=head2 C<0..1> : C<representedClassifier> E<lt>---E<gt>  C<collaboration_representedClassifier> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
 
 
 
@@ -578,6 +578,35 @@ I<NO ATTRIBUTES>
 =back
 
 
+=head2 C<0..1> : C<type> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Variable C<0..*>
+
+
+
+=over 4
+
+=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
+
+=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Variable|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Variable>
+
+=item multiplicity = C<0..*>
+
+=item changeability = C<changeable>
+
+=item targetScope = C<instance>
+
+=item ordering = C<>
+
+=item isNavigable = C<0>
+
+=item aggregation = C<none>
+
+=item visibility = C<private>
+
+=item container_type = C<Set::Object>
+
+=back
+
+
 =head2 C<1> : C<type> E<lt>----  C<> : UMMF::UML::MetaModel::OCL::Expressions::VariableDeclaration C<1>
 
 
@@ -647,35 +676,6 @@ I<NO ATTRIBUTES>
 =item type = L<UMMF::UML::MetaModel::OCL::Expressions::UnspecifiedValueExp|UMMF::UML::MetaModel::OCL::Expressions::UnspecifiedValueExp>
 
 =item multiplicity = C<1>
-
-=item changeability = C<changeable>
-
-=item targetScope = C<instance>
-
-=item ordering = C<>
-
-=item isNavigable = C<0>
-
-=item aggregation = C<none>
-
-=item visibility = C<private>
-
-=item container_type = C<Set::Object>
-
-=back
-
-
-=head2 C<0..1> : C<type> E<lt>----  C<> : UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Variable C<0..*>
-
-
-
-=over 4
-
-=item metatype = L<UMMF::UML::MetaModel::Foundation::Core::AssociationEnd|UMMF::UML::MetaModel::Foundation::Core::AssociationEnd>
-
-=item type = L<UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Variable|UMMF::UML::MetaModel::Behavioral_Elements::Actions::Action_Foundation::Variable>
-
-=item multiplicity = C<0..*>
 
 =item changeability = C<changeable>
 
@@ -917,12 +917,12 @@ sub __tangram_schema
 
                                                                                }
       ,
-                  	 	       'collaboration_Classifier'
+                  	 	       'collaboration_representedClassifier'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration',
 
-                           'table' => 'Foundation__Core__Classifier__collaboration_Classifier', 
+                           'table' => 'Foundation__Core__Classifier__collaboration_representedClassifier', 
 
                                                                'coll' => 'representedClassifier',
 
@@ -1130,11 +1130,11 @@ sub ___initialize
   # AssociationEnd 
   #  representedClassifier 0..1
   #  <--> 
-  #  collaboration_Classifier 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
-    if ( defined $self->{'collaboration_Classifier'} ) {
-    my $x = $self->{'collaboration_Classifier'};
-        $self->{'collaboration_Classifier'} = Set::Object->new();
-        $self->set_collaboration_Classifier(@$x);
+  #  collaboration_representedClassifier 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
+    if ( defined $self->{'collaboration_representedClassifier'} ) {
+    my $x = $self->{'collaboration_representedClassifier'};
+        $self->{'collaboration_representedClassifier'} = Set::Object->new();
+        $self->set_collaboration_representedClassifier(@$x);
   }
   
   # AssociationEnd 
@@ -1849,72 +1849,72 @@ sub count_classifierRole ($)
 =cut
 
 #################################################################
-# AssociationEnd representedClassifier <---> collaboration_Classifier
+# AssociationEnd representedClassifier <---> collaboration_representedClassifier
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<collaboration_Classifier>
+=head2 C<collaboration_representedClassifier>
 
-  my @val = $obj->collaboration_Classifier;
-  my $ary_val = $obj->collaboration_Classifier;
+  my @val = $obj->collaboration_representedClassifier;
+  my $ary_val = $obj->collaboration_representedClassifier;
 
-Returns the AssociationEnd C<collaboration_Classifier> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
+Returns the AssociationEnd C<collaboration_representedClassifier> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub collaboration_Classifier ($)
+sub collaboration_representedClassifier ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'collaboration_Classifier'};
+    my $x = $self->{'collaboration_representedClassifier'};
 
-  # confess("Container for collaboration_Classifier $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for collaboration_representedClassifier $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_collaboration_Classifier>
+=head2 C<set_collaboration_representedClassifier>
 
-  $obj->set_collaboration_Classifier(@val);
+  $obj->set_collaboration_representedClassifier(@val);
 
-Sets the AssociationEnd C<collaboration_Classifier> value.
+Sets the AssociationEnd C<collaboration_representedClassifier> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub set_collaboration_Classifier ($@)
+sub set_collaboration_representedClassifier ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_collaboration_Classifier;
-  $self->add_collaboration_Classifier(@val);
+  $self->clear_collaboration_representedClassifier;
+  $self->add_collaboration_representedClassifier(@val);
 }
 
 
-=head2 C<add_collaboration_Classifier>
+=head2 C<add_collaboration_representedClassifier>
 
-  $obj->add_collaboration_Classifier(@val);
+  $obj->add_collaboration_representedClassifier(@val);
 
-Adds AssociationEnd C<collaboration_Classifier> values.
+Adds AssociationEnd C<collaboration_representedClassifier> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub add_collaboration_Classifier ($@)
+sub add_collaboration_representedClassifier ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaboration_Classifier'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_representedClassifier'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::Classifier.collaboration_Classifier");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::Classifier.collaboration_representedClassifier");
 
     # Recursion lock
         $x->insert($val);
@@ -1931,20 +1931,20 @@ sub add_collaboration_Classifier ($@)
 }
 
 
-=head2 C<remove_collaboration_Classifier>
+=head2 C<remove_collaboration_representedClassifier>
 
-  $obj->remove_collaboration_Classifier(@val);
+  $obj->remove_collaboration_representedClassifier(@val);
 
-Removes the AssociationEnd C<collaboration_Classifier> values C<@val>.
+Removes the AssociationEnd C<collaboration_representedClassifier> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub remove_collaboration_Classifier ($@)
+sub remove_collaboration_representedClassifier ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaboration_Classifier'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_representedClassifier'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -1952,7 +1952,7 @@ sub remove_collaboration_Classifier ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::Classifier.collaboration_Classifier");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Foundation::Core::Classifier.collaboration_representedClassifier");
 
     # Recursion lock
         $x->remove($old);
@@ -1973,23 +1973,23 @@ sub remove_collaboration_Classifier ($@)
 }
 
 
-=head2 C<clear_collaboration_Classifier>
+=head2 C<clear_collaboration_representedClassifier>
 
-  $obj->clear_collaboration_Classifier;
+  $obj->clear_collaboration_representedClassifier;
 
-Clears the AssociationEnd C<collaboration_Classifier> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
+Clears the AssociationEnd C<collaboration_representedClassifier> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub clear_collaboration_Classifier ($) 
+sub clear_collaboration_representedClassifier ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'collaboration_Classifier'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_representedClassifier'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'collaboration_Classifier'} = Set::Object->new(); # Recursion lock
+    $self->{'collaboration_representedClassifier'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -2006,18 +2006,18 @@ sub clear_collaboration_Classifier ($)
 }
 
 
-=head2 C<count_collaboration_Classifier>
+=head2 C<count_collaboration_representedClassifier>
 
-  $obj->count_collaboration_Classifier;
+  $obj->count_collaboration_representedClassifier;
 
-Returns the number of elements associated with C<collaboration_Classifier>.
+Returns the number of elements associated with C<collaboration_representedClassifier>.
 
 =cut
-sub count_collaboration_Classifier ($)
+sub count_collaboration_representedClassifier ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'collaboration_Classifier'};
+  my $x = $self->{'collaboration_representedClassifier'};
 
     defined $x ? $x->size : 0;
   }

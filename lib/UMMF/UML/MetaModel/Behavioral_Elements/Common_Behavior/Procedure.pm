@@ -189,7 +189,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<0..1> : C<doActivity> E<lt>---E<gt>  C<state_Procedure> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State C<0..1>
+=head2 C<0..1> : C<doActivity> E<lt>---E<gt>  C<state_doActivity> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State C<0..1>
 
 
 
@@ -218,7 +218,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<0..1> : C<exit> E<lt>---E<gt>  C<state_Procedure> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State C<0..1>
+=head2 C<0..1> : C<entry> E<lt>---E<gt>  C<state_entry> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State C<0..1>
 
 
 
@@ -247,7 +247,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::ModelElement|UMMF::UML::MetaModel::Fou
 =back
 
 
-=head2 C<0..1> : C<entry> E<lt>---E<gt>  C<state_Procedure> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State C<0..1>
+=head2 C<0..1> : C<exit> E<lt>---E<gt>  C<state_exit> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State C<0..1>
 
 
 
@@ -538,36 +538,36 @@ sub __tangram_schema
 
                                                                                }
       ,
-                  	 	       'state_Procedure'
+                  	 	       'state_doActivity'
        => {
 	 'type_impl' => 'ref',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State',
 
                   'null' => '1', 
 
-                                    'col' => 'state_Procedure', 
+                                    'col' => 'state_doActivity', 
 
                                                                                                                    }
       ,
-                  	 	       'state_Procedure'
+                  	 	       'state_entry'
        => {
 	 'type_impl' => 'ref',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State',
 
                   'null' => '1', 
 
-                                    'col' => 'state_Procedure', 
+                                    'col' => 'state_entry', 
 
                                                                                                                    }
       ,
-                  	 	       'state_Procedure'
+                  	 	       'state_exit'
        => {
 	 'type_impl' => 'ref',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State',
 
                   'null' => '1', 
 
-                                    'col' => 'state_Procedure', 
+                                    'col' => 'state_exit', 
 
                                                                                                                    }
       ,
@@ -702,31 +702,31 @@ sub ___initialize
   # AssociationEnd 
   #  doActivity 0..1
   #  <--> 
-  #  state_Procedure 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State.
-    if ( defined $self->{'state_Procedure'} ) {
-    my $x = $self->{'state_Procedure'};
-    $self->{'state_Procedure'} = undef;
-    $self->set_state_Procedure($x);
-  }
-  
-  # AssociationEnd 
-  #  exit 0..1
-  #  <--> 
-  #  state_Procedure 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State.
-    if ( defined $self->{'state_Procedure'} ) {
-    my $x = $self->{'state_Procedure'};
-    $self->{'state_Procedure'} = undef;
-    $self->set_state_Procedure($x);
+  #  state_doActivity 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State.
+    if ( defined $self->{'state_doActivity'} ) {
+    my $x = $self->{'state_doActivity'};
+    $self->{'state_doActivity'} = undef;
+    $self->set_state_doActivity($x);
   }
   
   # AssociationEnd 
   #  entry 0..1
   #  <--> 
-  #  state_Procedure 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State.
-    if ( defined $self->{'state_Procedure'} ) {
-    my $x = $self->{'state_Procedure'};
-    $self->{'state_Procedure'} = undef;
-    $self->set_state_Procedure($x);
+  #  state_entry 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State.
+    if ( defined $self->{'state_entry'} ) {
+    my $x = $self->{'state_entry'};
+    $self->{'state_entry'} = undef;
+    $self->set_state_entry($x);
+  }
+  
+  # AssociationEnd 
+  #  exit 0..1
+  #  <--> 
+  #  state_exit 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State.
+    if ( defined $self->{'state_exit'} ) {
+    my $x = $self->{'state_exit'};
+    $self->{'state_exit'} = undef;
+    $self->set_state_exit($x);
   }
   
   # AssociationEnd 
@@ -1433,48 +1433,48 @@ sub count_method ($)
 =cut
 
 #################################################################
-# AssociationEnd doActivity <---> state_Procedure
+# AssociationEnd doActivity <---> state_doActivity
 # type = UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State
 # multiplicity = 0..1
 # ordering = 
 
-=head2 C<state_Procedure>
+=head2 C<state_doActivity>
 
-  my $val = $obj->state_Procedure;
+  my $val = $obj->state_doActivity;
 
-Returns the AssociationEnd C<state_Procedure> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
+Returns the AssociationEnd C<state_doActivity> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 
 =cut
-sub state_Procedure ($)
+sub state_doActivity ($)
 {
   my ($self) = @_;
 		  
-  $self->{'state_Procedure'};
+  $self->{'state_doActivity'};
 }
 
 
-=head2 C<set_state_Procedure>
+=head2 C<set_state_doActivity>
 
-  $obj->set_state_Procedure($val);
+  $obj->set_state_doActivity($val);
 
-Sets the AssociationEnd C<state_Procedure> value.
+Sets the AssociationEnd C<state_doActivity> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Returns C<$obj>.
 
 =cut
-sub set_state_Procedure ($$)
+sub set_state_doActivity ($$)
 {
   my ($self, $val) = @_;
 		  
   no warnings; # Use of uninitialized value in string ne at ...
 		  
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) ne $val ) { # Recursion lock
+  if ( ($old = $self->{'state_doActivity'}) ne $val ) { # Recursion lock
 
-    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_Procedure") }
+    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_doActivity") }
 
     # Recursion lock
-        $self->{'state_Procedure'} = $val
+        $self->{'state_doActivity'} = $val
     ;
 
     # Remove and add associations with other ends.
@@ -1488,31 +1488,31 @@ sub set_state_Procedure ($$)
 }
 
 
-=head2 C<add_state_Procedure>
+=head2 C<add_state_doActivity>
 
-  $obj->add_state_Procedure($val);
+  $obj->add_state_doActivity($val);
 
-Adds the AssociationEnd C<state_Procedure> value.
+Adds the AssociationEnd C<state_doActivity> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Throws exception if a value already exists.
 Returns C<$obj>.
 
 =cut
-sub add_state_Procedure ($$)
+sub add_state_doActivity ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) ne $val ) { # Recursion lock
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_Procedure");
+  if ( ($old = $self->{'state_doActivity'}) ne $val ) { # Recursion lock
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_doActivity");
       
-    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure::state_Procedure: too many")
-    # if defined $self->{'state_Procedure'};
+    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure::state_doActivity: too many")
+    # if defined $self->{'state_doActivity'};
 
     # Recursion lock
-        $self->{'state_Procedure'} = $val
+        $self->{'state_doActivity'} = $val
     ;
 
     # Remove and add associations with other ends.
@@ -1527,23 +1527,23 @@ sub add_state_Procedure ($$)
 }
 
 
-=head2 C<remove_state_Procedure>
+=head2 C<remove_state_doActivity>
 
-  $obj->remove_state_Procedure($val);
+  $obj->remove_state_doActivity($val);
 
-Removes the AssociationEnd C<state_Procedure> value C<$val>.
+Removes the AssociationEnd C<state_doActivity> value C<$val>.
 Returns C<$obj>.
 
 =cut
-sub remove_state_Procedure ($$)
+sub remove_state_doActivity ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) eq $val ) { # Recursion lock
-    $val = $self->{'state_Procedure'} = undef;         # Recursion lock
+  if ( ($old = $self->{'state_doActivity'}) eq $val ) { # Recursion lock
+    $val = $self->{'state_doActivity'} = undef;         # Recursion lock
 
     # Remove and add associations with other ends.
         
@@ -1555,21 +1555,21 @@ sub remove_state_Procedure ($$)
 }
 
 
-=head2 C<clear_state_Procedure>
+=head2 C<clear_state_doActivity>
 
-  $obj->clear_state_Procedure;
+  $obj->clear_state_doActivity;
 
-Clears the AssociationEnd C<state_Procedure> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
+Clears the AssociationEnd C<state_doActivity> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Returns C<$obj>.
 
 =cut
-sub clear_state_Procedure ($@)
+sub clear_state_doActivity ($@)
 {
   my ($self) = @_;
 
   my $old;
-  if ( defined ($old = $self->{'state_Procedure'}) ) { # Recursion lock
-    my $val = $self->{'state_Procedure'} = undef;      # Recursion lock
+  if ( defined ($old = $self->{'state_doActivity'}) ) { # Recursion lock
+    my $val = $self->{'state_doActivity'} = undef;      # Recursion lock
 
     # Remove and add associations with other ends.
         
@@ -1582,18 +1582,18 @@ sub clear_state_Procedure ($@)
 }
 
 
-=head2 C<count_state_Procedure>
+=head2 C<count_state_doActivity>
 
-  $obj->count_state_Procedure;
+  $obj->count_state_doActivity;
 
-Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State> associated with C<state_Procedure>.
+Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State> associated with C<state_doActivity>.
 
 =cut
-sub count_state_Procedure ($)
+sub count_state_doActivity ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'state_Procedure'};
+  my $x = $self->{'state_doActivity'};
 
   defined $x ? 1 : 0;
 }
@@ -1606,54 +1606,54 @@ sub count_state_Procedure ($)
 =cut
 
 #################################################################
-# AssociationEnd exit <---> state_Procedure
+# AssociationEnd entry <---> state_entry
 # type = UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State
 # multiplicity = 0..1
 # ordering = 
 
-=head2 C<state_Procedure>
+=head2 C<state_entry>
 
-  my $val = $obj->state_Procedure;
+  my $val = $obj->state_entry;
 
-Returns the AssociationEnd C<state_Procedure> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
+Returns the AssociationEnd C<state_entry> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 
 =cut
-sub state_Procedure ($)
+sub state_entry ($)
 {
   my ($self) = @_;
 		  
-  $self->{'state_Procedure'};
+  $self->{'state_entry'};
 }
 
 
-=head2 C<set_state_Procedure>
+=head2 C<set_state_entry>
 
-  $obj->set_state_Procedure($val);
+  $obj->set_state_entry($val);
 
-Sets the AssociationEnd C<state_Procedure> value.
+Sets the AssociationEnd C<state_entry> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Returns C<$obj>.
 
 =cut
-sub set_state_Procedure ($$)
+sub set_state_entry ($$)
 {
   my ($self, $val) = @_;
 		  
   no warnings; # Use of uninitialized value in string ne at ...
 		  
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) ne $val ) { # Recursion lock
+  if ( ($old = $self->{'state_entry'}) ne $val ) { # Recursion lock
 
-    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_Procedure") }
+    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_entry") }
 
     # Recursion lock
-        $self->{'state_Procedure'} = $val
+        $self->{'state_entry'} = $val
     ;
 
     # Remove and add associations with other ends.
         
-    $old->remove_exit($self) if $old;
-    $val->add_exit($self)    if $val;
+    $old->remove_entry($self) if $old;
+    $val->add_entry($self)    if $val;
 
     }
 		  
@@ -1661,37 +1661,37 @@ sub set_state_Procedure ($$)
 }
 
 
-=head2 C<add_state_Procedure>
+=head2 C<add_state_entry>
 
-  $obj->add_state_Procedure($val);
+  $obj->add_state_entry($val);
 
-Adds the AssociationEnd C<state_Procedure> value.
+Adds the AssociationEnd C<state_entry> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Throws exception if a value already exists.
 Returns C<$obj>.
 
 =cut
-sub add_state_Procedure ($$)
+sub add_state_entry ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) ne $val ) { # Recursion lock
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_Procedure");
+  if ( ($old = $self->{'state_entry'}) ne $val ) { # Recursion lock
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_entry");
       
-    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure::state_Procedure: too many")
-    # if defined $self->{'state_Procedure'};
+    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure::state_entry: too many")
+    # if defined $self->{'state_entry'};
 
     # Recursion lock
-        $self->{'state_Procedure'} = $val
+        $self->{'state_entry'} = $val
     ;
 
     # Remove and add associations with other ends.
         
-    $old->remove_exit($self) if $old;
-    $val->add_exit($self)    if $val;
+    $old->remove_entry($self) if $old;
+    $val->add_entry($self)    if $val;
 
   
   }
@@ -1700,54 +1700,54 @@ sub add_state_Procedure ($$)
 }
 
 
-=head2 C<remove_state_Procedure>
+=head2 C<remove_state_entry>
 
-  $obj->remove_state_Procedure($val);
+  $obj->remove_state_entry($val);
 
-Removes the AssociationEnd C<state_Procedure> value C<$val>.
+Removes the AssociationEnd C<state_entry> value C<$val>.
 Returns C<$obj>.
 
 =cut
-sub remove_state_Procedure ($$)
+sub remove_state_entry ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) eq $val ) { # Recursion lock
-    $val = $self->{'state_Procedure'} = undef;         # Recursion lock
+  if ( ($old = $self->{'state_entry'}) eq $val ) { # Recursion lock
+    $val = $self->{'state_entry'} = undef;         # Recursion lock
 
     # Remove and add associations with other ends.
         
-    $old->remove_exit($self) if $old;
-    $val->add_exit($self)    if $val;
+    $old->remove_entry($self) if $old;
+    $val->add_entry($self)    if $val;
 
   
   }
 }
 
 
-=head2 C<clear_state_Procedure>
+=head2 C<clear_state_entry>
 
-  $obj->clear_state_Procedure;
+  $obj->clear_state_entry;
 
-Clears the AssociationEnd C<state_Procedure> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
+Clears the AssociationEnd C<state_entry> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Returns C<$obj>.
 
 =cut
-sub clear_state_Procedure ($@)
+sub clear_state_entry ($@)
 {
   my ($self) = @_;
 
   my $old;
-  if ( defined ($old = $self->{'state_Procedure'}) ) { # Recursion lock
-    my $val = $self->{'state_Procedure'} = undef;      # Recursion lock
+  if ( defined ($old = $self->{'state_entry'}) ) { # Recursion lock
+    my $val = $self->{'state_entry'} = undef;      # Recursion lock
 
     # Remove and add associations with other ends.
         
-    $old->remove_exit($self) if $old;
-    $val->add_exit($self)    if $val;
+    $old->remove_entry($self) if $old;
+    $val->add_entry($self)    if $val;
 
     }
 
@@ -1755,18 +1755,18 @@ sub clear_state_Procedure ($@)
 }
 
 
-=head2 C<count_state_Procedure>
+=head2 C<count_state_entry>
 
-  $obj->count_state_Procedure;
+  $obj->count_state_entry;
 
-Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State> associated with C<state_Procedure>.
+Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State> associated with C<state_entry>.
 
 =cut
-sub count_state_Procedure ($)
+sub count_state_entry ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'state_Procedure'};
+  my $x = $self->{'state_entry'};
 
   defined $x ? 1 : 0;
 }
@@ -1779,54 +1779,54 @@ sub count_state_Procedure ($)
 =cut
 
 #################################################################
-# AssociationEnd entry <---> state_Procedure
+# AssociationEnd exit <---> state_exit
 # type = UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State
 # multiplicity = 0..1
 # ordering = 
 
-=head2 C<state_Procedure>
+=head2 C<state_exit>
 
-  my $val = $obj->state_Procedure;
+  my $val = $obj->state_exit;
 
-Returns the AssociationEnd C<state_Procedure> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
+Returns the AssociationEnd C<state_exit> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 
 =cut
-sub state_Procedure ($)
+sub state_exit ($)
 {
   my ($self) = @_;
 		  
-  $self->{'state_Procedure'};
+  $self->{'state_exit'};
 }
 
 
-=head2 C<set_state_Procedure>
+=head2 C<set_state_exit>
 
-  $obj->set_state_Procedure($val);
+  $obj->set_state_exit($val);
 
-Sets the AssociationEnd C<state_Procedure> value.
+Sets the AssociationEnd C<state_exit> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Returns C<$obj>.
 
 =cut
-sub set_state_Procedure ($$)
+sub set_state_exit ($$)
 {
   my ($self, $val) = @_;
 		  
   no warnings; # Use of uninitialized value in string ne at ...
 		  
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) ne $val ) { # Recursion lock
+  if ( ($old = $self->{'state_exit'}) ne $val ) { # Recursion lock
 
-    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_Procedure") }
+    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_exit") }
 
     # Recursion lock
-        $self->{'state_Procedure'} = $val
+        $self->{'state_exit'} = $val
     ;
 
     # Remove and add associations with other ends.
         
-    $old->remove_entry($self) if $old;
-    $val->add_entry($self)    if $val;
+    $old->remove_exit($self) if $old;
+    $val->add_exit($self)    if $val;
 
     }
 		  
@@ -1834,37 +1834,37 @@ sub set_state_Procedure ($$)
 }
 
 
-=head2 C<add_state_Procedure>
+=head2 C<add_state_exit>
 
-  $obj->add_state_Procedure($val);
+  $obj->add_state_exit($val);
 
-Adds the AssociationEnd C<state_Procedure> value.
+Adds the AssociationEnd C<state_exit> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Throws exception if a value already exists.
 Returns C<$obj>.
 
 =cut
-sub add_state_Procedure ($$)
+sub add_state_exit ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) ne $val ) { # Recursion lock
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_Procedure");
+  if ( ($old = $self->{'state_exit'}) ne $val ) { # Recursion lock
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure.state_exit");
       
-    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure::state_Procedure: too many")
-    # if defined $self->{'state_Procedure'};
+    # confess("UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Procedure::state_exit: too many")
+    # if defined $self->{'state_exit'};
 
     # Recursion lock
-        $self->{'state_Procedure'} = $val
+        $self->{'state_exit'} = $val
     ;
 
     # Remove and add associations with other ends.
         
-    $old->remove_entry($self) if $old;
-    $val->add_entry($self)    if $val;
+    $old->remove_exit($self) if $old;
+    $val->add_exit($self)    if $val;
 
   
   }
@@ -1873,54 +1873,54 @@ sub add_state_Procedure ($$)
 }
 
 
-=head2 C<remove_state_Procedure>
+=head2 C<remove_state_exit>
 
-  $obj->remove_state_Procedure($val);
+  $obj->remove_state_exit($val);
 
-Removes the AssociationEnd C<state_Procedure> value C<$val>.
+Removes the AssociationEnd C<state_exit> value C<$val>.
 Returns C<$obj>.
 
 =cut
-sub remove_state_Procedure ($$)
+sub remove_state_exit ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'state_Procedure'}) eq $val ) { # Recursion lock
-    $val = $self->{'state_Procedure'} = undef;         # Recursion lock
+  if ( ($old = $self->{'state_exit'}) eq $val ) { # Recursion lock
+    $val = $self->{'state_exit'} = undef;         # Recursion lock
 
     # Remove and add associations with other ends.
         
-    $old->remove_entry($self) if $old;
-    $val->add_entry($self)    if $val;
+    $old->remove_exit($self) if $old;
+    $val->add_exit($self)    if $val;
 
   
   }
 }
 
 
-=head2 C<clear_state_Procedure>
+=head2 C<clear_state_exit>
 
-  $obj->clear_state_Procedure;
+  $obj->clear_state_exit;
 
-Clears the AssociationEnd C<state_Procedure> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
+Clears the AssociationEnd C<state_exit> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State>.
 Returns C<$obj>.
 
 =cut
-sub clear_state_Procedure ($@)
+sub clear_state_exit ($@)
 {
   my ($self) = @_;
 
   my $old;
-  if ( defined ($old = $self->{'state_Procedure'}) ) { # Recursion lock
-    my $val = $self->{'state_Procedure'} = undef;      # Recursion lock
+  if ( defined ($old = $self->{'state_exit'}) ) { # Recursion lock
+    my $val = $self->{'state_exit'} = undef;      # Recursion lock
 
     # Remove and add associations with other ends.
         
-    $old->remove_entry($self) if $old;
-    $val->add_entry($self)    if $val;
+    $old->remove_exit($self) if $old;
+    $val->add_exit($self)    if $val;
 
     }
 
@@ -1928,18 +1928,18 @@ sub clear_state_Procedure ($@)
 }
 
 
-=head2 C<count_state_Procedure>
+=head2 C<count_state_exit>
 
-  $obj->count_state_Procedure;
+  $obj->count_state_exit;
 
-Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State> associated with C<state_Procedure>.
+Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::State> associated with C<state_exit>.
 
 =cut
-sub count_state_Procedure ($)
+sub count_state_exit ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'state_Procedure'};
+  my $x = $self->{'state_exit'};
 
   defined $x ? 1 : 0;
 }

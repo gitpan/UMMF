@@ -6,7 +6,7 @@ use warnings;
 
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/10/20 };
-our $VERSION = do { my @r = (q$Revision: 1.4 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.5 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -42,7 +42,7 @@ L<lib/ummf/profile/*.ummfprofile>
 
 =head1 VERSION
 
-$Revision: 1.4 $
+$Revision: 1.5 $
 
 =head1 METHODS
 
@@ -105,6 +105,8 @@ sub _profile
     }
     elsif ( $profile ) {
       $profile = [ split(/\s+|\s*,\s*/, $profile) ] unless ref($profile);
+
+      print STDERR "Profile: using profile @$profile\n";
 
       $profile = join("\n",
 		      map(qq{[% PROCESS "$_.ummfprofile" %]},

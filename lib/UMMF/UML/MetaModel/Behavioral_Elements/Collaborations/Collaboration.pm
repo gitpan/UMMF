@@ -41,9 +41,9 @@ L<UMMF::UML::MetaModel::Foundation::Core::Class|UMMF::UML::MetaModel::Foundation
 
 =head1 SUPERCLASSES
 
-L<UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement|UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement>
-
 L<UMMF::UML::MetaModel::Foundation::Core::Namespace|UMMF::UML::MetaModel::Foundation::Core::Namespace>
+
+L<UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement|UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement>
 
 
 
@@ -56,7 +56,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..1> : C<collaboration> E<lt>---E<gt>  C<collaborationInstanceSet_Collaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet C<0..*>
+=head2 C<0..1> : C<collaboration> E<lt>---E<gt>  C<collaborationInstanceSet_collaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet C<0..*>
 
 
 
@@ -85,7 +85,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<usedCollaboration> E<lt>---E<gt>  C<collaboration_Collaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
+=head2 C<0..*> : C<usedCollaboration> E<lt>---E<gt>  C<collaboration_usedCollaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
 
 
 
@@ -114,7 +114,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaboration_ModelElement> E<lt>---E<gt>  C<constrainingElement> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..*>
+=head2 C<0..*> : C<collaboration_constrainingElement> E<lt>---E<gt>  C<constrainingElement> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..*>
 
 
 
@@ -172,7 +172,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaboration_Classifier> E<lt>---E<gt>  C<representedClassifier> : UMMF::UML::MetaModel::Foundation::Core::Classifier C<0..1>
+=head2 C<0..*> : C<collaboration_representedClassifier> E<lt>---E<gt>  C<representedClassifier> : UMMF::UML::MetaModel::Foundation::Core::Classifier C<0..1>
 
 
 
@@ -201,7 +201,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaboration_Operation> E<lt>---E<gt>  C<representedOperation> : UMMF::UML::MetaModel::Foundation::Core::Operation C<0..1>
+=head2 C<0..*> : C<collaboration_representedOperation> E<lt>---E<gt>  C<representedOperation> : UMMF::UML::MetaModel::Foundation::Core::Operation C<0..1>
 
 
 
@@ -230,7 +230,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaboration_Collaboration> E<lt>---E<gt>  C<usedCollaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
+=head2 C<0..*> : C<collaboration_usedCollaboration> E<lt>---E<gt>  C<usedCollaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..*>
 
 
 
@@ -287,7 +287,7 @@ use UMMF::UML::MetaModel::__ObjectBase qw(:__ummf_array);
 #
 
 use base qw(
-  UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement  UMMF::UML::MetaModel::Foundation::Core::Namespace
+  UMMF::UML::MetaModel::Foundation::Core::Namespace  UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement
 
 
 
@@ -418,25 +418,25 @@ sub __tangram_schema
 	 # Attributes
 	 
 	 # Associations
-	 	 	       'collaborationInstanceSet_Collaboration'
+	 	 	       'collaborationInstanceSet_collaboration'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet',
 
-                           'table' => 'Behavioral_Elements__Collaborations__Collaboration__collaborationInstanceSet_Collaboration', 
+                           'table' => 'Behavioral_Elements__Collaborations__Collaboration__collaborationInstanceSet_collaboration', 
 
                                                                'coll' => 'collaboration',
 
                                                                                }
       ,
-                  	 	       'collaboration_Collaboration'
+                  	 	       'collaboration_usedCollaboration'
        => {
 	 'type_impl' => 'set',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration',
 
                            'table' => 'Behavioral_Elements__Collaborations__Collaboration__Collaboration_UsedCollaboration', 
 
-                                                      'item' => 'collaboration_Collaboration', 
+                                                      'item' => 'collaboration_usedCollaboration', 
 
                   'coll' => 'usedCollaboration',
 
@@ -451,7 +451,7 @@ sub __tangram_schema
 
                                                       'item' => 'constrainingElement', 
 
-                  'coll' => 'collaboration_ModelElement',
+                  'coll' => 'collaboration_constrainingElement',
 
                                                                                }
       ,
@@ -499,12 +499,12 @@ sub __tangram_schema
 
                                                       'item' => 'usedCollaboration', 
 
-                  'coll' => 'collaboration_Collaboration',
+                  'coll' => 'collaboration_usedCollaboration',
 
                                                                                }
       ,
                          },
-       'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement',  'UMMF::UML::MetaModel::Foundation::Core::Namespace',  ],
+       'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::Namespace',  'UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement',  ],
        'sql' => {
 
        },
@@ -568,25 +568,25 @@ sub ___initialize
   # AssociationEnd 
   #  collaboration 0..1
   #  <--> 
-  #  collaborationInstanceSet_Collaboration 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet.
-    if ( defined $self->{'collaborationInstanceSet_Collaboration'} ) {
-    my $x = $self->{'collaborationInstanceSet_Collaboration'};
-        $self->{'collaborationInstanceSet_Collaboration'} = Set::Object->new();
-        $self->set_collaborationInstanceSet_Collaboration(@$x);
+  #  collaborationInstanceSet_collaboration 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet.
+    if ( defined $self->{'collaborationInstanceSet_collaboration'} ) {
+    my $x = $self->{'collaborationInstanceSet_collaboration'};
+        $self->{'collaborationInstanceSet_collaboration'} = Set::Object->new();
+        $self->set_collaborationInstanceSet_collaboration(@$x);
   }
   
   # AssociationEnd 
   #  usedCollaboration 0..*
   #  <--> 
-  #  collaboration_Collaboration 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
-    if ( defined $self->{'collaboration_Collaboration'} ) {
-    my $x = $self->{'collaboration_Collaboration'};
-        $self->{'collaboration_Collaboration'} = Set::Object->new();
-        $self->set_collaboration_Collaboration(@$x);
+  #  collaboration_usedCollaboration 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
+    if ( defined $self->{'collaboration_usedCollaboration'} ) {
+    my $x = $self->{'collaboration_usedCollaboration'};
+        $self->{'collaboration_usedCollaboration'} = Set::Object->new();
+        $self->set_collaboration_usedCollaboration(@$x);
   }
   
   # AssociationEnd 
-  #  collaboration_ModelElement 0..*
+  #  collaboration_constrainingElement 0..*
   #  <--> 
   #  constrainingElement 0..* UMMF::UML::MetaModel::Foundation::Core::ModelElement.
     if ( defined $self->{'constrainingElement'} ) {
@@ -606,7 +606,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  collaboration_Classifier 0..*
+  #  collaboration_representedClassifier 0..*
   #  <--> 
   #  representedClassifier 0..1 UMMF::UML::MetaModel::Foundation::Core::Classifier.
     if ( defined $self->{'representedClassifier'} ) {
@@ -616,7 +616,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  collaboration_Operation 0..*
+  #  collaboration_representedOperation 0..*
   #  <--> 
   #  representedOperation 0..1 UMMF::UML::MetaModel::Foundation::Core::Operation.
     if ( defined $self->{'representedOperation'} ) {
@@ -626,7 +626,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  collaboration_Collaboration 0..*
+  #  collaboration_usedCollaboration 0..*
   #  <--> 
   #  usedCollaboration 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
     if ( defined $self->{'usedCollaboration'} ) {
@@ -657,17 +657,17 @@ sub __initialize
 
   unless ( ! $__initialize_use ) {
     $__initialize_use = 1;
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::Element');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::ModelElement');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
   }
 
   $self->UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
 
   $self;
 }
@@ -686,10 +686,10 @@ sub __create
 
   # $DB::single = 1;
   $self->UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration::___create(@args);
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::Element::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
 
   $self;
 }
@@ -714,72 +714,72 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd collaboration <---> collaborationInstanceSet_Collaboration
+# AssociationEnd collaboration <---> collaborationInstanceSet_collaboration
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<collaborationInstanceSet_Collaboration>
+=head2 C<collaborationInstanceSet_collaboration>
 
-  my @val = $obj->collaborationInstanceSet_Collaboration;
-  my $ary_val = $obj->collaborationInstanceSet_Collaboration;
+  my @val = $obj->collaborationInstanceSet_collaboration;
+  my $ary_val = $obj->collaborationInstanceSet_collaboration;
 
-Returns the AssociationEnd C<collaborationInstanceSet_Collaboration> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
+Returns the AssociationEnd C<collaborationInstanceSet_collaboration> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub collaborationInstanceSet_Collaboration ($)
+sub collaborationInstanceSet_collaboration ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'collaborationInstanceSet_Collaboration'};
+    my $x = $self->{'collaborationInstanceSet_collaboration'};
 
-  # confess("Container for collaborationInstanceSet_Collaboration $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for collaborationInstanceSet_collaboration $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_collaborationInstanceSet_Collaboration>
+=head2 C<set_collaborationInstanceSet_collaboration>
 
-  $obj->set_collaborationInstanceSet_Collaboration(@val);
+  $obj->set_collaborationInstanceSet_collaboration(@val);
 
-Sets the AssociationEnd C<collaborationInstanceSet_Collaboration> value.
+Sets the AssociationEnd C<collaborationInstanceSet_collaboration> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub set_collaborationInstanceSet_Collaboration ($@)
+sub set_collaborationInstanceSet_collaboration ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_collaborationInstanceSet_Collaboration;
-  $self->add_collaborationInstanceSet_Collaboration(@val);
+  $self->clear_collaborationInstanceSet_collaboration;
+  $self->add_collaborationInstanceSet_collaboration(@val);
 }
 
 
-=head2 C<add_collaborationInstanceSet_Collaboration>
+=head2 C<add_collaborationInstanceSet_collaboration>
 
-  $obj->add_collaborationInstanceSet_Collaboration(@val);
+  $obj->add_collaborationInstanceSet_collaboration(@val);
 
-Adds AssociationEnd C<collaborationInstanceSet_Collaboration> values.
+Adds AssociationEnd C<collaborationInstanceSet_collaboration> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub add_collaborationInstanceSet_Collaboration ($@)
+sub add_collaborationInstanceSet_collaboration ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_Collaboration'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_collaboration'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaborationInstanceSet_Collaboration");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaborationInstanceSet_collaboration");
 
     # Recursion lock
         $x->insert($val);
@@ -796,20 +796,20 @@ sub add_collaborationInstanceSet_Collaboration ($@)
 }
 
 
-=head2 C<remove_collaborationInstanceSet_Collaboration>
+=head2 C<remove_collaborationInstanceSet_collaboration>
 
-  $obj->remove_collaborationInstanceSet_Collaboration(@val);
+  $obj->remove_collaborationInstanceSet_collaboration(@val);
 
-Removes the AssociationEnd C<collaborationInstanceSet_Collaboration> values C<@val>.
+Removes the AssociationEnd C<collaborationInstanceSet_collaboration> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub remove_collaborationInstanceSet_Collaboration ($@)
+sub remove_collaborationInstanceSet_collaboration ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_Collaboration'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_collaboration'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -817,7 +817,7 @@ sub remove_collaborationInstanceSet_Collaboration ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaborationInstanceSet_Collaboration");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaborationInstanceSet_collaboration");
 
     # Recursion lock
         $x->remove($old);
@@ -838,23 +838,23 @@ sub remove_collaborationInstanceSet_Collaboration ($@)
 }
 
 
-=head2 C<clear_collaborationInstanceSet_Collaboration>
+=head2 C<clear_collaborationInstanceSet_collaboration>
 
-  $obj->clear_collaborationInstanceSet_Collaboration;
+  $obj->clear_collaborationInstanceSet_collaboration;
 
-Clears the AssociationEnd C<collaborationInstanceSet_Collaboration> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
+Clears the AssociationEnd C<collaborationInstanceSet_collaboration> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::CollaborationInstanceSet>.
 Returns C<$obj>.
 
 =cut
-sub clear_collaborationInstanceSet_Collaboration ($) 
+sub clear_collaborationInstanceSet_collaboration ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'collaborationInstanceSet_Collaboration'} ||= Set::Object->new();
+    my $x = $self->{'collaborationInstanceSet_collaboration'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'collaborationInstanceSet_Collaboration'} = Set::Object->new(); # Recursion lock
+    $self->{'collaborationInstanceSet_collaboration'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -871,18 +871,18 @@ sub clear_collaborationInstanceSet_Collaboration ($)
 }
 
 
-=head2 C<count_collaborationInstanceSet_Collaboration>
+=head2 C<count_collaborationInstanceSet_collaboration>
 
-  $obj->count_collaborationInstanceSet_Collaboration;
+  $obj->count_collaborationInstanceSet_collaboration;
 
-Returns the number of elements associated with C<collaborationInstanceSet_Collaboration>.
+Returns the number of elements associated with C<collaborationInstanceSet_collaboration>.
 
 =cut
-sub count_collaborationInstanceSet_Collaboration ($)
+sub count_collaborationInstanceSet_collaboration ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'collaborationInstanceSet_Collaboration'};
+  my $x = $self->{'collaborationInstanceSet_collaboration'};
 
     defined $x ? $x->size : 0;
   }
@@ -895,72 +895,72 @@ sub count_collaborationInstanceSet_Collaboration ($)
 =cut
 
 #################################################################
-# AssociationEnd usedCollaboration <---> collaboration_Collaboration
+# AssociationEnd usedCollaboration <---> collaboration_usedCollaboration
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<collaboration_Collaboration>
+=head2 C<collaboration_usedCollaboration>
 
-  my @val = $obj->collaboration_Collaboration;
-  my $ary_val = $obj->collaboration_Collaboration;
+  my @val = $obj->collaboration_usedCollaboration;
+  my $ary_val = $obj->collaboration_usedCollaboration;
 
-Returns the AssociationEnd C<collaboration_Collaboration> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
+Returns the AssociationEnd C<collaboration_usedCollaboration> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub collaboration_Collaboration ($)
+sub collaboration_usedCollaboration ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'collaboration_Collaboration'};
+    my $x = $self->{'collaboration_usedCollaboration'};
 
-  # confess("Container for collaboration_Collaboration $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for collaboration_usedCollaboration $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_collaboration_Collaboration>
+=head2 C<set_collaboration_usedCollaboration>
 
-  $obj->set_collaboration_Collaboration(@val);
+  $obj->set_collaboration_usedCollaboration(@val);
 
-Sets the AssociationEnd C<collaboration_Collaboration> value.
+Sets the AssociationEnd C<collaboration_usedCollaboration> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub set_collaboration_Collaboration ($@)
+sub set_collaboration_usedCollaboration ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_collaboration_Collaboration;
-  $self->add_collaboration_Collaboration(@val);
+  $self->clear_collaboration_usedCollaboration;
+  $self->add_collaboration_usedCollaboration(@val);
 }
 
 
-=head2 C<add_collaboration_Collaboration>
+=head2 C<add_collaboration_usedCollaboration>
 
-  $obj->add_collaboration_Collaboration(@val);
+  $obj->add_collaboration_usedCollaboration(@val);
 
-Adds AssociationEnd C<collaboration_Collaboration> values.
+Adds AssociationEnd C<collaboration_usedCollaboration> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub add_collaboration_Collaboration ($@)
+sub add_collaboration_usedCollaboration ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaboration_Collaboration'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_usedCollaboration'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaboration_Collaboration");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaboration_usedCollaboration");
 
     # Recursion lock
         $x->insert($val);
@@ -977,20 +977,20 @@ sub add_collaboration_Collaboration ($@)
 }
 
 
-=head2 C<remove_collaboration_Collaboration>
+=head2 C<remove_collaboration_usedCollaboration>
 
-  $obj->remove_collaboration_Collaboration(@val);
+  $obj->remove_collaboration_usedCollaboration(@val);
 
-Removes the AssociationEnd C<collaboration_Collaboration> values C<@val>.
+Removes the AssociationEnd C<collaboration_usedCollaboration> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub remove_collaboration_Collaboration ($@)
+sub remove_collaboration_usedCollaboration ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'collaboration_Collaboration'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_usedCollaboration'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -998,7 +998,7 @@ sub remove_collaboration_Collaboration ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaboration_Collaboration");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.collaboration_usedCollaboration");
 
     # Recursion lock
         $x->remove($old);
@@ -1019,23 +1019,23 @@ sub remove_collaboration_Collaboration ($@)
 }
 
 
-=head2 C<clear_collaboration_Collaboration>
+=head2 C<clear_collaboration_usedCollaboration>
 
-  $obj->clear_collaboration_Collaboration;
+  $obj->clear_collaboration_usedCollaboration;
 
-Clears the AssociationEnd C<collaboration_Collaboration> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
+Clears the AssociationEnd C<collaboration_usedCollaboration> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration>.
 Returns C<$obj>.
 
 =cut
-sub clear_collaboration_Collaboration ($) 
+sub clear_collaboration_usedCollaboration ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'collaboration_Collaboration'} ||= Set::Object->new();
+    my $x = $self->{'collaboration_usedCollaboration'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'collaboration_Collaboration'} = Set::Object->new(); # Recursion lock
+    $self->{'collaboration_usedCollaboration'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -1052,18 +1052,18 @@ sub clear_collaboration_Collaboration ($)
 }
 
 
-=head2 C<count_collaboration_Collaboration>
+=head2 C<count_collaboration_usedCollaboration>
 
-  $obj->count_collaboration_Collaboration;
+  $obj->count_collaboration_usedCollaboration;
 
-Returns the number of elements associated with C<collaboration_Collaboration>.
+Returns the number of elements associated with C<collaboration_usedCollaboration>.
 
 =cut
-sub count_collaboration_Collaboration ($)
+sub count_collaboration_usedCollaboration ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'collaboration_Collaboration'};
+  my $x = $self->{'collaboration_usedCollaboration'};
 
     defined $x ? $x->size : 0;
   }
@@ -1076,7 +1076,7 @@ sub count_collaboration_Collaboration ($)
 =cut
 
 #################################################################
-# AssociationEnd collaboration_ModelElement <---> constrainingElement
+# AssociationEnd collaboration_constrainingElement <---> constrainingElement
 # type = UMMF::UML::MetaModel::Foundation::Core::ModelElement
 # multiplicity = 0..*
 # ordering = 
@@ -1149,8 +1149,8 @@ sub add_constrainingElement ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_ModelElement($self) if $old;
-    $val->add_collaboration_ModelElement($self)    if $val;
+    $old->remove_collaboration_constrainingElement($self) if $old;
+    $val->add_collaboration_constrainingElement($self)    if $val;
 
     }
   
@@ -1189,8 +1189,8 @@ sub remove_constrainingElement ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_collaboration_ModelElement($self) if $old;
-    $val->add_collaboration_ModelElement($self)    if $val;
+    $old->remove_collaboration_constrainingElement($self) if $old;
+    $val->add_collaboration_constrainingElement($self)    if $val;
 
   ;
 
@@ -1222,8 +1222,8 @@ sub clear_constrainingElement ($)
     # Remove associations with other ends.
 
         
-    $old->remove_collaboration_ModelElement($self) if $old;
-    $val->add_collaboration_ModelElement($self)    if $val;
+    $old->remove_collaboration_constrainingElement($self) if $old;
+    $val->add_collaboration_constrainingElement($self)    if $val;
 
   ;
 
@@ -1438,7 +1438,7 @@ sub count_interaction ($)
 =cut
 
 #################################################################
-# AssociationEnd collaboration_Classifier <---> representedClassifier
+# AssociationEnd collaboration_representedClassifier <---> representedClassifier
 # type = UMMF::UML::MetaModel::Foundation::Core::Classifier
 # multiplicity = 0..1
 # ordering = 
@@ -1484,8 +1484,8 @@ sub set_representedClassifier ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Classifier($self) if $old;
-    $val->add_collaboration_Classifier($self)    if $val;
+    $old->remove_collaboration_representedClassifier($self) if $old;
+    $val->add_collaboration_representedClassifier($self)    if $val;
 
     }
 		  
@@ -1522,8 +1522,8 @@ sub add_representedClassifier ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Classifier($self) if $old;
-    $val->add_collaboration_Classifier($self)    if $val;
+    $old->remove_collaboration_representedClassifier($self) if $old;
+    $val->add_collaboration_representedClassifier($self)    if $val;
 
   
   }
@@ -1552,8 +1552,8 @@ sub remove_representedClassifier ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Classifier($self) if $old;
-    $val->add_collaboration_Classifier($self)    if $val;
+    $old->remove_collaboration_representedClassifier($self) if $old;
+    $val->add_collaboration_representedClassifier($self)    if $val;
 
   
   }
@@ -1578,8 +1578,8 @@ sub clear_representedClassifier ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Classifier($self) if $old;
-    $val->add_collaboration_Classifier($self)    if $val;
+    $old->remove_collaboration_representedClassifier($self) if $old;
+    $val->add_collaboration_representedClassifier($self)    if $val;
 
     }
 
@@ -1611,7 +1611,7 @@ sub count_representedClassifier ($)
 =cut
 
 #################################################################
-# AssociationEnd collaboration_Operation <---> representedOperation
+# AssociationEnd collaboration_representedOperation <---> representedOperation
 # type = UMMF::UML::MetaModel::Foundation::Core::Operation
 # multiplicity = 0..1
 # ordering = 
@@ -1657,8 +1657,8 @@ sub set_representedOperation ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Operation($self) if $old;
-    $val->add_collaboration_Operation($self)    if $val;
+    $old->remove_collaboration_representedOperation($self) if $old;
+    $val->add_collaboration_representedOperation($self)    if $val;
 
     }
 		  
@@ -1695,8 +1695,8 @@ sub add_representedOperation ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Operation($self) if $old;
-    $val->add_collaboration_Operation($self)    if $val;
+    $old->remove_collaboration_representedOperation($self) if $old;
+    $val->add_collaboration_representedOperation($self)    if $val;
 
   
   }
@@ -1725,8 +1725,8 @@ sub remove_representedOperation ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Operation($self) if $old;
-    $val->add_collaboration_Operation($self)    if $val;
+    $old->remove_collaboration_representedOperation($self) if $old;
+    $val->add_collaboration_representedOperation($self)    if $val;
 
   
   }
@@ -1751,8 +1751,8 @@ sub clear_representedOperation ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Operation($self) if $old;
-    $val->add_collaboration_Operation($self)    if $val;
+    $old->remove_collaboration_representedOperation($self) if $old;
+    $val->add_collaboration_representedOperation($self)    if $val;
 
     }
 
@@ -1784,7 +1784,7 @@ sub count_representedOperation ($)
 =cut
 
 #################################################################
-# AssociationEnd collaboration_Collaboration <---> usedCollaboration
+# AssociationEnd collaboration_usedCollaboration <---> usedCollaboration
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration
 # multiplicity = 0..*
 # ordering = 
@@ -1857,8 +1857,8 @@ sub add_usedCollaboration ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_collaboration_Collaboration($self) if $old;
-    $val->add_collaboration_Collaboration($self)    if $val;
+    $old->remove_collaboration_usedCollaboration($self) if $old;
+    $val->add_collaboration_usedCollaboration($self)    if $val;
 
     }
   
@@ -1897,8 +1897,8 @@ sub remove_usedCollaboration ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_collaboration_Collaboration($self) if $old;
-    $val->add_collaboration_Collaboration($self)    if $val;
+    $old->remove_collaboration_usedCollaboration($self) if $old;
+    $val->add_collaboration_usedCollaboration($self)    if $val;
 
   ;
 
@@ -1930,8 +1930,8 @@ sub clear_usedCollaboration ($)
     # Remove associations with other ends.
 
         
-    $old->remove_collaboration_Collaboration($self) if $old;
-    $val->add_collaboration_Collaboration($self)    if $val;
+    $old->remove_collaboration_usedCollaboration($self) if $old;
+    $val->add_collaboration_usedCollaboration($self)    if $val;
 
   ;
 

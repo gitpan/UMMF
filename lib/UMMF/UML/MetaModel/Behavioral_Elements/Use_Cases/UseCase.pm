@@ -170,7 +170,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<1> : C<addition> E<lt>---E<gt>  C<include_UseCase> : UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include C<0..*>
+=head2 C<1> : C<addition> E<lt>---E<gt>  C<include_addition> : UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include C<0..*>
 
 
 
@@ -402,12 +402,12 @@ sub __tangram_schema
 
                                                                                }
       ,
-                  	 	       'include_UseCase'
+                  	 	       'include_addition'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include',
 
-                           'table' => 'Behavioral_Elements__Use_Cases__UseCase__include_UseCase', 
+                           'table' => 'Behavioral_Elements__Use_Cases__UseCase__include_addition', 
 
                                                                'coll' => 'addition',
 
@@ -518,11 +518,11 @@ sub ___initialize
   # AssociationEnd 
   #  addition 1
   #  <--> 
-  #  include_UseCase 0..* UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include.
-    if ( defined $self->{'include_UseCase'} ) {
-    my $x = $self->{'include_UseCase'};
-        $self->{'include_UseCase'} = Set::Object->new();
-        $self->set_include_UseCase(@$x);
+  #  include_addition 0..* UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include.
+    if ( defined $self->{'include_addition'} ) {
+    my $x = $self->{'include_addition'};
+        $self->{'include_addition'} = Set::Object->new();
+        $self->set_include_addition(@$x);
   }
   
 
@@ -1331,72 +1331,72 @@ sub count_include ($)
 =cut
 
 #################################################################
-# AssociationEnd addition <---> include_UseCase
+# AssociationEnd addition <---> include_addition
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<include_UseCase>
+=head2 C<include_addition>
 
-  my @val = $obj->include_UseCase;
-  my $ary_val = $obj->include_UseCase;
+  my @val = $obj->include_addition;
+  my $ary_val = $obj->include_addition;
 
-Returns the AssociationEnd C<include_UseCase> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
+Returns the AssociationEnd C<include_addition> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub include_UseCase ($)
+sub include_addition ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'include_UseCase'};
+    my $x = $self->{'include_addition'};
 
-  # confess("Container for include_UseCase $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for include_addition $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_include_UseCase>
+=head2 C<set_include_addition>
 
-  $obj->set_include_UseCase(@val);
+  $obj->set_include_addition(@val);
 
-Sets the AssociationEnd C<include_UseCase> value.
+Sets the AssociationEnd C<include_addition> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
 Returns C<$obj>.
 
 =cut
-sub set_include_UseCase ($@)
+sub set_include_addition ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_include_UseCase;
-  $self->add_include_UseCase(@val);
+  $self->clear_include_addition;
+  $self->add_include_addition(@val);
 }
 
 
-=head2 C<add_include_UseCase>
+=head2 C<add_include_addition>
 
-  $obj->add_include_UseCase(@val);
+  $obj->add_include_addition(@val);
 
-Adds AssociationEnd C<include_UseCase> values.
+Adds AssociationEnd C<include_addition> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
 Returns C<$obj>.
 
 =cut
-sub add_include_UseCase ($@)
+sub add_include_addition ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'include_UseCase'} ||= Set::Object->new();
+    my $x = $self->{'include_addition'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase.include_UseCase");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase.include_addition");
 
     # Recursion lock
         $x->insert($val);
@@ -1413,20 +1413,20 @@ sub add_include_UseCase ($@)
 }
 
 
-=head2 C<remove_include_UseCase>
+=head2 C<remove_include_addition>
 
-  $obj->remove_include_UseCase(@val);
+  $obj->remove_include_addition(@val);
 
-Removes the AssociationEnd C<include_UseCase> values C<@val>.
+Removes the AssociationEnd C<include_addition> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
 Returns C<$obj>.
 
 =cut
-sub remove_include_UseCase ($@)
+sub remove_include_addition ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'include_UseCase'} ||= Set::Object->new();
+    my $x = $self->{'include_addition'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -1434,7 +1434,7 @@ sub remove_include_UseCase ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase.include_UseCase");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::UseCase.include_addition");
 
     # Recursion lock
         $x->remove($old);
@@ -1455,23 +1455,23 @@ sub remove_include_UseCase ($@)
 }
 
 
-=head2 C<clear_include_UseCase>
+=head2 C<clear_include_addition>
 
-  $obj->clear_include_UseCase;
+  $obj->clear_include_addition;
 
-Clears the AssociationEnd C<include_UseCase> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
+Clears the AssociationEnd C<include_addition> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include|UMMF::UML::MetaModel::Behavioral_Elements::Use_Cases::Include>.
 Returns C<$obj>.
 
 =cut
-sub clear_include_UseCase ($) 
+sub clear_include_addition ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'include_UseCase'} ||= Set::Object->new();
+    my $x = $self->{'include_addition'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'include_UseCase'} = Set::Object->new(); # Recursion lock
+    $self->{'include_addition'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -1488,18 +1488,18 @@ sub clear_include_UseCase ($)
 }
 
 
-=head2 C<count_include_UseCase>
+=head2 C<count_include_addition>
 
-  $obj->count_include_UseCase;
+  $obj->count_include_addition;
 
-Returns the number of elements associated with C<include_UseCase>.
+Returns the number of elements associated with C<include_addition>.
 
 =cut
-sub count_include_UseCase ($)
+sub count_include_addition ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'include_UseCase'};
+  my $x = $self->{'include_addition'};
 
     defined $x ? $x->size : 0;
   }

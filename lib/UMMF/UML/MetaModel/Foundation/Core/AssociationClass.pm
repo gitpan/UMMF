@@ -41,9 +41,9 @@ L<UMMF::UML::MetaModel::Foundation::Core::Class|UMMF::UML::MetaModel::Foundation
 
 =head1 SUPERCLASSES
 
-L<UMMF::UML::MetaModel::Foundation::Core::Class|UMMF::UML::MetaModel::Foundation::Core::Class>
-
 L<UMMF::UML::MetaModel::Foundation::Core::Association|UMMF::UML::MetaModel::Foundation::Core::Association>
+
+L<UMMF::UML::MetaModel::Foundation::Core::Class|UMMF::UML::MetaModel::Foundation::Core::Class>
 
 
 
@@ -113,7 +113,7 @@ use UMMF::UML::MetaModel::__ObjectBase qw(:__ummf_array);
 #
 
 use base qw(
-  UMMF::UML::MetaModel::Foundation::Core::Class  UMMF::UML::MetaModel::Foundation::Core::Association
+  UMMF::UML::MetaModel::Foundation::Core::Association  UMMF::UML::MetaModel::Foundation::Core::Class
 
 
 
@@ -245,7 +245,7 @@ sub __tangram_schema
 	 
 	 # Associations
 	 	 	                            },
-       'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::Class',  'UMMF::UML::MetaModel::Foundation::Core::Association',  ],
+       'bases' => [  'UMMF::UML::MetaModel::Foundation::Core::Association',  'UMMF::UML::MetaModel::Foundation::Core::Class',  ],
        'sql' => {
 
        },
@@ -328,25 +328,25 @@ sub __initialize
 
   unless ( ! $__initialize_use ) {
     $__initialize_use = 1;
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Classifier');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Class');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Element');
-    $self->__use('UMMF::UML::MetaModel::Foundation::Core::ModelElement');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::Relationship');
     $self->__use('UMMF::UML::MetaModel::Foundation::Core::Association');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Namespace');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Element');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::ModelElement');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Classifier');
+    $self->__use('UMMF::UML::MetaModel::Foundation::Core::Class');
   }
 
   $self->UMMF::UML::MetaModel::Foundation::Core::AssociationClass::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Classifier::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Class::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::Element::___initialize;
-  $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::Relationship::___initialize;
   $self->UMMF::UML::MetaModel::Foundation::Core::Association::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Element::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Classifier::___initialize;
+  $self->UMMF::UML::MetaModel::Foundation::Core::Class::___initialize;
 
   $self;
 }
@@ -365,14 +365,14 @@ sub __create
 
   # $DB::single = 1;
   $self->UMMF::UML::MetaModel::Foundation::Core::AssociationClass::___create(@args);
-  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::Classifier::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::Class::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::Element::___create();
-  $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::Relationship::___create();
   $self->UMMF::UML::MetaModel::Foundation::Core::Association::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Namespace::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Element::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::ModelElement::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::GeneralizableElement::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Classifier::___create();
+  $self->UMMF::UML::MetaModel::Foundation::Core::Class::___create();
 
   $self;
 }

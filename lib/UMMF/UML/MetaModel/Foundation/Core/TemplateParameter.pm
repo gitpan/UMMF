@@ -54,7 +54,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..*> : C<templateParameter_ModelElement> E<lt>---E<gt>  C<defaultElement> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..1>
+=head2 C<0..*> : C<templateParameter_defaultElement> E<lt>---E<gt>  C<defaultElement> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..1>
 
 
 
@@ -400,7 +400,7 @@ sub ___initialize
   # Associations
 
   # AssociationEnd 
-  #  templateParameter_ModelElement 0..*
+  #  templateParameter_defaultElement 0..*
   #  <--> 
   #  defaultElement 0..1 UMMF::UML::MetaModel::Foundation::Core::ModelElement.
     if ( defined $self->{'defaultElement'} ) {
@@ -499,7 +499,7 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd templateParameter_ModelElement <---> defaultElement
+# AssociationEnd templateParameter_defaultElement <---> defaultElement
 # type = UMMF::UML::MetaModel::Foundation::Core::ModelElement
 # multiplicity = 0..1
 # ordering = 
@@ -545,8 +545,8 @@ sub set_defaultElement ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_templateParameter_ModelElement($self) if $old;
-    $val->add_templateParameter_ModelElement($self)    if $val;
+    $old->remove_templateParameter_defaultElement($self) if $old;
+    $val->add_templateParameter_defaultElement($self)    if $val;
 
     }
 		  
@@ -583,8 +583,8 @@ sub add_defaultElement ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_templateParameter_ModelElement($self) if $old;
-    $val->add_templateParameter_ModelElement($self)    if $val;
+    $old->remove_templateParameter_defaultElement($self) if $old;
+    $val->add_templateParameter_defaultElement($self)    if $val;
 
   
   }
@@ -613,8 +613,8 @@ sub remove_defaultElement ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_templateParameter_ModelElement($self) if $old;
-    $val->add_templateParameter_ModelElement($self)    if $val;
+    $old->remove_templateParameter_defaultElement($self) if $old;
+    $val->add_templateParameter_defaultElement($self)    if $val;
 
   
   }
@@ -639,8 +639,8 @@ sub clear_defaultElement ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_templateParameter_ModelElement($self) if $old;
-    $val->add_templateParameter_ModelElement($self)    if $val;
+    $old->remove_templateParameter_defaultElement($self) if $old;
+    $val->add_templateParameter_defaultElement($self)    if $val;
 
     }
 

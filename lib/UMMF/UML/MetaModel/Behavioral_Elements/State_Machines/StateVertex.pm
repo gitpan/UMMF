@@ -54,7 +54,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..*> : C<subvertex> E<lt>---E<gt>  C<container> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState C<0..1>
+=head2 C<0..*> : C<subvertex> E<lt>---E<gt>  C<container_compositeState> : UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState C<0..1>
 
 
 
@@ -300,14 +300,14 @@ sub __tangram_schema
 	 # Attributes
 	 
 	 # Associations
-	 	 	       'container'
+	 	 	       'container_compositeState'
        => {
 	 'type_impl' => 'ref',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState',
 
                   'null' => '1', 
 
-                                    'col' => 'container', 
+                                    'col' => 'container_compositeState', 
 
                                                                                                                    }
       ,
@@ -398,11 +398,11 @@ sub ___initialize
   # AssociationEnd 
   #  subvertex 0..*
   #  <--> 
-  #  container 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState.
-    if ( defined $self->{'container'} ) {
-    my $x = $self->{'container'};
-    $self->{'container'} = undef;
-    $self->set_container($x);
+  #  container_compositeState 0..1 UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState.
+    if ( defined $self->{'container_compositeState'} ) {
+    my $x = $self->{'container_compositeState'};
+    $self->{'container_compositeState'} = undef;
+    $self->set_container_compositeState($x);
   }
   
   # AssociationEnd 
@@ -498,48 +498,48 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd subvertex <---> container
+# AssociationEnd subvertex <---> container_compositeState
 # type = UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState
 # multiplicity = 0..1
 # ordering = 
 
-=head2 C<container>
+=head2 C<container_compositeState>
 
-  my $val = $obj->container;
+  my $val = $obj->container_compositeState;
 
-Returns the AssociationEnd C<container> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState>.
+Returns the AssociationEnd C<container_compositeState> value of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState>.
 
 =cut
-sub container ($)
+sub container_compositeState ($)
 {
   my ($self) = @_;
 		  
-  $self->{'container'};
+  $self->{'container_compositeState'};
 }
 
 
-=head2 C<set_container>
+=head2 C<set_container_compositeState>
 
-  $obj->set_container($val);
+  $obj->set_container_compositeState($val);
 
-Sets the AssociationEnd C<container> value.
+Sets the AssociationEnd C<container_compositeState> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState>.
 Returns C<$obj>.
 
 =cut
-sub set_container ($$)
+sub set_container_compositeState ($$)
 {
   my ($self, $val) = @_;
 		  
   no warnings; # Use of uninitialized value in string ne at ...
 		  
   my $old;
-  if ( ($old = $self->{'container'}) ne $val ) { # Recursion lock
+  if ( ($old = $self->{'container_compositeState'}) ne $val ) { # Recursion lock
 
-    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex.container") }
+    if ( defined $val ) { $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex.container_compositeState") }
 
     # Recursion lock
-        $self->{'container'} = $val
+        $self->{'container_compositeState'} = $val
     ;
 
     # Remove and add associations with other ends.
@@ -553,31 +553,31 @@ sub set_container ($$)
 }
 
 
-=head2 C<add_container>
+=head2 C<add_container_compositeState>
 
-  $obj->add_container($val);
+  $obj->add_container_compositeState($val);
 
-Adds the AssociationEnd C<container> value.
+Adds the AssociationEnd C<container_compositeState> value.
 C<$val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState>.
 Throws exception if a value already exists.
 Returns C<$obj>.
 
 =cut
-sub add_container ($$)
+sub add_container_compositeState ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'container'}) ne $val ) { # Recursion lock
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex.container");
+  if ( ($old = $self->{'container_compositeState'}) ne $val ) { # Recursion lock
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex.container_compositeState");
       
-    # confess("UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex::container: too many")
-    # if defined $self->{'container'};
+    # confess("UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::StateVertex::container_compositeState: too many")
+    # if defined $self->{'container_compositeState'};
 
     # Recursion lock
-        $self->{'container'} = $val
+        $self->{'container_compositeState'} = $val
     ;
 
     # Remove and add associations with other ends.
@@ -592,23 +592,23 @@ sub add_container ($$)
 }
 
 
-=head2 C<remove_container>
+=head2 C<remove_container_compositeState>
 
-  $obj->remove_container($val);
+  $obj->remove_container_compositeState($val);
 
-Removes the AssociationEnd C<container> value C<$val>.
+Removes the AssociationEnd C<container_compositeState> value C<$val>.
 Returns C<$obj>.
 
 =cut
-sub remove_container ($$)
+sub remove_container_compositeState ($$)
 {
   my ($self, $val) = @_;
 
   no warnings; # Use of uninitialized value in string ne at ...
 
   my $old;
-  if ( ($old = $self->{'container'}) eq $val ) { # Recursion lock
-    $val = $self->{'container'} = undef;         # Recursion lock
+  if ( ($old = $self->{'container_compositeState'}) eq $val ) { # Recursion lock
+    $val = $self->{'container_compositeState'} = undef;         # Recursion lock
 
     # Remove and add associations with other ends.
         
@@ -620,21 +620,21 @@ sub remove_container ($$)
 }
 
 
-=head2 C<clear_container>
+=head2 C<clear_container_compositeState>
 
-  $obj->clear_container;
+  $obj->clear_container_compositeState;
 
-Clears the AssociationEnd C<container> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState>.
+Clears the AssociationEnd C<container_compositeState> links to L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState>.
 Returns C<$obj>.
 
 =cut
-sub clear_container ($@)
+sub clear_container_compositeState ($@)
 {
   my ($self) = @_;
 
   my $old;
-  if ( defined ($old = $self->{'container'}) ) { # Recursion lock
-    my $val = $self->{'container'} = undef;      # Recursion lock
+  if ( defined ($old = $self->{'container_compositeState'}) ) { # Recursion lock
+    my $val = $self->{'container_compositeState'} = undef;      # Recursion lock
 
     # Remove and add associations with other ends.
         
@@ -647,18 +647,18 @@ sub clear_container ($@)
 }
 
 
-=head2 C<count_container>
+=head2 C<count_container_compositeState>
 
-  $obj->count_container;
+  $obj->count_container_compositeState;
 
-Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState> associated with C<container>.
+Returns the number of elements of type L<UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState|UMMF::UML::MetaModel::Behavioral_Elements::State_Machines::CompositeState> associated with C<container_compositeState>.
 
 =cut
-sub count_container ($)
+sub count_container_compositeState ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'container'};
+  my $x = $self->{'container_compositeState'};
 
   defined $x ? 1 : 0;
 }

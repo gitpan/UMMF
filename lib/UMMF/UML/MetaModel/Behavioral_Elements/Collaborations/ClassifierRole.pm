@@ -166,7 +166,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::Classifier|UMMF::UML::MetaModel::Found
 =back
 
 
-=head2 C<1> : C<receiver> E<lt>---E<gt>  C<message_ClassifierRole> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message C<0..*>
+=head2 C<1> : C<receiver> E<lt>---E<gt>  C<message_receiver> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message C<0..*>
 
 
 
@@ -195,7 +195,7 @@ L<UMMF::UML::MetaModel::Foundation::Core::Classifier|UMMF::UML::MetaModel::Found
 =back
 
 
-=head2 C<1> : C<sender> E<lt>---E<gt>  C<message_ClassifierRole> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message C<0..*>
+=head2 C<1> : C<sender> E<lt>---E<gt>  C<message_sender> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message C<0..*>
 
 
 
@@ -431,23 +431,23 @@ sub __tangram_schema
 
                                                                                }
       ,
-                  	 	       'message_ClassifierRole'
+                  	 	       'message_receiver'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message',
 
-                           'table' => 'Behavioral_Elements__Collaborations__ClassifierRole__message_ClassifierRole', 
+                           'table' => 'Behavioral_Elements__Collaborations__ClassifierRole__message_receiver', 
 
                                                                'coll' => 'receiver',
 
                                                                                }
       ,
-                  	 	       'message_ClassifierRole'
+                  	 	       'message_sender'
        => {
 	 'type_impl' => 'iset',
          'class' => 'UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message',
 
-                           'table' => 'Behavioral_Elements__Collaborations__ClassifierRole__message_ClassifierRole', 
+                           'table' => 'Behavioral_Elements__Collaborations__ClassifierRole__message_sender', 
 
                                                                'coll' => 'sender',
 
@@ -556,21 +556,21 @@ sub ___initialize
   # AssociationEnd 
   #  receiver 1
   #  <--> 
-  #  message_ClassifierRole 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message.
-    if ( defined $self->{'message_ClassifierRole'} ) {
-    my $x = $self->{'message_ClassifierRole'};
-        $self->{'message_ClassifierRole'} = Set::Object->new();
-        $self->set_message_ClassifierRole(@$x);
+  #  message_receiver 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message.
+    if ( defined $self->{'message_receiver'} ) {
+    my $x = $self->{'message_receiver'};
+        $self->{'message_receiver'} = Set::Object->new();
+        $self->set_message_receiver(@$x);
   }
   
   # AssociationEnd 
   #  sender 1
   #  <--> 
-  #  message_ClassifierRole 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message.
-    if ( defined $self->{'message_ClassifierRole'} ) {
-    my $x = $self->{'message_ClassifierRole'};
-        $self->{'message_ClassifierRole'} = Set::Object->new();
-        $self->set_message_ClassifierRole(@$x);
+  #  message_sender 0..* UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message.
+    if ( defined $self->{'message_sender'} ) {
+    my $x = $self->{'message_sender'};
+        $self->{'message_sender'} = Set::Object->new();
+        $self->set_message_sender(@$x);
   }
   
 
@@ -1281,72 +1281,72 @@ sub count_conformingInstance ($)
 =cut
 
 #################################################################
-# AssociationEnd receiver <---> message_ClassifierRole
+# AssociationEnd receiver <---> message_receiver
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<message_ClassifierRole>
+=head2 C<message_receiver>
 
-  my @val = $obj->message_ClassifierRole;
-  my $ary_val = $obj->message_ClassifierRole;
+  my @val = $obj->message_receiver;
+  my $ary_val = $obj->message_receiver;
 
-Returns the AssociationEnd C<message_ClassifierRole> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
+Returns the AssociationEnd C<message_receiver> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub message_ClassifierRole ($)
+sub message_receiver ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'message_ClassifierRole'};
+    my $x = $self->{'message_receiver'};
 
-  # confess("Container for message_ClassifierRole $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for message_receiver $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_message_ClassifierRole>
+=head2 C<set_message_receiver>
 
-  $obj->set_message_ClassifierRole(@val);
+  $obj->set_message_receiver(@val);
 
-Sets the AssociationEnd C<message_ClassifierRole> value.
+Sets the AssociationEnd C<message_receiver> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub set_message_ClassifierRole ($@)
+sub set_message_receiver ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_message_ClassifierRole;
-  $self->add_message_ClassifierRole(@val);
+  $self->clear_message_receiver;
+  $self->add_message_receiver(@val);
 }
 
 
-=head2 C<add_message_ClassifierRole>
+=head2 C<add_message_receiver>
 
-  $obj->add_message_ClassifierRole(@val);
+  $obj->add_message_receiver(@val);
 
-Adds AssociationEnd C<message_ClassifierRole> values.
+Adds AssociationEnd C<message_receiver> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub add_message_ClassifierRole ($@)
+sub add_message_receiver ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'message_ClassifierRole'} ||= Set::Object->new();
+    my $x = $self->{'message_receiver'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_ClassifierRole");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_receiver");
 
     # Recursion lock
         $x->insert($val);
@@ -1363,20 +1363,20 @@ sub add_message_ClassifierRole ($@)
 }
 
 
-=head2 C<remove_message_ClassifierRole>
+=head2 C<remove_message_receiver>
 
-  $obj->remove_message_ClassifierRole(@val);
+  $obj->remove_message_receiver(@val);
 
-Removes the AssociationEnd C<message_ClassifierRole> values C<@val>.
+Removes the AssociationEnd C<message_receiver> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub remove_message_ClassifierRole ($@)
+sub remove_message_receiver ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'message_ClassifierRole'} ||= Set::Object->new();
+    my $x = $self->{'message_receiver'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -1384,7 +1384,7 @@ sub remove_message_ClassifierRole ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_ClassifierRole");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_receiver");
 
     # Recursion lock
         $x->remove($old);
@@ -1405,23 +1405,23 @@ sub remove_message_ClassifierRole ($@)
 }
 
 
-=head2 C<clear_message_ClassifierRole>
+=head2 C<clear_message_receiver>
 
-  $obj->clear_message_ClassifierRole;
+  $obj->clear_message_receiver;
 
-Clears the AssociationEnd C<message_ClassifierRole> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
+Clears the AssociationEnd C<message_receiver> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub clear_message_ClassifierRole ($) 
+sub clear_message_receiver ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'message_ClassifierRole'} ||= Set::Object->new();
+    my $x = $self->{'message_receiver'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'message_ClassifierRole'} = Set::Object->new(); # Recursion lock
+    $self->{'message_receiver'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -1438,18 +1438,18 @@ sub clear_message_ClassifierRole ($)
 }
 
 
-=head2 C<count_message_ClassifierRole>
+=head2 C<count_message_receiver>
 
-  $obj->count_message_ClassifierRole;
+  $obj->count_message_receiver;
 
-Returns the number of elements associated with C<message_ClassifierRole>.
+Returns the number of elements associated with C<message_receiver>.
 
 =cut
-sub count_message_ClassifierRole ($)
+sub count_message_receiver ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'message_ClassifierRole'};
+  my $x = $self->{'message_receiver'};
 
     defined $x ? $x->size : 0;
   }
@@ -1462,72 +1462,72 @@ sub count_message_ClassifierRole ($)
 =cut
 
 #################################################################
-# AssociationEnd sender <---> message_ClassifierRole
+# AssociationEnd sender <---> message_sender
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message
 # multiplicity = 0..*
 # ordering = 
 
-=head2 C<message_ClassifierRole>
+=head2 C<message_sender>
 
-  my @val = $obj->message_ClassifierRole;
-  my $ary_val = $obj->message_ClassifierRole;
+  my @val = $obj->message_sender;
+  my $ary_val = $obj->message_sender;
 
-Returns the AssociationEnd C<message_ClassifierRole> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
+Returns the AssociationEnd C<message_sender> values of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 In array context, returns all the objects in the Association.
 In scalar context, returns an array ref of all the objects in the Association.
 
 =cut
-sub message_ClassifierRole ($)
+sub message_sender ($)
 {
   my ($self) = @_;
 
-    my $x = $self->{'message_ClassifierRole'};
+    my $x = $self->{'message_sender'};
 
-  # confess("Container for message_ClassifierRole $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
+  # confess("Container for message_sender $x is not a blessed ref: " . Data::Dumper->new([ $self ], [qw($self)])->Maxdepth(2)->Dump()) if $x && ref($x) !~ /::/;
  
   wantarray ? ($x ? $x->members() : ()) : [ $x ? $x->members() : () ];
   
 }
 
 
-=head2 C<set_message_ClassifierRole>
+=head2 C<set_message_sender>
 
-  $obj->set_message_ClassifierRole(@val);
+  $obj->set_message_sender(@val);
 
-Sets the AssociationEnd C<message_ClassifierRole> value.
+Sets the AssociationEnd C<message_sender> value.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub set_message_ClassifierRole ($@)
+sub set_message_sender ($@)
 {
   my ($self, @val) = @_;
   
-  $self->clear_message_ClassifierRole;
-  $self->add_message_ClassifierRole(@val);
+  $self->clear_message_sender;
+  $self->add_message_sender(@val);
 }
 
 
-=head2 C<add_message_ClassifierRole>
+=head2 C<add_message_sender>
 
-  $obj->add_message_ClassifierRole(@val);
+  $obj->add_message_sender(@val);
 
-Adds AssociationEnd C<message_ClassifierRole> values.
+Adds AssociationEnd C<message_sender> values.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub add_message_ClassifierRole ($@)
+sub add_message_sender ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'message_ClassifierRole'} ||= Set::Object->new();
+    my $x = $self->{'message_sender'} ||= Set::Object->new();
     my $old; # Place holder for other MACRO.
   
   for my $val ( @val ) {
     # Recursion lock
         next if $x->includes($val);
-        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_ClassifierRole");
+        $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_sender");
 
     # Recursion lock
         $x->insert($val);
@@ -1544,20 +1544,20 @@ sub add_message_ClassifierRole ($@)
 }
 
 
-=head2 C<remove_message_ClassifierRole>
+=head2 C<remove_message_sender>
 
-  $obj->remove_message_ClassifierRole(@val);
+  $obj->remove_message_sender(@val);
 
-Removes the AssociationEnd C<message_ClassifierRole> values C<@val>.
+Removes the AssociationEnd C<message_sender> values C<@val>.
 Elements of C<@val> must of type L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub remove_message_ClassifierRole ($@)
+sub remove_message_sender ($@)
 {
   my ($self, @val) = @_;
   
-    my $x = $self->{'message_ClassifierRole'} ||= Set::Object->new();
+    my $x = $self->{'message_sender'} ||= Set::Object->new();
   
   for my $old ( @val ) {
     # Recursion lock
@@ -1565,7 +1565,7 @@ sub remove_message_ClassifierRole ($@)
     
     my $val = $old;
       
-    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_ClassifierRole");
+    $self->__use('UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message')->__typecheck($val, "UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::ClassifierRole.message_sender");
 
     # Recursion lock
         $x->remove($old);
@@ -1586,23 +1586,23 @@ sub remove_message_ClassifierRole ($@)
 }
 
 
-=head2 C<clear_message_ClassifierRole>
+=head2 C<clear_message_sender>
 
-  $obj->clear_message_ClassifierRole;
+  $obj->clear_message_sender;
 
-Clears the AssociationEnd C<message_ClassifierRole> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
+Clears the AssociationEnd C<message_sender> links to L<UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message|UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Message>.
 Returns C<$obj>.
 
 =cut
-sub clear_message_ClassifierRole ($) 
+sub clear_message_sender ($) 
 {
   my ($self) = @_;
   
-    my $x = $self->{'message_ClassifierRole'} ||= Set::Object->new();
+    my $x = $self->{'message_sender'} ||= Set::Object->new();
   
   my $val; # Place holder for other MACRO.
   
-    $self->{'message_ClassifierRole'} = Set::Object->new(); # Recursion lock
+    $self->{'message_sender'} = Set::Object->new(); # Recursion lock
   for my $old ( $x->members() ) {     # Recursion lock
   
     # Remove associations with other ends.
@@ -1619,18 +1619,18 @@ sub clear_message_ClassifierRole ($)
 }
 
 
-=head2 C<count_message_ClassifierRole>
+=head2 C<count_message_sender>
 
-  $obj->count_message_ClassifierRole;
+  $obj->count_message_sender;
 
-Returns the number of elements associated with C<message_ClassifierRole>.
+Returns the number of elements associated with C<message_sender>.
 
 =cut
-sub count_message_ClassifierRole ($)
+sub count_message_sender ($)
 {
   my ($self) = @_;
 
-  my $x = $self->{'message_ClassifierRole'};
+  my $x = $self->{'message_sender'};
 
     defined $x ? $x->size : 0;
   }

@@ -6,7 +6,7 @@ use strict;
 
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/10/05 };
-our $VERSION = do { my @r = (q$Revision: 1.3 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.4 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -52,7 +52,7 @@ L<UMMF|UMMF>
 
 =head1 VERSION
 
-$Revision: 1.3 $
+$Revision: 1.4 $
 
 =head1 METHODS
 
@@ -159,7 +159,7 @@ sub object
 
 Returns all C<$object>s where C<<$predicate->($object)>> is true.
 
-Any object that have been garbage-collected will not be selected.
+Any objects that have been garbage-collected will not be selected.
 
 =cut
 sub object_where

@@ -54,7 +54,7 @@ I<NO ATTRIBUTES>
 =head1 ASSOCIATIONS
 
 
-=head2 C<0..*> : C<collaborationInstanceSet_Collaboration> E<lt>---E<gt>  C<collaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..1>
+=head2 C<0..*> : C<collaborationInstanceSet_collaboration> E<lt>---E<gt>  C<collaboration> : UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration C<0..1>
 
 
 
@@ -83,7 +83,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaborationInstanceSet_ModelElement> E<lt>---E<gt>  C<constrainingElement> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..*>
+=head2 C<0..*> : C<collaborationInstanceSet_constrainingElement> E<lt>---E<gt>  C<constrainingElement> : UMMF::UML::MetaModel::Foundation::Core::ModelElement C<0..*>
 
 
 
@@ -141,7 +141,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaborationInstanceSet_Instance> E<lt>---E<gt>  C<particpatingInstance> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<1..*>
+=head2 C<0..*> : C<collaborationInstanceSet_particpatingInstance> E<lt>---E<gt>  C<particpatingInstance> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance C<1..*>
 
 
 
@@ -170,7 +170,7 @@ I<NO ATTRIBUTES>
 =back
 
 
-=head2 C<0..*> : C<collaborationInstanceSet_Link> E<lt>---E<gt>  C<particpatingLink> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link C<0..*>
+=head2 C<0..*> : C<collaborationInstanceSet_particpatingLink> E<lt>---E<gt>  C<particpatingLink> : UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link C<0..*>
 
 
 
@@ -378,7 +378,7 @@ sub __tangram_schema
 
                                                       'item' => 'constrainingElement', 
 
-                  'coll' => 'collaborationInstanceSet_ModelElement',
+                  'coll' => 'collaborationInstanceSet_constrainingElement',
 
                                                                                }
       ,
@@ -404,7 +404,7 @@ sub __tangram_schema
 
                                                       'item' => 'particpatingInstance', 
 
-                  'coll' => 'collaborationInstanceSet_Instance',
+                  'coll' => 'collaborationInstanceSet_particpatingInstance',
 
                                                                                }
       ,
@@ -417,7 +417,7 @@ sub __tangram_schema
 
                                                       'item' => 'particpatingLink', 
 
-                  'coll' => 'collaborationInstanceSet_Link',
+                  'coll' => 'collaborationInstanceSet_particpatingLink',
 
                                                                                }
       ,
@@ -484,7 +484,7 @@ sub ___initialize
   # Associations
 
   # AssociationEnd 
-  #  collaborationInstanceSet_Collaboration 0..*
+  #  collaborationInstanceSet_collaboration 0..*
   #  <--> 
   #  collaboration 0..1 UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration.
     if ( defined $self->{'collaboration'} ) {
@@ -494,7 +494,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  collaborationInstanceSet_ModelElement 0..*
+  #  collaborationInstanceSet_constrainingElement 0..*
   #  <--> 
   #  constrainingElement 0..* UMMF::UML::MetaModel::Foundation::Core::ModelElement.
     if ( defined $self->{'constrainingElement'} ) {
@@ -514,7 +514,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  collaborationInstanceSet_Instance 0..*
+  #  collaborationInstanceSet_particpatingInstance 0..*
   #  <--> 
   #  particpatingInstance 1..* UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance.
     if ( defined $self->{'particpatingInstance'} ) {
@@ -524,7 +524,7 @@ sub ___initialize
   }
   
   # AssociationEnd 
-  #  collaborationInstanceSet_Link 0..*
+  #  collaborationInstanceSet_particpatingLink 0..*
   #  <--> 
   #  particpatingLink 0..* UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link.
     if ( defined $self->{'particpatingLink'} ) {
@@ -606,7 +606,7 @@ sub __create
 =cut
 
 #################################################################
-# AssociationEnd collaborationInstanceSet_Collaboration <---> collaboration
+# AssociationEnd collaborationInstanceSet_collaboration <---> collaboration
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Collaborations::Collaboration
 # multiplicity = 0..1
 # ordering = 
@@ -652,8 +652,8 @@ sub set_collaboration ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_Collaboration($self) if $old;
-    $val->add_collaborationInstanceSet_Collaboration($self)    if $val;
+    $old->remove_collaborationInstanceSet_collaboration($self) if $old;
+    $val->add_collaborationInstanceSet_collaboration($self)    if $val;
 
     }
 		  
@@ -690,8 +690,8 @@ sub add_collaboration ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_Collaboration($self) if $old;
-    $val->add_collaborationInstanceSet_Collaboration($self)    if $val;
+    $old->remove_collaborationInstanceSet_collaboration($self) if $old;
+    $val->add_collaborationInstanceSet_collaboration($self)    if $val;
 
   
   }
@@ -720,8 +720,8 @@ sub remove_collaboration ($$)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_Collaboration($self) if $old;
-    $val->add_collaborationInstanceSet_Collaboration($self)    if $val;
+    $old->remove_collaborationInstanceSet_collaboration($self) if $old;
+    $val->add_collaborationInstanceSet_collaboration($self)    if $val;
 
   
   }
@@ -746,8 +746,8 @@ sub clear_collaboration ($@)
 
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_Collaboration($self) if $old;
-    $val->add_collaborationInstanceSet_Collaboration($self)    if $val;
+    $old->remove_collaborationInstanceSet_collaboration($self) if $old;
+    $val->add_collaborationInstanceSet_collaboration($self)    if $val;
 
     }
 
@@ -779,7 +779,7 @@ sub count_collaboration ($)
 =cut
 
 #################################################################
-# AssociationEnd collaborationInstanceSet_ModelElement <---> constrainingElement
+# AssociationEnd collaborationInstanceSet_constrainingElement <---> constrainingElement
 # type = UMMF::UML::MetaModel::Foundation::Core::ModelElement
 # multiplicity = 0..*
 # ordering = 
@@ -852,8 +852,8 @@ sub add_constrainingElement ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_ModelElement($self) if $old;
-    $val->add_collaborationInstanceSet_ModelElement($self)    if $val;
+    $old->remove_collaborationInstanceSet_constrainingElement($self) if $old;
+    $val->add_collaborationInstanceSet_constrainingElement($self)    if $val;
 
     }
   
@@ -892,8 +892,8 @@ sub remove_constrainingElement ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_collaborationInstanceSet_ModelElement($self) if $old;
-    $val->add_collaborationInstanceSet_ModelElement($self)    if $val;
+    $old->remove_collaborationInstanceSet_constrainingElement($self) if $old;
+    $val->add_collaborationInstanceSet_constrainingElement($self)    if $val;
 
   ;
 
@@ -925,8 +925,8 @@ sub clear_constrainingElement ($)
     # Remove associations with other ends.
 
         
-    $old->remove_collaborationInstanceSet_ModelElement($self) if $old;
-    $val->add_collaborationInstanceSet_ModelElement($self)    if $val;
+    $old->remove_collaborationInstanceSet_constrainingElement($self) if $old;
+    $val->add_collaborationInstanceSet_constrainingElement($self)    if $val;
 
   ;
 
@@ -1141,7 +1141,7 @@ sub count_interactionInstance ($)
 =cut
 
 #################################################################
-# AssociationEnd collaborationInstanceSet_Instance <---> particpatingInstance
+# AssociationEnd collaborationInstanceSet_particpatingInstance <---> particpatingInstance
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Instance
 # multiplicity = 1..*
 # ordering = 
@@ -1214,8 +1214,8 @@ sub add_particpatingInstance ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_Instance($self) if $old;
-    $val->add_collaborationInstanceSet_Instance($self)    if $val;
+    $old->remove_collaborationInstanceSet_particpatingInstance($self) if $old;
+    $val->add_collaborationInstanceSet_particpatingInstance($self)    if $val;
 
     }
   
@@ -1254,8 +1254,8 @@ sub remove_particpatingInstance ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_collaborationInstanceSet_Instance($self) if $old;
-    $val->add_collaborationInstanceSet_Instance($self)    if $val;
+    $old->remove_collaborationInstanceSet_particpatingInstance($self) if $old;
+    $val->add_collaborationInstanceSet_particpatingInstance($self)    if $val;
 
   ;
 
@@ -1287,8 +1287,8 @@ sub clear_particpatingInstance ($)
     # Remove associations with other ends.
 
         
-    $old->remove_collaborationInstanceSet_Instance($self) if $old;
-    $val->add_collaborationInstanceSet_Instance($self)    if $val;
+    $old->remove_collaborationInstanceSet_particpatingInstance($self) if $old;
+    $val->add_collaborationInstanceSet_particpatingInstance($self)    if $val;
 
   ;
 
@@ -1322,7 +1322,7 @@ sub count_particpatingInstance ($)
 =cut
 
 #################################################################
-# AssociationEnd collaborationInstanceSet_Link <---> particpatingLink
+# AssociationEnd collaborationInstanceSet_particpatingLink <---> particpatingLink
 # type = UMMF::UML::MetaModel::Behavioral_Elements::Common_Behavior::Link
 # multiplicity = 0..*
 # ordering = 
@@ -1395,8 +1395,8 @@ sub add_particpatingLink ($@)
     
     # Remove and add associations with other ends.
         
-    $old->remove_collaborationInstanceSet_Link($self) if $old;
-    $val->add_collaborationInstanceSet_Link($self)    if $val;
+    $old->remove_collaborationInstanceSet_particpatingLink($self) if $old;
+    $val->add_collaborationInstanceSet_particpatingLink($self)    if $val;
 
     }
   
@@ -1435,8 +1435,8 @@ sub remove_particpatingLink ($@)
     # Remove associations with other ends.
 
         
-    $old->remove_collaborationInstanceSet_Link($self) if $old;
-    $val->add_collaborationInstanceSet_Link($self)    if $val;
+    $old->remove_collaborationInstanceSet_particpatingLink($self) if $old;
+    $val->add_collaborationInstanceSet_particpatingLink($self)    if $val;
 
   ;
 
@@ -1468,8 +1468,8 @@ sub clear_particpatingLink ($)
     # Remove associations with other ends.
 
         
-    $old->remove_collaborationInstanceSet_Link($self) if $old;
-    $val->add_collaborationInstanceSet_Link($self)    if $val;
+    $old->remove_collaborationInstanceSet_particpatingLink($self) if $old;
+    $val->add_collaborationInstanceSet_particpatingLink($self)    if $val;
 
   ;
 
