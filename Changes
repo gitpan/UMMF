@@ -1,0 +1,34 @@
+
+0.25 - 2004/07/31 kstephens@users.sourceforge.net
+  - Use underscored names in Perl template.
+  - Search resource paths for templates.
+  - Builds CPAN modules (see cpan/)
+
+0.24 - 2004/05/17 kstephens@users.sourceforge.net
+  - Force "-1" Multiplicities to be "*".
+  - Sort AssociationEnds by name in template to reduce code changes 
+      between UML changes.
+  - Added support for switching between multiple Perl::Tangram::Storage objects.  - Fixed index generation for intrusive collection id columns.
+  - get_or_error(): better error reporting.
+  - Metamodel: State_Machines::Event is now subclass of ModelElement;
+      was causing problems with Poseidon State Machine diagrams with CallEvents.  - Sort by table when generating Tangram indices.
+
+0.23 - 2004/04/19 kstephens@users.sourceforge.net
+  - Added DProf support
+  - Cache use and constant value function evals in use_alias;
+  - Reuse __ummf_array_*() code.
+  - Enhanced performance during XMI import for Unimplemented meta-objects.
+  - Tangram-related changes:
+    - Added Tangram deploy method callbacks.
+    - Added UMMF_STORAGE_SCHEMA_PKG_FILTER support for ignore packages during
+      schema compilation.
+    - Fixed minor SQL errors.
+    - Added Storage $cls->get*() cache flush after update() or insert(). 
+    - Added Schema and Schema hash caching.
+    - Added host and port DB connection configuration options.
+    - Added $storage->update_or_insert(@objs).
+    - Added test for ambigous $cls->get*().
+    - Added storage configuration callbacks.
+    - Added $cls->get_or_init(\%key, \%init) useful for deploy method callbacks.    - Added $cls->get_force(%keys).
+
+$Id: Changes,v 1.5 2004/08/01 21:19:09 kstephens Exp $
