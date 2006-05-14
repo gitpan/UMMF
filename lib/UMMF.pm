@@ -4,10 +4,9 @@ use 5.6.0;
 use strict;
 use warnings;
 
-
-our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/09/10 };
-#our $REVISION = { my @r = (q$Revision: 1.15 $ =~ /\d+/g); sprintf '%d.' . '%03d' x $#r, @r };
-our $VERSION = '0.26';
+our $AUTHOR = q{ kurt@umleta.com 2003/09/10 };
+#our $REVISION = { my @r = (q$Revision: 1.17 $ =~ /\d+/g); sprintf '%d.' . '%03d' x $#r, @r };
+our $VERSION = '1.02';
 
 =head1 NAME
 
@@ -19,19 +18,19 @@ UMMF - UML Meta-Model Framework.  UML to code generation via XMI.  Implements UM
 
 =head1 VERSION
 
-0.26
+1.02
 
 =head1 DESCRIPTION
 
-Also See L<http://ummf.sourceforge.net> and the C<"examples"> directory in the distribution for more information.
+See L<http://ummf.umleta.com/> and the C<"examples"> directory in the distribution for more information.
 
 =head1 What is UMMF?
 
 UMMF is an open-source implementation of a UML Meta-meta-model, for the purposes of reifying UML meta-model implementations and to provide a platform for building flexible UML transformation tools.
 
-It is written in Perl and provides an almost complete specification of the UML 1.5 meta-model in a human and machine-readable meta-meta-model description language. 
+It is written in Perl and provides an almost complete specification of the UML 1.5 meta-model in a human and machine-readable meta-meta-model description language.
 
-The meta-meta-model description is used to generate implementations of the UML meta-model in XMI, Perl and Java and other languages.  Thus, one specification of the meta-model can generate meta-model implementations in many programming languages.  Once a programming language has been targeted with an exporter, code can be generated for UML meta-models and models.
+The meta-meta-model description is used to generate implementations of the UML meta-model in XMI, Perl and Java and other languages.  Thus, one specification of the meta-model can generate meta-model implementations in many programming languages.  Once a programming language has been targeted with an exporter, code can be generated for UML meta-models and other models.
 
 =head1 Why UMMF?
 
@@ -48,12 +47,6 @@ Many inexpensive UML editors have inflexible or non-existant code generation too
 UMMF allows you to control how your Model will be translated into code; add your special archtectural or environmental support without relying on third-party proprietary tools!
 
 UMMF can provide a base UML meta-model implementation for other UML tools.
-
-=head1 What is the development status of UMMF?
-
-As of 2003/09/31, UMMF is still alpha software; everything and anything may change. But please keep in mind, it's not in my best interest to change it too much, because I rely on it.  UMMF is being actively developed and used for generating code for production systems.  I (Kurt Stephens) and dedicate significant resources to develop UMMF; I am building large systems in Perl using UML.
-
-If you think that UMMF could be useful for your project or if I can help you get started, please let me know.
 
 =head1 What does UMMF do?
 
@@ -77,11 +70,13 @@ Additional transformations will be developed to support other architectural conc
 
 =head1 What can UMMF do?
 
-As of 2004/03/30 (v0.20), UMMF can:
+As of 2006/05/13 (v1.02), UMMF can:
 
 =over 4
 
 =item * Generate Classifier code for UML 1.5 meta-model in Perl and Java, using code templates.
+
+=item * Generate Classifier code for MOF 1.3 and MOF 1.4.1 meta-models (PRELIMINARY)
 
 =item * Generate Classifier code for UML 1.5 meta-model for Tangram.
 
@@ -101,7 +96,7 @@ As of 2004/03/30 (v0.20), UMMF can:
 
 =item * Support model reflection in Perl.
       
-Use of C<Serializable> for meta-model storage has been implemented and tested.
+Use of C<XMI> for meta-model storage has been implemented and tested.
 
 =item * Can export XMI for the UML-1.5 meta-model, using itself as the meta-meta-model.
       
@@ -133,33 +128,11 @@ As of 2003/09/31:
 
 =back
 
-=head1 What should UMMF do?
-
-=over 4
-
-=item * Have more documentation.  More pod and maybe a Wiki?
-
-=item * Have more examples.
-
-=item * Have more test cases.
-
-=item * Process OCL: An OCL parser and expression model is being built, based on the OCL for UML 2.0 RFP response draft.
-
-=item * Have more exporters: IDL, C++, Objective-C, Scheme, PHP, etc.
-
-=item * Generate code for UML State Machines and other models.
-
-=item * Handle multiple UML meta-model versions.  A UML 2.0 meta-model specification file is currently being built.
-
-=item * The things you wish UML editors did for you, like generate Perl or Befunge code the way you like it.  Please contribute!
-
-=item * Bootstrap from the meta-meta-model with minimal assumptions.
-
-=back
-
 =head1 Where can I get UMMF?
 
-The SourceForge site, http://sourceforge.net/projects/ummf/ or a pre-built version from CPAN.  You may want to check the CVS repository for the latests changes; point your browser at http://cvs.sourceforge.net/viewcvs.py/ummf/ummf/1.0/.
+The SourceForge site, http://sourceforge.net/projects/ummf/ or a pre-built version from CPAN.  You may want to check the CVS repository for the latests changes; point your browser at http://cvs.sourceforge.net/viewcvs.py/ummf/ummf/1.1/.
+
+More information is available at http://ummf.umleta.com/
 
 =head1 What does UMMF need?
 
@@ -216,6 +189,8 @@ Bootstrapping dependencies:
 
 =item * See "ummf/example/ex*"
 
+=item * See "ummf/test/*.pl"
+
 =back
 
 
@@ -233,9 +208,9 @@ Bootstrapping dependencies:
 
 C<perl sbin/ummf_install.pl>
 
-=item 5. make bootstrap
+=item 5. make bootstrap-simple
 
-This will build the UML meta-model classes in gen/perl.
+This will build the UML meta-model classes in gen/perl and gen/java.
 
 =item 6. make
 
@@ -266,54 +241,23 @@ CVS notifications (may become high-volume)
 
 =back
 
+=head1 COMPATABILITY
 
-=head1 Not So Frequently Asked Questions
+UMMF 1.x is not namespace compatable with UMMF 0.x.  
 
+However, most code that used UML metamodel packages named "UMMF::UML::MetaModel::..." 
+will now work with "UMMF::UML1_5::..".
 
-=head2 What is the relationship of this to MOF?
+Most other modules under "UMMF::UML::..." moved to "UMMF::Core::..." or "UMMF::Boot::...".
 
-UMMF does not implement MOF, yet.  IMHO, MOF is simply a subset of UML "Foundation" meta-model Package with all the class names prefixed with "Meta" and plenty of CORBA IDL to keep OMG happy.  Maybe it exists because a lot of work was invested in hand-coded UML meta-model implementations.  :)  Actually, there significant differences between MOF and UML, but for purposes of handing UML models, specifying the UML meta-model as UML, as it is documented in the OMG specifications, instead of as a MOF model, works quite well.
-
-If we need CORBA IDLs, then UMMF could have an IDL exporter that could generate IDL for *all* the M* layers.  Actually, a UMMF IDL exporter should generate the exact same IDLs from a MOF specification as the ones published by OMG, which look, to me, to be generated from *something*, just like the XMI DTDs.
-
-To select a subset of the UML meta-model to represent MOF, the meta-model specification in UMMF could be annotated with C preprocessor #ifdef and #define to select the appropriate subset as specified in the table on p. xiii of the MOF 1.4 specification.
-
-UMMF uses its UML meta-model description as its own meta-meta-model; the two are interchangable in UMMF since they mostly have the same task in UMMF: represent UML models and transform them; the UML meta-model is just a model in UMMF.
-
-At some point it might make sense to have drop the hard-coded UML meta-model specification I wrote and generate its meta-model directly from analysis of the MOF IDLs published by OMG.  Then when OMG publishes new IDL mappings for subsequent versions of the MOF, we all get code for free.  But that may not work, since MOF is not UML.  Maybe I'm just getting myself confused here.  :)  Maybe when UML 2.0 makes it's sweeping changes to the UML meta-model, that will make sense. 
-
-UMMF is a work in progress, but I think it has the potental to be the thing that generates standard UML meta-model implementions across many languages and environments.  Think of it as the "XML DOM" generator for the UML meta-model.
-
-
-=head2 Why isn't UMMF written in Java? or C++?  or Cobol?
-
-=over 4
-
-=item * Perl has C<eval().> 
-
-=item * Perl is better at string processing. 
-
-=item * In Perl, you change an object's class at runtime, which makes bootstrapping the M2 layer really easy.
-
-=item * Perl has real closures.
-
-=item * Perl supports multiple inheritance; which supports the UML meta-model use of multiple Generalization parents directly.
-
-=item * Perl is dynamically typed, which allows code to be reused across the M* layers, without resorting to a festering tree of interfaces; (either an object responds to foo() or it just doesn't :) 
-
-=item * Perl has mechanisms for trapping and dispatching messages with undefined methods at run-time (via AUTOLOAD).
-
-=item * Because Perl is a floor wax and a dessert topping!
-
-=back
-
-=head1 EXPORT
-
-None exported.
 
 =head1 ENVIRONMENT VARIABLES
 
 =over
+
+=item UMMF_BOOTSTRAPPING
+
+Defined to be true during bootstrapping into C<gen/perl>.
 
 =item UMMF_RESOURCE_PATH
 
@@ -325,17 +269,21 @@ List of ":"-separated paths to search for UMMF Exporter templates.
 
 =back
 
+=head1 EXPORT
+
+None exported.
+
 =head1 AUTHOR
 
-Kurt Stephens, kstephens@users.sourceforge.net 2003/09/10
+Kurt Stephens, kurt@umleta.com 2006/05/13
 
 =head1 SEE ALSO
 
-L<http://ummf.sourceforge.net>
+L<http://ummf.umleta.com>
 
 =head1 REVISION
 
-$Revision: 1.15 $
+$Revision: 1.17 $
 
 =head1 METHODS
 
@@ -363,8 +311,46 @@ use Set::Object 1.05;
 use Scalar::Util 1.13;
 use Class::Multimethods 1.70;
 
+use File::Basename;
+
 #######################################################################
 
+sub version { $VERSION }
+
+#######################################################################
+
+sub bootstrapping
+{
+  $ENV{'UMMF_BOOTSTRAPPING'};
+}
+
+#######################################################################
+
+# $DB::single = 1;
+our $module_dir;
+sub module_dir
+{
+  unless ( $module_dir ) {
+    my $package = __PACKAGE__;
+    $package =~ s@::@/@sg;
+    $module_dir = $INC{"$package.pm"};
+    $module_dir =~ s/\.pm$//s;
+  }
+
+  $module_dir;
+}
+
+#######################################################################
+
+our $module_base_dir;
+sub module_base_dir
+{
+  unless ( $module_base_dir ) {
+    $module_base_dir = dirname(module_dir);
+    $module_base_dir =~ s@/lib/perl$@@s;
+  }
+  $module_base_dir;
+}
 
 our $base_dir;
 sub base_dir
@@ -377,12 +363,6 @@ sub set_base_dir
 
   $base_dir = $x;
 }
-
-$DB::single = 1;
-my $package = __PACKAGE__;
-$package =~ s@::@/@sg;
-our $module_dir = $INC{"$package.pm"};
-$module_dir =~ s/\.pm$//;
 
 our $path_sep = ':';
 
@@ -411,11 +391,15 @@ sub resource_path
 	$type ? ( "$_/ummf/$type" ) : ( ),
 	"$_/ummf",
        ),
+
        split($path_sep, $ENV{'UMMF_RESOURCE_PATH'}),
-       $base_dir ? ( "$base_dir/lib" ) : ( ),
+
+       &base_dir ? ( &base_dir . "/lib" ) : ( ),
+
+       &module_base_dir ? ( &module_base_dir . "/lib" ) : ( ),
 
        # Default installation path.
-       "$module_dir/data",
+       &module_dir . "/data",
       ),
      );
 }
@@ -438,10 +422,10 @@ sub tmp_dir
 	       $ENV{'TMP'},
 	       $ENV{'TEMP'},
 	      ),
-	  '/tmp',
-	  'c:/temp',
 	  '/usr/tmp',
 	  '/var/tmp',
+	  'c:/temp',
+	  '/tmp',
 	 ),
      '/tmp',
     )[0];

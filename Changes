@@ -1,3 +1,38 @@
+1.02 - 2006/05/05 kurt@umleta.com
+  - Model reflection implemented with XMI (no more Storeable errors).
+  - Bootstrapping uses 3 passes to generate gen/perl:
+    - Fully test model introspection during bootstrap
+  - Preliminary MOF 1.3 and MOF 1.4.1 support:
+    - Need Reference implementation (and code generation).
+  - Preliminary XMI 1.1 support.
+  - UMMF::Import::UMMFModel, UMMF::Core::Builder: 
+    - Added <<metaclass>> support to UMMF::Import::UMMFModel.
+    - Added prelim MOF syntax support.
+    - confess() on parser errors.
+  - AssocClassLink multiplicities of generated AssociationEnds is now "1".
+  - TaggedValues for model versions and XMI defaults supported.
+  - "package" visibility is notated as '~'
+  - UMMF::Export::XMI:
+    - Added XMI.model, XMI.metamodel, XMI.metametamodel tags.
+    - Added XMI.field support for lists of SCALARs.
+  - "make bootstrap" no long runs ummf_install.pl for required modules.
+
+1.01 - 2005/04/12 kstephens@users.sourceforge.net
+  - Completely reworked lib/perl/UMMF namespace in 1.1 repository 
+      in preparation for multiple meta-models
+      NOTE: 1.0 repo is now obsolete.
+  - Generated UML metamodel is now named "UMMF::UML_1_5".
+  - Boot strapping UML metamodel is now named "UMMF::Boot::MetaModel".
+  - bin/ummf.pl: added "-M metamodel" switch for bootstrapping.
+  - bin/ummf.pl: added "-l module" option for applying configuration modules
+      (see example/ex1/build.sh).
+  - Added more complete Tangram usage example
+      (see example/ex1).
+  - Cleaned up examples/ex2 java code generation.
+  - Added transaction support to Tangram::Storage 
+      (see run_in_transaction()).
+  - Fixed Tangram flat_array table column names
+      (see example/ex1)
 
 0.26 - 2005/01/01 kstephens@users.sourceforge.net
   - Fixes for java code generation.
@@ -35,4 +70,4 @@
     - Added storage configuration callbacks.
     - Added $cls->get_or_init(\%key, \%init) useful for deploy method callbacks.    - Added $cls->get_force(%keys).
 
-$Id: Changes,v 1.6 2005/01/01 10:13:47 kstephens Exp $
+$Id: Changes,v 1.9 2006/05/14 01:40:03 kstephens Exp $

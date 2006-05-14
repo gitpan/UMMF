@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# $Id: files2dirs.pl,v 1.3 2003/09/09 20:14:39 kstephens Exp $
+# $Id: files2dirs.pl,v 1.4 2006/05/14 01:40:03 kstephens Exp $
 
 use 5.6.0;
 use strict;
@@ -27,7 +27,7 @@ None exported.
 
 =head1 AUTHOR
 
-Kurt Stephens, kstephens@sourceforge.net 2003/04/06
+Kurt Stephens, kstephens@users.sourceforge.net 2003/04/06
 
 =head1 SEE ALSO
 
@@ -35,7 +35,7 @@ L<ummf|ummf>
 
 =head1 VERSION
 
-$Revision: 1.3 $
+$Revision: 1.4 $
 
 =cut
 

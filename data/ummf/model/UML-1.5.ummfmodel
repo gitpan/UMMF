@@ -1,15 +1,16 @@
 /* -*- C++ -*- */
+
 /**********************************************************************
  **********************************************************************
  ****
  **** UML 1.5 Meta-model Specification
  **** Based on UML Specification 1.5 final/03-03-01
- **** Author: kstephens@users.sourceforge.net
- **** Version: $Revision: 1.4 $
+ **** Author: kurt@umleta.com
+ **** Version: $Revision: 1.5 $
  **** Date: 2003/04/17
- **** Reference: http://ummf.sourceforge.net/
+ **** Reference: http://ummf.umleta.com/
  ****
- **** Note: This document is machine-readable by UMMF::UML::Import::MetaMetaModel;
+ **** Note: This document is machine-readable by UMMF::Import::UMMFModel;
  **** Please see it for language definition.
  ****
  **** This specification is incomplete.
@@ -23,15 +24,17 @@
  **********************************************************************
  **********************************************************************
  **
- ** This description is parsed into objects in the UMMF::UML::MetaMetaModel
- ** (or UMMF::UML::MetaModel) package.
+ ** This description is parsed by UMMF::Import:UMMFModel
+ ** into objects in the UMMF::Boot::MetaModel during generation
+ ** of gen1/perl.  Then it is used again to re-translate itself using
+ ** UMMF::UML_1_5 into gen/perl.
  **	
- ** UMMF::UML::MetaMetaModel implements a subset of the UML Metamodel for the purpose
+ ** UMMF::Boot implements a subset of the UML Metamodel for the purpose
  ** of boot-strapping the UML.
  **
- ** The UMMF::UML::Export classes only use a subset of the UML intefaces, 
+ ** The UMMF::Export classes only use a subset of the UML interfaces, 
  ** which allow the Export classes to manipulate meta-meta-model and 
- ** meta-model levels
+ ** meta-model levels.
  **
  ** Thus the Export classes have double-duty:
  ** 1. Generate code for the UML Meta-model implementation,
@@ -47,6 +50,9 @@
 
 Model "UML 1.5 final/03-03-01"
 {
+  { 
+    <<taggedValue>> "ummf.version" : "1.5"
+  }
 
 Package Foundation
 {
@@ -310,9 +316,12 @@ Package Core
   {
 /*
    This simplifies a bunch of code.
-    @ <#>               1 , +connection  : AssociationEnd   2..* {ordered};
 */
-    @ <#> +_association 1 , +connection  : AssociationEnd   2..* {ordered};
+[% IF pure %]
+    @ <#>               1 , +connection  : AssociationEnd   2..* {ordered};
+[% ELSE %]
+  @ <#> +_association   1 { <<taggedValue>> "ummf.xmi" : false } , +connection  : AssociationEnd   2..* {ordered};
+[% END %]
   }
 
   Class AssociationClass :  Class, Association; /* Class is more dominant */

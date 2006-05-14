@@ -1,14 +1,58 @@
 #!/bin/sh
-# $Id: build.sh,v 1.7 2004/04/22 03:06:27 kstephens Exp $
+# $Id: build.sh,v 1.11 2006/05/14 01:40:03 kstephens Exp $
 set -x
 
+# Specify actions.
+action=''
+if [ $# -eq 0 ]
+then
+  action="$action build"
+  action="$action deploy"
+  action="$action store"
+  action="$action retrieve";
+fi
+action="$action $*"
+
 rm -f tmon.out
-rm -rf gen
+
 #export UMMF_PERL="${UMMF_PERL:-perl} -MDevel::Profiler"
 #export UMMF_PERL="${UMMF_PERL:-perl} -d:DProf"
-../../bin/ummf -e Perl -o gen Association_Storage_Example1.zuml
+
+# Generate Perl code.
+case "$action"
+in
+  *build*)
+    rm -rf gen; ../../bin/ummf -e Perl -p Ex1 -o gen/perl Association_Storage_Example1.zuml
+  ;;
+esac
 
 #export UMMF_PERL="${UMMF_PERL:-perl} -d" 
-export PERL5LIB="$HOME/local/src/tangram/t2/perl/blib/lib:$PERL5LIB"
+PERL5LIB="$HOME/local/src/tangram/t2/perl/blib/lib:$PERL5LIB"; export PERL5LIB
 
-../../bin/ummf -I gen -m UMMF::UML::Export::Perl::Tangram deploy gen
+# Generate and deploy schema.
+case "$action"
+in
+  *deploy*)
+    ../../bin/ummf -I lib -I gen/perl -l Ex1::Ex1::Storage -m UMMF::Export::Perl::Tangram deploy --to-db gen
+  ;;
+esac
+
+# Prepare application environment.
+PERL5LIB="lib:gen/perl:../../gen/perl:../../lib/perl:$PERL5LIB"; export PERL5LIB
+
+# Store objects.
+case "$action"
+in
+  *store*)
+    perl -d ./store.pl
+  ;;
+esac
+
+# Retrieve objects.
+case "$action"
+in
+  *retrieve*)
+    perl -d ./retrieve.pl
+  ;;
+esac
+

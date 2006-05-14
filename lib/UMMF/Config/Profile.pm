@@ -6,7 +6,7 @@ use warnings;
 
 
 our $AUTHOR = q{ kstephens@users.sourceforge.net 2003/10/20 };
-our $VERSION = do { my @r = (q$Revision: 1.5 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
+our $VERSION = do { my @r = (q$Revision: 1.6 $ =~ /\d+/g); sprintf "%d." . "%03d" x $#r, @r };
 
 =head1 NAME
 
@@ -42,7 +42,7 @@ L<lib/ummf/profile/*.ummfprofile>
 
 =head1 VERSION
 
-$Revision: 1.5 $
+$Revision: 1.6 $
 
 =head1 METHODS
 
@@ -51,7 +51,7 @@ $Revision: 1.5 $
 
 #######################################################################
 
-use base qw(UMMF::UML::MetaMetaModel::Config);
+use base qw(UMMF::Core::Config);
 
 #######################################################################
 
